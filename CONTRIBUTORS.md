@@ -7,6 +7,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Cohort Participants
 
 - [Judith Kraziewicz](https://github.com/BikeMouse) 🐭
+- [Celine Le Corvaisier](https://github.com/ocsiddisco) 🧙‍♀️
 
 ## Mentors
 
