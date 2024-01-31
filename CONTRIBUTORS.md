@@ -9,6 +9,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Judith Kraziewicz](https://github.com/BikeMouse) 🐭
 - [Celine Le Corvaisier](https://github.com/ocsiddisco) 🧙‍♀️
 - [Viviana Yanez](https://github.com/vivitt) 🐝
+- [Borja Martí](https://github.com/borjaMarti) 🌱
 
 ## Mentors
 
