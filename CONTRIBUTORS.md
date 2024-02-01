@@ -14,6 +14,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Mentors
 
 - [Chiamaka Umeh](https://github.com/amaka202) 💅
+- [Jorge Mora](https://github.com/llyorshch) 🚲
 
 ## Code of Conduct Contacts
 
