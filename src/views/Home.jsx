@@ -8,13 +8,14 @@ export function Home({ data, setListPath }) {
 				Hello from the home (<code>/</code>) page!
 			</p>
 			<ul>
-				{data.map((list, i) => {
+				{data.map((list, i) => (
 					<SingleList
+						key={i}
 						name={list.name}
 						path={list.path}
 						setListPath={setListPath}
-					/>;
-				})}
+					/>
+				))}
 			</ul>
 		</div>
 	);
