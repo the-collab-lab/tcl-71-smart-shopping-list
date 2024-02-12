@@ -2,18 +2,22 @@ import { addItem } from '../api/firebase';
 
 export function ManageList() {
 	function handleSubmit(e) {
+		/*preventing the browser of refreshing and clearing input*/
 		e.preventDefault();
+
+		/*read form*/
 		const form = e.target;
 		const formData = new FormData(form);
 
 		addItem(formData);
 		console.log(addItem(formData));
-		console.log(formData.get('item'));
-		console.log(formData.get('time'));
 		let item = formData.get('item');
 		let time = formData.get('time');
 		console.log(item, time);
-		alert(`${item} needs to be bought ${time}`);
+		/*successfully or not sucessfully added to the server
+		- code still to be implemented*/
+		let success;
+		alert(`${item} has been added ${success} to the server`);
 	}
 	return (
 		<>
