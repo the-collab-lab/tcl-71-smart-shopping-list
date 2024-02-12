@@ -6,17 +6,12 @@ export function ManageList() {
 		const form = e.target;
 		const formData = new FormData(form);
 
-		/*addItem*/ console.log(formData);
-		let item;
-		let time;
-		for (let data of formData.entries()) {
-			console.log(data);
-			if (data[0] === 'item') {
-				item = data[1];
-			} else {
-				time = data[1];
-			}
-		}
+		addItem(formData);
+		console.log(addItem(formData));
+		console.log(formData.get('item'));
+		console.log(formData.get('time'));
+		let item = formData.get('item');
+		let time = formData.get('time');
 		console.log(item, time);
 		alert(`${item} needs to be bought ${time}`);
 	}
