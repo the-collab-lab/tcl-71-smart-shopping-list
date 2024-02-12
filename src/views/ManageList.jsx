@@ -1,4 +1,5 @@
 import { addItem } from '../api/firebase';
+import { getFutureDate } from '../utils';
 
 export function ManageList() {
 	function handleSubmit(e) {
@@ -9,11 +10,27 @@ export function ManageList() {
 		const form = e.target;
 		const formData = new FormData(form);
 
-		addItem(formData);
-		console.log(addItem(formData));
 		let item = formData.get('item');
 		let time = formData.get('time');
 		console.log(item, time);
+
+		/*
+		The user’s soon/not 
+		soon/kind of soon choice is used to calculate 
+		nextPurchasedDate
+		*/
+		let days;
+		if (time === 'soon') {
+			days = 7;
+		} else if (time === 'soonIsh') {
+			days = 14;
+		} else {
+			days = 30;
+		}
+
+		addItem(formData, { item });
+		console.log(addItem(formData, { item }));
+
 		/*successfully or not sucessfully added to the server
 		- code still to be implemented*/
 		let success;
@@ -30,9 +47,9 @@ export function ManageList() {
 					<input type="text" name="item"></input>
 				</label>
 				<select name="time">
-					<option value="soon">Soon-7days</option>
-					<option value="soonIsh">Soon-ish-14days</option>
-					<option value="notSoon">Not soon-30</option>
+					<option value="soon">Soon</option>
+					<option value="soonIsh">Soon-ish</option>
+					<option value="notSoon">Not soon</option>
 				</select>
 				<button type="submit">Submit</button>
 			</form>
