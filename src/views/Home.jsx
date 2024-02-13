@@ -3,11 +3,33 @@ import { SingleList } from '../components';
 import { useState } from 'react';
 import { createList } from '../api';
 
-export function Home({ data, setListPath }) {
+export function Home({ data, setListPath, userId, userEmail }) {
 	const [newList, setNewList] = useState('');
+	const [message, setMessage] = useState('');
 
-	const handleSubmit = () => {
-		console.log('submitted');
+	const checkIfListIsCreated = (newList) => {
+		if (data.some((item) => item.name === newList)) {
+			setMessage('List created');
+			console.log(message);
+		} else {
+			console.log('not working');
+		}
+	};
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		console.log(data);
+		try {
+			await createList(userId, userEmail, newList);
+			checkIfListIsCreated(newList);
+		} catch (error) {
+			if (error) {
+				setMessage('There was an error creating the list');
+				console.log(message);
+			}
+		}
+		setNewList('');
+		console.log(data);
 	};
 	const handleAddValue = (event) => {
 		const data = event.target.value;
@@ -35,6 +57,7 @@ export function Home({ data, setListPath }) {
 				/>
 				<button type="submit">Confirm list</button>
 			</form>
+			<span> {message ? <p> {message} </p> : <p></p>} </span>
 			<ul>
 				{data.map((list, i) => (
 					<SingleList
