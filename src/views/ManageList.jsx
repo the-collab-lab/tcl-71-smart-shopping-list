@@ -1,8 +1,7 @@
 import { addItem } from '../api/firebase';
-import { getFutureDate } from '../utils';
 
-export function ManageList() {
-	function handleSubmit(e) {
+export function ManageList({ listPath }) {
+	async function handleSubmit(e) {
 		/*preventing the browser of refreshing and clearing input*/
 		e.preventDefault();
 
@@ -10,32 +9,34 @@ export function ManageList() {
 		const form = e.target;
 		const formData = new FormData(form);
 
-		let item = formData.get('item');
+		let itemName = formData.get('item');
 		let time = formData.get('time');
-		console.log(item, time);
 
 		/*
-		The user’s soon/not 
-		soon/kind of soon choice is used to calculate 
+		The user’s soon/not
+		soon/kind of soon choice is used to calculate
 		nextPurchasedDate
 		*/
-		let days;
+		let daysUntilNextPurchase;
 		if (time === 'soon') {
-			days = 7;
+			daysUntilNextPurchase = 7;
 		} else if (time === 'soonIsh') {
-			days = 14;
+			daysUntilNextPurchase = 14;
 		} else {
-			days = 30;
+			daysUntilNextPurchase = 30;
 		}
 
-		addItem(formData, { item });
-		console.log(addItem(formData, { item }));
+		// We make the call to the database through addItem utility function and await response
+		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
-		/*successfully or not sucessfully added to the server
-		- code still to be implemented*/
-		let success;
-		alert(`${item} has been added ${success} to the server`);
+		/*successfully or not sucessfully added to the server*/
+		if (response) {
+			alert(`${itemName} added to the list!`);
+		} else {
+			alert(`${itemName} couldn't be added to the list...`);
+		}
 	}
+
 	return (
 		<>
 			<p>
