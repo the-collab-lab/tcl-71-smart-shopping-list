@@ -7,29 +7,33 @@ export function Home({ data, setListPath, userId, userEmail }) {
 	const [newList, setNewList] = useState('');
 	const [message, setMessage] = useState('');
 
-	const checkIfListIsCreated = (newList) => {
-		if (data.some((item) => item.name === newList)) {
-			setMessage('List created');
-			console.log(message);
-		} else {
-			console.log('not working');
-		}
-	};
+	console.log('data', data);
+	// const checkIfListIsCreated = (newList) => {
+	// 	if (data.some((item) => item.name === newList)) {
+	// 		setMessage('List created');
+	// 		console.log(message);
+	// 	} else {
+	// 		console.log('not working');
+	// 	}
+	// };
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(data);
 		try {
-			await createList(userId, userEmail, newList);
-			checkIfListIsCreated(newList);
+			const response = await createList(userId, userEmail, newList);
+			console.log('response', response);
+			if (response) {
+				console.log('response', response._key.path.segments[0]);
+
+				setMessage('New list created');
+				setListPath(response._key.path.segment[0]);
+			}
 		} catch (error) {
 			if (error) {
 				setMessage('There was an error creating the list');
-				console.log(message);
 			}
 		}
 		setNewList('');
-		console.log(data);
 	};
 	const handleAddValue = (event) => {
 		const data = event.target.value;
