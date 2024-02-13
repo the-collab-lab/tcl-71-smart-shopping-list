@@ -5,9 +5,8 @@ import { createList } from '../api';
 
 export function Home({ data, setListPath, userId, userEmail }) {
 	const [newList, setNewList] = useState('');
-	const [message, setMessage] = useState('');
+	const [message, setMessage] = useState(null);
 
-	console.log('data', data);
 	// const checkIfListIsCreated = (newList) => {
 	// 	if (data.some((item) => item.name === newList)) {
 	// 		setMessage('List created');
@@ -23,10 +22,12 @@ export function Home({ data, setListPath, userId, userEmail }) {
 			const response = await createList(userId, userEmail, newList);
 			console.log('response', response);
 			if (response) {
-				console.log('response', response._key.path.segments[0]);
+				console.log('response', typeof response._key.path.segments[0]);
 
 				setMessage('New list created');
-				setListPath(response._key.path.segment[0]);
+				setListPath(
+					`${response._key.path.segments[0]}/${response._key.path.segments[1]}`,
+				);
 			}
 		} catch (error) {
 			if (error) {
