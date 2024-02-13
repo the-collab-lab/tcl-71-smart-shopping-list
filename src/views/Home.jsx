@@ -36,9 +36,10 @@ export function Home({ data, setListPath, userId, userEmail }) {
 		}
 		setNewList('');
 	};
-	const handleAddValue = (event) => {
+	const handleInputChange = (event) => {
 		const data = event.target.value;
 		setNewList(data);
+		setMessage(null);
 	};
 	const handleKeyPressed = (event) => {
 		if (event.key === 'Enter') {
@@ -57,7 +58,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 					type="text"
 					id="new list name"
 					value={newList}
-					onChange={(event) => handleAddValue(event)}
+					onChange={(event) => handleInputChange(event)}
 					onClick={(event) => handleKeyPressed(event)}
 				/>
 				<button type="submit">Confirm list</button>
