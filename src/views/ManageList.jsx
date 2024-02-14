@@ -49,7 +49,8 @@ export function ManageList({ listPath }) {
 					Add item
 					<input type="text" name="item"></input>
 				</label>
-				<select name="time">
+				<label htmlFor="time-select">When do I need it?</label>
+				<select name="time" id="time-select">
 					<option value="soon">Soon</option>
 					<option value="soonIsh">Soon-ish</option>
 					<option value="notSoon">Not soon</option>
