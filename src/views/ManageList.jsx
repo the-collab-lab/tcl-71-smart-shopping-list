@@ -35,6 +35,8 @@ export function ManageList({ listPath }) {
 		} else {
 			alert(`${itemName} couldn't be added to the list...`);
 		}
+
+		form.reset();
 	}
 
 	return (
