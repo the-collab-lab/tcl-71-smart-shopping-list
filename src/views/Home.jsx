@@ -2,11 +2,13 @@ import './Home.css';
 import { SingleList } from '../components';
 import { useState } from 'react';
 import { createList } from '../api';
+import { useNavigate } from 'react-router-dom';
 
 export function Home({ data, setListPath, userId, userEmail }) {
 	const [newList, setNewList] = useState('');
 	const [message, setMessage] = useState(null);
 
+	const navigate = useNavigate();
 	// const checkIfListIsCreated = (newList) => {
 	// 	if (data.some((item) => item.name === newList)) {
 	// 		setMessage('List created');
@@ -28,6 +30,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 				setListPath(
 					`${response._key.path.segments[0]}/${response._key.path.segments[1]}`,
 				);
+				navigate('/list');
 			}
 		} catch (error) {
 			if (error) {
@@ -63,7 +66,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 				/>
 				<button type="submit">Confirm list</button>
 			</form>
-			<span> {message ? <p> {message} </p> : <p></p>} </span>
+			<span> {message ? <p> {message} </p> : <></>} </span>
 			<ul>
 				{data.map((list, i) => (
 					<SingleList
