@@ -45,7 +45,7 @@ export function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Layout />}>
+				<Route path="/" element={<Layout listPath={listPath} />}>
 					<Route
 						index
 						element={
@@ -57,7 +57,7 @@ export function App() {
 							/>
 						}
 					/>
-					<Route path="/list/:path/:path" element={<List data={data} />} />
+					<Route path={`/list/${listPath}`} element={<List data={data} />} />
 					<Route
 						path="/manage-list"
 						element={<ManageList listPath={listPath} />}

@@ -4,7 +4,7 @@ import './Layout.css';
 import { auth } from '../api/config.js';
 import { SignInButton, SignOutButton, useAuth } from '../api/useAuth.jsx';
 
-export function Layout() {
+export function Layout({ listPath }) {
 	const { user } = useAuth();
 
 	return (
@@ -23,7 +23,7 @@ export function Layout() {
 						<NavLink to="/" className="Nav-link">
 							Home
 						</NavLink>
-						<NavLink to="/list" className="Nav-link">
+						<NavLink to={`/list/${listPath}`} className="Nav-link">
 							List
 						</NavLink>
 						<NavLink to="/manage-list" className="Nav-link">
