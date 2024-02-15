@@ -21,7 +21,9 @@ const ListForm = (props) => {
 				setListPath(
 					`${response._key.path.segments[0]}/${response._key.path.segments[1]}`,
 				);
-				navigate('/list');
+				navigate(
+					`/list/${response._key.path.segments[0]}/${response._key.path.segments[1]}`,
+				);
 			}
 		} catch (error) {
 			if (error) {
