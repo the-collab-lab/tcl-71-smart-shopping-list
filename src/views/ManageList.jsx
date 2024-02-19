@@ -1,7 +1,7 @@
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 
-export function ManageList({ listPath }) {
+export function ManageList({ listPath, userId }) {
 	async function handleSubmit(e) {
 		e.preventDefault();
 
