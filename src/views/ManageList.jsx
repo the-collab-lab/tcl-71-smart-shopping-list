@@ -1,22 +1,16 @@
 import { addItem } from '../api/firebase';
+import { shareList } from '../api/firebase';
 
 export function ManageList({ listPath }) {
 	async function handleSubmit(e) {
-		/*preventing the browser of refreshing and clearing input*/
 		e.preventDefault();
 
-		/*read form*/
 		const form = e.target;
 		const formData = new FormData(form);
 
 		let itemName = formData.get('item');
 		let time = formData.get('time');
 
-		/*
-		The user’s soon/not
-		soon/kind of soon choice is used to calculate
-		nextPurchasedDate
-		*/
 		let daysUntilNextPurchase;
 		if (time === 'soon') {
 			daysUntilNextPurchase = 7;
@@ -26,10 +20,8 @@ export function ManageList({ listPath }) {
 			daysUntilNextPurchase = 30;
 		}
 
-		// We make the call to the database through addItem utility function and await response
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
-		/*successfully or not sucessfully added to the server*/
 		if (response) {
 			alert(`${itemName} added to the list!`);
 		} else {
@@ -38,7 +30,24 @@ export function ManageList({ listPath }) {
 
 		form.reset();
 	}
+	async function sendInvite(e) {
+		e.preventDefault();
 
+		const mailForm = e.target;
+		console.log(e.target);
+		console.log(mailForm);
+		const mailFormData = new FormData(mailForm);
+
+		let email = mailFormData.get(email);
+
+		let invite = await shareList(listPath, { email });
+
+		if (email) {
+			alert(`${email} has been shared the list!`);
+		} else {
+			alert(`${email} does not exist`);
+		}
+	}
 	return (
 		<>
 			<p>
@@ -55,6 +64,14 @@ export function ManageList({ listPath }) {
 					<option value="soonIsh">Soon-ish</option>
 					<option value="notSoon">Not soon</option>
 				</select>
+				<button type="submit">Submit</button>
+			</form>
+			<hr />
+			<form method="post" onSubmit={sendInvite}>
+				<label htmlFor="email">
+					Share List with another user
+					<input type="text" name="email"></input>
+				</label>
 				<button type="submit">Submit</button>
 			</form>
 		</>
