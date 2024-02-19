@@ -38,7 +38,7 @@ export function ManageList({ listPath }) {
 		console.log(mailForm);
 		const mailFormData = new FormData(mailForm);
 
-		let email = mailFormData.get(email);
+		let email = mailFormData.get('email');
 
 		let invite = await shareList(listPath, { email });
 
@@ -70,7 +70,7 @@ export function ManageList({ listPath }) {
 			<form method="post" onSubmit={sendInvite}>
 				<label htmlFor="email">
 					Share List with another user
-					<input type="text" name="email"></input>
+					<input type="email" name="email"></input>
 				</label>
 				<button type="submit">Submit</button>
 			</form>
