@@ -34,19 +34,18 @@ export function ManageList({ listPath, userId }) {
 		e.preventDefault();
 
 		const mailForm = e.target;
-		console.log(e.target);
-		console.log(mailForm);
+
 		const mailFormData = new FormData(mailForm);
 
 		let email = mailFormData.get('email');
 
-		let invite = await shareList(listPath, { email });
-
-		if (email) {
+		const response = await shareList(listPath, userId, email);
+		if (response) {
 			alert(`${email} has been shared the list!`);
 		} else {
-			alert(`${email} does not exist`);
+			alert(`${email} is not an existing user's email`);
 		}
+		mailForm.reset();
 	}
 	return (
 		<>
@@ -70,7 +69,7 @@ export function ManageList({ listPath, userId }) {
 			<form method="post" onSubmit={sendInvite}>
 				<label htmlFor="email">
 					Share List with another user
-					<input type="email" name="email"></input>
+					<input type="email" name="email" id="email"></input>
 				</label>
 				<button type="submit">Submit</button>
 			</form>

@@ -141,6 +141,7 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 	if (!listPath.includes(currentUserId)) {
 		return;
 	}
+
 	// Get the document for the recipient user.
 	const usersCollectionRef = collection(db, 'users');
 	const recipientDoc = await getDoc(doc(usersCollectionRef, recipientEmail));
@@ -154,6 +155,7 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 	updateDoc(userDocumentRef, {
 		sharedLists: arrayUnion(listDocumentRef),
 	});
+	return userDocumentRef;
 }
 
 /**
