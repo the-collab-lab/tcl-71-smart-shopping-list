@@ -6,9 +6,8 @@ const SearchList = ({ data, setNewList }) => {
 	const handlefiltering = (e) => {
 		const userinput = e.target.value.toLowerCase();
 		setValue(e.target.value);
-		let gatherItem = [];
+		const gatherItem = [];
 		for (let i = 0; i < data.length; i++) {
-			console.log('data[i].name', data[i]?.name);
 			if (data[i]?.name.toLowerCase().includes(userinput)) {
 				gatherItem.push(data[i]);
 			}
