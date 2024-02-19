@@ -18,8 +18,8 @@ const SearchList = ({ data, setNewList }) => {
 
 	const resetInput = (e) => {
 		e.preventDefault();
-
 		setValue('');
+		setNewList(data);
 	};
 
 	return (
