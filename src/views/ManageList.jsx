@@ -2,6 +2,10 @@ import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 
 export function ManageList({ listPath, userId }) {
+	const inputHasValue = (value) => {
+		return value.trim().length === 0 ? false : true;
+	};
+
 	async function handleSubmit(e) {
 		e.preventDefault();
 
@@ -30,15 +34,17 @@ export function ManageList({ listPath, userId }) {
 
 		form.reset();
 	}
+
 	async function sendInvite(e) {
 		e.preventDefault();
 
 		const mailForm = e.target;
-
 		const mailFormData = new FormData(mailForm);
-
 		let email = mailFormData.get('email');
 
+		if (!inputHasValue(email)) {
+			return;
+		}
 		const response = await shareList(listPath, userId, email);
 		if (response) {
 			alert(`${email} has been shared the list!`);
@@ -47,6 +53,7 @@ export function ManageList({ listPath, userId }) {
 		}
 		mailForm.reset();
 	}
+
 	return (
 		<>
 			<p>
