@@ -47,6 +47,7 @@ export function ManageList({ listPath, userId }) {
 		let email = mailFormData.get('email');
 
 		if (!inputHasValue(email)) {
+			mailForm.reset();
 			return;
 		}
 		const response = await shareList(listPath, userId, email);
