@@ -24,6 +24,10 @@ export function ManageList({ listPath, userId }) {
 			daysUntilNextPurchase = 30;
 		}
 
+		if (!inputHasValue(itemName)) {
+			form.reset();
+			return;
+		}
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
 		if (response) {
