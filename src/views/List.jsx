@@ -17,17 +17,11 @@ export function List({ data }) {
 				You are on the <code>{path}</code> list!
 			</h2>
 			<SearchList data={data} setNewList={setNewList} />
-			<div>
-				{newList?.length === 0 ? (
-					<></>
-				) : (
-					<ul>
-						{newList?.map((item) => (
-							<ListItem key={item.id} name={item.name} />
-						))}
-					</ul>
-				)}
-			</div>
+			<ul>
+				{newList.map((item) => (
+					<ListItem key={item.id} name={item.name} />
+				))}
+			</ul>
 		</>
 	);
 }
