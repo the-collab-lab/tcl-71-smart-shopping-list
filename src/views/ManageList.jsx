@@ -1,7 +1,9 @@
+import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 
-export function ManageList({ listPath, userId }) {
+export function ManageList({ listPath, userId, userEmail }) {
+	const [errMessage, setErrMessage] = useState('');
 	const inputHasValue = (value) => {
 		return value.trim().length === 0 ? false : true;
 	};
@@ -47,14 +49,24 @@ export function ManageList({ listPath, userId }) {
 		let email = mailFormData.get('email');
 
 		if (!inputHasValue(email)) {
+			setErrMessage('Share the list by entering a valid user email');
 			mailForm.reset();
 			return;
 		}
+
+		if (email === userEmail) {
+			setErrMessage(
+				'To share the list, enter the email of a user that is not you',
+			);
+			mailForm.reset();
+			return;
+		}
+
 		const response = await shareList(listPath, userId, email);
 		if (response) {
-			alert(`${email} has been shared the list!`);
+			alert(`The list has been shared with ${email}!`);
 		} else {
-			alert(`${email} is not an existing user's email`);
+			alert(`It seems like "${email}" isn't a valid user email`);
 		}
 		mailForm.reset();
 	}
@@ -81,10 +93,16 @@ export function ManageList({ listPath, userId }) {
 			<form method="post" onSubmit={sendInvite}>
 				<label htmlFor="email">
 					Share List with another user
-					<input type="email" name="email" id="email"></input>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						onChange={() => setErrMessage('')}
+					></input>
 				</label>
 				<button type="submit">Submit</button>
 			</form>
+			{errMessage !== '' ? <p>{errMessage}</p> : null}
 		</>
 	);
 }
