@@ -3,12 +3,12 @@ import { useState } from 'react';
 const SearchList = ({ data, setNewList }) => {
 	const [value, setValue] = useState('');
 
-	const handlefiltering = (e) => {
-		const userinput = e.target.value.toLowerCase();
+	const handleFiltering = (e) => {
+		const userInput = e.target.value.toLowerCase();
 		setValue(e.target.value);
 		const gatherItem = [];
 		for (let i = 0; i < data.length; i++) {
-			if (data[i]?.name.toLowerCase().includes(userinput)) {
+			if (data[i]?.name.toLowerCase().includes(userInput)) {
 				gatherItem.push(data[i]);
 			}
 		}
@@ -27,7 +27,7 @@ const SearchList = ({ data, setNewList }) => {
 			<input
 				id="search"
 				type="text"
-				onChange={(e) => handlefiltering(e)}
+				onChange={(e) => handleFiltering(e)}
 				value={value}
 			/>
 			<button onClick={(e) => resetInput(e)} aria-label="clear search bar">
