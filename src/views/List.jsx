@@ -1,13 +1,24 @@
+import { useState, useEffect } from 'react';
 import { ListItem } from '../components';
+import SearchList from '../components/SearchList';
+import { useParams } from 'react-router-dom';
 
 export function List({ data }) {
+	const [newList, setNewList] = useState([]);
+	const { path } = useParams();
+
+	useEffect(() => {
+		setNewList(data);
+	}, [data]);
+
 	return (
 		<>
-			<p>
-				Hello from the <code>/list</code> page!
-			</p>
+			<h2>
+				You are on the <code>{path}</code> list!
+			</h2>
+			<SearchList data={data} setNewList={setNewList} />
 			<ul>
-				{data.map((item) => (
+				{newList.map((item) => (
 					<ListItem key={item.id} name={item.name} />
 				))}
 			</ul>
