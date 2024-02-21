@@ -1,22 +1,22 @@
+import { useState } from 'react';
 import { addItem } from '../api/firebase';
+import { shareList } from '../api/firebase';
 
-export function ManageList({ listPath }) {
+export function ManageList({ listPath, userId, userEmail }) {
+	const [errMessage, setErrMessage] = useState('');
+	const inputHasValue = (value) => {
+		return value.trim().length === 0 ? false : true;
+	};
+
 	async function handleSubmit(e) {
-		/*preventing the browser of refreshing and clearing input*/
 		e.preventDefault();
 
-		/*read form*/
 		const form = e.target;
 		const formData = new FormData(form);
 
 		let itemName = formData.get('item');
 		let time = formData.get('time');
 
-		/*
-		The user’s soon/not
-		soon/kind of soon choice is used to calculate
-		nextPurchasedDate
-		*/
 		let daysUntilNextPurchase;
 		if (time === 'soon') {
 			daysUntilNextPurchase = 7;
@@ -26,10 +26,12 @@ export function ManageList({ listPath }) {
 			daysUntilNextPurchase = 30;
 		}
 
-		// We make the call to the database through addItem utility function and await response
+		if (!inputHasValue(itemName)) {
+			form.reset();
+			return;
+		}
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
-		/*successfully or not sucessfully added to the server*/
 		if (response) {
 			alert(`${itemName} added to the list!`);
 		} else {
@@ -37,6 +39,36 @@ export function ManageList({ listPath }) {
 		}
 
 		form.reset();
+	}
+
+	async function sendInvite(e) {
+		e.preventDefault();
+
+		const mailForm = e.target;
+		const mailFormData = new FormData(mailForm);
+		let email = mailFormData.get('email');
+
+		if (!inputHasValue(email)) {
+			setErrMessage('Share the list by entering a valid user email');
+			mailForm.reset();
+			return;
+		}
+
+		if (email === userEmail) {
+			setErrMessage(
+				'To share the list, enter the email of a user that is not you',
+			);
+			mailForm.reset();
+			return;
+		}
+
+		const response = await shareList(listPath, userId, email);
+		if (response) {
+			alert(`The list has been shared with ${email}!`);
+		} else {
+			alert(`It seems like "${email}" isn't a valid user email`);
+		}
+		mailForm.reset();
 	}
 
 	return (
@@ -57,6 +89,20 @@ export function ManageList({ listPath }) {
 				</select>
 				<button type="submit">Submit</button>
 			</form>
+			<hr />
+			<form method="post" onSubmit={sendInvite}>
+				<label htmlFor="email">
+					Share List with another user
+					<input
+						type="email"
+						name="email"
+						id="email"
+						onChange={() => setErrMessage('')}
+					></input>
+				</label>
+				<button type="submit">Submit</button>
+			</form>
+			{errMessage !== '' ? <p>{errMessage}</p> : null}
 		</>
 	);
 }
