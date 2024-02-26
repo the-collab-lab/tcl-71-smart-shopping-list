@@ -16,12 +16,21 @@ export function List({ data }) {
 			<h2>
 				You are on the <code>{path}</code> list!
 			</h2>
-			<SearchList data={data} setNewList={setNewList} />
-			<ul>
-				{newList.map((item) => (
-					<ListItem key={item.id} name={item.name} />
-				))}
-			</ul>
+			{data.length === 0 ? (
+				<div>
+					<p>Well done! You have created your a new list!</p>
+					<button id="addFirstItem">Add first item</button>
+				</div>
+			) : (
+				<div>
+					<SearchList data={data} setNewList={setNewList} />
+					<ul>
+						{newList.map((item) => (
+							<ListItem key={item.id} name={item.name} />
+						))}
+					</ul>
+				</div>
+			)}
 		</>
 	);
 }
