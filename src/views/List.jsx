@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { ListItem } from '../components';
 import SearchList from '../components/SearchList';
 import { useParams, useNavigate } from 'react-router-dom';
+import './List.css';
+import addItem from '../../public/img/AddItem.gif';
 
 export function List({ data }) {
 	const [newList, setNewList] = useState([]);
@@ -18,12 +20,13 @@ export function List({ data }) {
 				You are on the <code>{path}</code> list!
 			</h2>
 			{data.length === 0 ? (
-				<div>
+				<div className="containerAddItem">
 					<p>Well done! You have created a new list!</p>
 					<p>
 						You can start adding some items and specify when you need to
 						purchase them.
 					</p>
+					<img className="addItemGif" src={addItem} alt="add item example" />
 
 					<button id="addFirstItem" onClick={() => navigate('/manage-list')}>
 						Start adding items!
