@@ -13,7 +13,6 @@ export function List({ data, lists }) {
 	useEffect(() => {
 		setNewList(data);
 	}, [data]);
-	console.log('lists', lists);
 
 	return (
 		<>
