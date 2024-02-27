@@ -24,9 +24,10 @@ export function List({ data, listPath }) {
 		return diff > oneDay ? false : true;
 	};
 
-	const setPurchaseDate = (item) => {
-		updateItem(item);
+	const setPurchaseDate = (listPath, item) => {
+		updateItem(listPath, item);
 	};
+
 	return (
 		<>
 			<h2>
@@ -38,8 +39,10 @@ export function List({ data, listPath }) {
 					<ListItem
 						key={item.id}
 						name={item.name}
+						itemId={item.id}
 						setPurchaseDate={setPurchaseDate}
 						isRecentlyPurchased={getIfItemWasRecentPurchased(item)}
+						listPath={listPath}
 					/>
 				))}
 			</ul>

@@ -179,11 +179,13 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	});
 }
 
-export async function updateItem(itemName) {
-	const itemDocumentRef = doc(db, 'items', itemName);
-	// await updateDoc(itemDocumentRef, {
-	// 	dateLastPurchased: new Date(),
-	// });
+export async function updateItem(listPath, itemId) {
+	const listCollectionRef = collection(db, listPath, 'items');
+	const itemDocumentRef = doc(listCollectionRef, itemId);
+
+	await updateDoc(itemDocumentRef, {
+		dateLastPurchased: new Date(),
+	});
 	// console.log(itemDocumentRef)
 	return itemDocumentRef;
 }
