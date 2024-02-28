@@ -3,7 +3,6 @@ import { ListItem } from '../components';
 import SearchList from '../components/SearchList';
 import { useParams, useNavigate } from 'react-router-dom';
 import './List.css';
-import addItem from '../../public/img/AddItem.gif';
 import addFirstItem from '../pictures/addFirstItem.png';
 
 export function List({ data, lists }) {
