@@ -2,6 +2,7 @@ import './ListItem.css';
 import { useState } from 'react';
 
 export function ListItem({
+	dateLastPurchased,
 	name,
 	isRecentlyPurchased,
 	updatePurchaseDate,
@@ -9,6 +10,7 @@ export function ListItem({
 	itemId,
 }) {
 	const [inputValue, setInputValue] = useState(isRecentlyPurchased);
+	const [datePrevPurchased, setDatePrevPurchased] = useState(dateLastPurchased);
 
 	return (
 		<li className="ListItem">
@@ -16,7 +18,12 @@ export function ListItem({
 			<input
 				type="checkbox"
 				onChange={() => {
-					updatePurchaseDate(listPath, itemId);
+					if (!inputValue) {
+						const date = new Date();
+						updatePurchaseDate(listPath, itemId, date);
+					} else {
+						updatePurchaseDate(listPath, itemId, datePrevPurchased);
+					}
 					setInputValue(!inputValue);
 				}}
 				checked={inputValue}

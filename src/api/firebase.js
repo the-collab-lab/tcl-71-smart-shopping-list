@@ -179,12 +179,12 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	});
 }
 
-export async function updateItem(listPath, itemId) {
+export async function updateItem(listPath, itemId, date) {
 	const listCollectionRef = collection(db, listPath, 'items');
 	const itemDocumentRef = doc(listCollectionRef, itemId);
 
 	await updateDoc(itemDocumentRef, {
-		dateLastPurchased: new Date(),
+		dateLastPurchased: date,
 	});
 	// console.log(itemDocumentRef)
 	return itemDocumentRef;

@@ -3,6 +3,7 @@ import { ListItem } from '../components';
 import SearchList from '../components/SearchList';
 import { useParams } from 'react-router-dom';
 import { updateItem } from '../api/firebase';
+import { isMoreThanADayAgo } from '../utils';
 
 export function List({ data, listPath }) {
 	const [newList, setNewList] = useState([]);
@@ -12,14 +13,6 @@ export function List({ data, listPath }) {
 		setNewList(data);
 	}, [data]);
 
-	const isMoreThanADayAgo = (date) => {
-		let now = new Date();
-		const dateInMiliseconds = date.seconds * 1000;
-		const oneDayInMiliseconds = 60 * 60 * 24 * 1000;
-		const diff = now - dateInMiliseconds;
-		return oneDayInMiliseconds > diff;
-	};
-
 	const wasRecentlyPurchased = (item) => {
 		if (!item.dateLastPurchased) {
 			return false;
@@ -27,8 +20,8 @@ export function List({ data, listPath }) {
 		return isMoreThanADayAgo(item.dateLastPurchased);
 	};
 
-	const updatePurchaseDate = (listPath, item) => {
-		updateItem(listPath, item);
+	const updatePurchaseDate = (listPath, item, date) => {
+		updateItem(listPath, item, date);
 	};
 
 	return (
@@ -46,6 +39,7 @@ export function List({ data, listPath }) {
 						updatePurchaseDate={updatePurchaseDate}
 						isRecentlyPurchased={wasRecentlyPurchased(item)}
 						listPath={listPath}
+						dateLastPurchased={item.dateLastPurchased}
 					/>
 				))}
 			</ul>
