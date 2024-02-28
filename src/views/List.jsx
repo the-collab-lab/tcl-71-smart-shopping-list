@@ -20,14 +20,14 @@ export function List({ data, listPath }) {
 		return oneDayInMiliseconds > diff;
 	};
 
-	const getIfItemWasRecentPurchased = (item) => {
+	const wasRecentlyPurchased = (item) => {
 		if (!item.dateLastPurchased) {
 			return false;
 		}
 		return isMoreThanADayAgo(item.dateLastPurchased);
 	};
 
-	const setPurchaseDate = (listPath, item) => {
+	const updatePurchaseDate = (listPath, item) => {
 		updateItem(listPath, item);
 	};
 
@@ -43,8 +43,8 @@ export function List({ data, listPath }) {
 						key={item.id}
 						name={item.name}
 						itemId={item.id}
-						setPurchaseDate={setPurchaseDate}
-						isRecentlyPurchased={getIfItemWasRecentPurchased(item)}
+						updatePurchaseDate={updatePurchaseDate}
+						isRecentlyPurchased={wasRecentlyPurchased(item)}
 						listPath={listPath}
 					/>
 				))}
