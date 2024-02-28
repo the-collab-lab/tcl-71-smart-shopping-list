@@ -12,3 +12,8 @@
 .ListItem-label {
 	margin-left: 0.2em;
 }
+
+.ListItem__checked {
+	text-decoration: line-through;
+	color: var(--color-checked);
+}

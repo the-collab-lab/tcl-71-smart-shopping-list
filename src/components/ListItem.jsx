@@ -12,7 +12,7 @@ export function ListItem({
 
 	return (
 		<li className="ListItem">
-			<span>{name}</span>
+			<span className={inputValue ? 'ListItem__checked' : ''}>{name}</span>
 			<input
 				type="checkbox"
 				onChange={() => {
