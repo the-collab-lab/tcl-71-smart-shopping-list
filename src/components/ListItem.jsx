@@ -25,7 +25,9 @@ export function ListItem({
 					}
 				}}
 				checked={inputValue}
-			></input>
+				id={itemId}
+			/>
+			<label htmlFor={itemId}>Mark as purchased</label>
 		</li>
 	);
 }
