@@ -4,6 +4,7 @@ import SearchList from '../components/SearchList';
 import { useParams, useNavigate } from 'react-router-dom';
 import './List.css';
 import addItem from '../../public/img/AddItem.gif';
+import addFirstItem from '../pictures/addFirstItem.png';
 
 export function List({ data, lists }) {
 	const [newList, setNewList] = useState([]);
@@ -24,9 +25,14 @@ export function List({ data, lists }) {
 					<p>Well done! You have created your very first list!</p>
 					<p>
 						You can now add some items and specify when you need to purchase
-						them.
+						them. In the box for "Add item" you put the item you need to
+						purchase and then select how soon you need it on "When do I need it"
 					</p>
-					<img className="addItemGif" src={addItem} alt="add item example" />
+					<img
+						className="addItemPNG"
+						src={addFirstItem}
+						alt="add item example"
+					/>
 
 					<button id="addFirstItem" onClick={() => navigate('/manage-list')}>
 						Start adding items!
