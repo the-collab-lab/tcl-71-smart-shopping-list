@@ -12,16 +12,19 @@ export function List({ data, listPath }) {
 		setNewList(data);
 	}, [data]);
 
-	const getIfItemWasRecentPurchased = (item) => {
+	const isMoreThanADayAgo = (date) => {
 		let now = new Date();
-		const lastPurchased = item.dateLastPurchased;
+		const dateInMiliseconds = date.seconds * 1000;
+		const oneDayInMiliseconds = 60 * 60 * 24 * 1000;
+		const diff = now - dateInMiliseconds;
+		return oneDayInMiliseconds > diff;
+	};
 
-		// miliseconds
-		const oneDay = 60 * 60 * 24 * 1000;
-
-		const diff = now - lastPurchased.seconds * 1000;
-
-		return diff > oneDay ? false : true;
+	const getIfItemWasRecentPurchased = (item) => {
+		if (!item.dateLastPurchased) {
+			return false;
+		}
+		return isMoreThanADayAgo(item.dateLastPurchased);
 	};
 
 	const setPurchaseDate = (listPath, item) => {
