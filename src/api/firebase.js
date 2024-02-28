@@ -183,10 +183,13 @@ export async function updateItem(listPath, itemId, date) {
 	const listCollectionRef = collection(db, listPath, 'items');
 	const itemDocumentRef = doc(listCollectionRef, itemId);
 
+	const item = await getDoc(itemDocumentRef);
+	const itemTotalPurchases = item.data().totalPurchases;
+
 	await updateDoc(itemDocumentRef, {
 		dateLastPurchased: date,
+		totalPurchases: !date ? itemTotalPurchases - 1 : itemTotalPurchases + 1,
 	});
-	// console.log(itemDocumentRef)
 	return itemDocumentRef;
 }
 
