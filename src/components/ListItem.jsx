@@ -1,5 +1,4 @@
 import './ListItem.css';
-import { useState } from 'react';
 
 export function ListItem({
 	isRecentlyPurchased,
@@ -16,7 +15,7 @@ export function ListItem({
 			<div className="ListItem__input">
 				<input
 					type="checkbox"
-					onChange={(e) => {
+					onChange={() => {
 						updatePurchaseDate(listPath, itemId);
 					}}
 					id={itemId}
