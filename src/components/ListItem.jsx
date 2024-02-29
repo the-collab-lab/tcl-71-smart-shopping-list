@@ -8,22 +8,20 @@ export function ListItem({
 	name,
 	updatePurchaseDate,
 }) {
-	const [inputValue, setInputValue] = useState(isRecentlyPurchased);
-
 	return (
 		<li className="ListItem">
-			<span className={inputValue ? 'ListItem__checked' : ''}>{name}</span>
+			<span className={isRecentlyPurchased ? 'ListItem__checked' : ''}>
+				{name}
+			</span>
 			<div className="ListItem__input">
 				<input
 					type="checkbox"
 					onChange={(e) => {
-						setInputValue(e.target.value);
-						if (e.target.value) {
-							updatePurchaseDate(listPath, itemId);
-						}
+						updatePurchaseDate(listPath, itemId);
 					}}
 					id={itemId}
 					checked={isRecentlyPurchased}
+					disabled={isRecentlyPurchased}
 				/>
 				<label
 					htmlFor={itemId}
