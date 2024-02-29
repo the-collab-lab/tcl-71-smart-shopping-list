@@ -17,7 +17,7 @@ export function List({ data, listPath }) {
 		if (!item.dateLastPurchased) {
 			return false;
 		}
-		return isMoreThanADayAgo(item.dateLastPurchased);
+		return !isMoreThanADayAgo(item.dateLastPurchased);
 	};
 
 	const updatePurchaseDate = (listPath, item, date) => {
@@ -33,13 +33,14 @@ export function List({ data, listPath }) {
 			<ul>
 				{newList.map((item) => (
 					<ListItem
-						key={item.id}
-						name={item.name}
-						itemId={item.id}
-						updatePurchaseDate={updatePurchaseDate}
-						isRecentlyPurchased={wasRecentlyPurchased(item)}
-						listPath={listPath}
 						dateLastPurchased={item.dateLastPurchased}
+						isRecentlyPurchased={wasRecentlyPurchased(item)}
+						itemId={item.id}
+						key={item.id}
+						listPath={listPath}
+						name={item.name}
+						purchaseDate={item.dateLastPurchased}
+						updatePurchaseDate={updatePurchaseDate}
 					/>
 				))}
 			</ul>

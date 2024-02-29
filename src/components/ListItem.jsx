@@ -16,17 +16,14 @@ export function ListItem({
 			<div className="ListItem__input">
 				<input
 					type="checkbox"
-					onChange={() => {
-						setInputValue(!inputValue);
-						if (!inputValue) {
-							const date = new Date();
-							updatePurchaseDate(listPath, itemId, date);
-						} else {
-							updatePurchaseDate(listPath, itemId, null);
+					onChange={(e) => {
+						setInputValue(e.target.value);
+						if (e.target.value) {
+							updatePurchaseDate(listPath, itemId);
 						}
 					}}
-					checked={inputValue}
 					id={itemId}
+					checked={isRecentlyPurchased}
 				/>
 				<label
 					htmlFor={itemId}

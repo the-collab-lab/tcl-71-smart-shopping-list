@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import { getFutureDate } from '../utils';
+import { getFutureDate, isMoreThanADayAgo } from '../utils';
 
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
@@ -179,16 +179,14 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	});
 }
 
-export async function updateItem(listPath, itemId, date) {
+export async function updateItem(listPath, itemId) {
 	const listCollectionRef = collection(db, listPath, 'items');
 	const itemDocumentRef = doc(listCollectionRef, itemId);
-
 	const item = await getDoc(itemDocumentRef);
 	const itemTotalPurchases = item.data().totalPurchases;
-
 	await updateDoc(itemDocumentRef, {
-		dateLastPurchased: date,
-		totalPurchases: !date ? itemTotalPurchases - 1 : itemTotalPurchases + 1,
+		dateLastPurchased: new Date(),
+		totalPurchases: itemTotalPurchases + 1,
 	});
 	return itemDocumentRef;
 }
