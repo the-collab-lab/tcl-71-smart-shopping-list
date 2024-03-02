@@ -83,13 +83,13 @@ export function ManageList({ listPath, userId, userEmail }) {
 				</label>
 				<label htmlFor="time-select">When do I need it?</label>
 				<select name="time" id="time-select">
-					<option value="soon">Soon</option>
-					<option value="soonIsh">Soon-ish</option>
-					<option value="notSoon">Not soon</option>
+					<option value="soon">Soon (within 7 days)</option>
+					<option value="soonIsh">Soon-ish (in 14 days)</option>
+					<option value="notSoon">Not soon (in 30 days)</option>
 				</select>
 				<button type="submit">Submit</button>
 			</form>
-			<hr />
+			<hr></hr>
 			<form method="post" onSubmit={sendInvite}>
 				<label htmlFor="email">
 					Share List with another user
