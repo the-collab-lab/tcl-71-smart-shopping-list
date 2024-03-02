@@ -10,7 +10,7 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import { getFutureDate } from '../utils';
+import { getFutureDate, isMoreThanADayAgo } from '../utils';
 
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
@@ -179,12 +179,16 @@ export async function addItem(listPath, { itemName, daysUntilNextPurchase }) {
 	});
 }
 
-export async function updateItem() {
-	/**
-	 * TODO: Fill this out so that it uses the correct Firestore function
-	 * to update an existing item. You'll need to figure out what arguments
-	 * this function must accept!
-	 */
+export async function updateItem(listPath, itemId) {
+	const listCollectionRef = collection(db, listPath, 'items');
+	const itemDocumentRef = doc(listCollectionRef, itemId);
+	const item = await getDoc(itemDocumentRef);
+	const itemTotalPurchases = item.data().totalPurchases;
+	await updateDoc(itemDocumentRef, {
+		dateLastPurchased: new Date(),
+		totalPurchases: itemTotalPurchases + 1,
+	});
+	return itemDocumentRef;
 }
 
 export async function deleteItem() {

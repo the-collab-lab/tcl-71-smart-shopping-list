@@ -1,8 +1,10 @@
 :root {
 	--color-black: hsla(220, 13%, 18%, 1);
 	--color-gray-dark: hsla(220, 13%, 25%, 1);
-	--color-white: hsla(220, 13%, 98%, 1);
+	--color-white: hsla(210, 20%, 98%, 1);
 	--color-gray-light: hsla(220, 13%, 94%, 1);
+	--color-gray-medium-dark: hsla(0, 0%, 72%, 1);
+	--color-gray-medium-light: hsla(222, 7%, 34%, 1);
 	--color-emerald-green: hsla(168, 92%, 25%, 1);
 	--color-vermillion-green: hsla(168, 92%, 43%, 1);
 	--color-cobalt-blue: hsla(215, 100%, 34%, 1);
@@ -14,6 +16,7 @@
 	--color-border: hsla(220, 13%, 32%, 1);
 	--color-error: var(--color-red);
 	--color-text: var(--color-white);
+	--color-checked: var(--color-gray-medium-dark);
 }
 
 @media screen and (prefers-color-scheme: light) {
@@ -22,6 +25,7 @@
 		--color-bg: var(--color-white);
 		--color-border: hsla(220, 13%, 78%, 1);
 		--color-text: var(--color-black);
+		--color-checked: var(--color-gray-medium-light);
 	}
 }
 
@@ -57,8 +61,19 @@ html {
 body {
 	background-color: var(--color-bg);
 	color: var(--color-text);
-	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
-		helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+	font-family:
+		-apple-system,
+		BlinkMacSystemFont,
+		avenir next,
+		avenir,
+		segoe ui,
+		helvetica neue,
+		helvetica,
+		Ubuntu,
+		roboto,
+		noto,
+		arial,
+		sans-serif;
 	font-size: 1.8rem;
 	line-height: 1.4;
 	margin: 0;
@@ -75,7 +90,12 @@ code {
 	border-radius: 4px;
 	color: var(--color-text);
 	display: inline-block;
-	font-family: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+	font-family:
+		Menlo,
+		Consolas,
+		Monaco,
+		Liberation Mono,
+		Lucida Console,
 		monospace;
 	font-size: 0.9em;
 	padding: 0.15em 0.15em;

@@ -10,3 +10,14 @@ const ONE_DAY_IN_MILLISECONDS = 86400000;
 export function getFutureDate(offset) {
 	return new Date(Date.now() + offset * ONE_DAY_IN_MILLISECONDS);
 }
+
+/**
+ * Return whether if a date is more than 24 hours ago
+ * @param {Object} date - Date to compare
+ */
+export const isMoreThanADayAgo = (date) => {
+	let now = new Date();
+	const dateInMiliseconds = date.seconds * 1000;
+	const diff = now - dateInMiliseconds;
+	return ONE_DAY_IN_MILLISECONDS < diff;
+};
