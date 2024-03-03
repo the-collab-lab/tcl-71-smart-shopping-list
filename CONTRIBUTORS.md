@@ -15,6 +15,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 - [Chiamaka Umeh](https://github.com/amaka202) 💅
 - [Jorge Mora](https://github.com/llyorshch) 🚲
+- [Elit Cenk Alp](https://github.com/elitcenk)
 
 ## Code of Conduct Contacts
 
