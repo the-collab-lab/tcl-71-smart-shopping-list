@@ -2,6 +2,7 @@ import './Home.css';
 import { SingleList } from '../components';
 import { useState } from 'react';
 import ListForm from '../components/ListForm';
+import ErrorMessage from '../components/ErrorMessage';
 
 export function Home({ data, setListPath, userId, userEmail }) {
 	const [message, setMessage] = useState(null);
@@ -17,7 +18,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 				userId={userId}
 				userEmail={userEmail}
 			/>
-			<span> {message ? <p> {message} </p> : <></>} </span>
+			<ErrorMessage errorMessage={message} />
 			<ul>
 				{data.map((list, i) => (
 					<SingleList

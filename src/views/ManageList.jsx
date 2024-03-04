@@ -1,21 +1,13 @@
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
+import './ManageList.css';
+import ErrorMessage from '../components/ErrorMessage';
+import { inputHasValue, hasSameValue } from '../utils/inputValidation';
 
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [errMessage, setErrMessage] = useState('');
-
-	const inputHasValue = (value) => {
-		return value.trim().length === 0 ? false : true;
-	};
-
-	const hasSameValue = (string, value) => {
-		const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\s]/g;
-		const stringOne = string.toLowerCase().replace(regex, '');
-		const stringTwo = value.toLowerCase().replace(regex, '');
-		return stringOne === stringTwo ? true : false;
-	};
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -27,12 +19,14 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		let time = formData.get('time');
 
 		if (!inputHasValue(itemName)) {
-			setAddItemErrMessage('Add an item');
+			setAddItemErrMessage('Please enter an item');
+			form.reset();
 			return;
 		}
 
 		if (data.some((item) => hasSameValue(item.name, itemName))) {
 			setAddItemErrMessage('This item is already in your list');
+			form.reset();
 			return;
 		}
 
@@ -45,10 +39,6 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 			daysUntilNextPurchase = 30;
 		}
 
-		if (!inputHasValue(itemName)) {
-			form.reset();
-			return;
-		}
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
 		if (response) {
@@ -98,7 +88,11 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 			<form method="post" onSubmit={handleSubmit}>
 				<label>
 					Add item
-					<input type="text" name="item"></input>
+					<input
+						type="text"
+						name="item"
+						onChange={() => setAddItemErrMessage('')}
+					></input>
 				</label>
 				<label htmlFor="time-select">When do I need it?</label>
 				<select name="time" id="time-select">
@@ -108,7 +102,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 				</select>
 				<button type="submit">Submit</button>
 			</form>
-			{addItemErrMessage !== '' ? <p>{addItemErrMessage}</p> : null}
+			<ErrorMessage errorMessage={addItemErrMessage} />
 
 			<hr></hr>
 			<form method="post" onSubmit={sendInvite}>
@@ -123,7 +117,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
-			{errMessage !== '' ? <p>{errMessage}</p> : null}
+			<ErrorMessage errorMessage={errMessage} />
 		</>
 	);
 }
