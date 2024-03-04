@@ -4,7 +4,7 @@ It is a well-known fact: **LinkedIn is the home of recruiters.** This is where t
 
 In this lesson, we will go over each of the main parts of a LinkedIn profile. To make it easier for you, we’ve divided the LinkedIn profile into 3 parts listed below. **Each part has a video you should watch.**
 
-**What you need to do**: Watch the video for each of the parts listed below and make changes to your LinkedIn profile based on the suggestions in the video. You can use this [rubric](https://docs.google.com/spreadsheets/d/1e0n1k6izyZM0mkmkL9zezr7FW2-qRLu-bmFnYBLVkLs/copy) to guide you. If you would like to have your updated profile reviewed and receive feedback, make a post in the #linkedin-review Slack channel, include links to your LinkedIn profile and your rubric, and a volunteer will take a look.
+**What you need to do**: Watch the video for each of the parts listed below and make changes to your LinkedIn profile based on the suggestions in the video. You can use this [rubric](https://docs.google.com/spreadsheets/d/1e0n1k6izyZM0mkmkL9zezr7FW2-qRLu-bmFnYBLVkLs/copy) to guide you. If you would like to have your updated profile reviewed and receive feedback, get a share link for the rubric and be sure to make it editable by anyone with link. Then make a post in the #linkedin-review Slack channel, include links to your LinkedIn profile and your rubric, and a volunteer will take a look.
 
 # Let’s get started!
 
