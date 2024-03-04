@@ -2,10 +2,19 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 
-export function ManageList({ listPath, userId, userEmail }) {
+export function ManageList({ data, listPath, userId, userEmail }) {
+	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [errMessage, setErrMessage] = useState('');
+
 	const inputHasValue = (value) => {
 		return value.trim().length === 0 ? false : true;
+	};
+
+	const hasSameValue = (string, value) => {
+		const regex = /[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~\s]/g;
+		const stringOne = string.toLowerCase().replace(regex, '');
+		const stringTwo = value.toLowerCase().replace(regex, '');
+		return stringOne === stringTwo ? true : false;
 	};
 
 	async function handleSubmit(e) {
@@ -16,6 +25,16 @@ export function ManageList({ listPath, userId, userEmail }) {
 
 		let itemName = formData.get('item');
 		let time = formData.get('time');
+
+		if (!inputHasValue(itemName)) {
+			setAddItemErrMessage('Add an item');
+			return;
+		}
+
+		if (data.some((item) => hasSameValue(item.name, itemName))) {
+			setAddItemErrMessage('This item is already in your list');
+			return;
+		}
 
 		let daysUntilNextPurchase;
 		if (time === 'soon') {
@@ -89,6 +108,8 @@ export function ManageList({ listPath, userId, userEmail }) {
 				</select>
 				<button type="submit">Submit</button>
 			</form>
+			{addItemErrMessage !== '' ? <p>{addItemErrMessage}</p> : null}
+
 			<hr></hr>
 			<form method="post" onSubmit={sendInvite}>
 				<label htmlFor="email">
