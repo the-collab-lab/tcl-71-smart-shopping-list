@@ -21,3 +21,14 @@ export const isMoreThanADayAgo = (date) => {
 	const diff = now - dateInMiliseconds;
 	return ONE_DAY_IN_MILLISECONDS < diff;
 };
+
+/**
+ * .
+ * @example
+ * //
+ *
+ * @param {Date} date
+ */
+export function getDaysBetweenDates(dateFuture, datePast = dateFuture) {
+	return Math.ceil((dateFuture.getTime() - datePast.getTime()) / 86400000);
+}
