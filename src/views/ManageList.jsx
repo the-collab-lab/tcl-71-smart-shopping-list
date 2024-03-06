@@ -3,7 +3,11 @@ import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 import './ManageList.css';
 import ErrorMessage from '../components/ErrorMessage';
-import { inputHasValue, hasSameValue } from '../utils/inputValidation';
+import {
+	inputHasValue,
+	inputHasOnlyNUmbers,
+	inputHasRepeatedValue,
+} from '../utils/inputValidation';
 
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
@@ -18,13 +22,13 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		let itemName = formData.get('item');
 		let time = formData.get('time');
 
-		if (!inputHasValue(itemName)) {
+		if (!inputHasValue(itemName) || inputHasOnlyNUmbers(itemName)) {
 			setAddItemErrMessage('Please enter an item');
 			form.reset();
 			return;
 		}
 
-		if (data.some((item) => hasSameValue(item.name, itemName))) {
+		if (data.some((item) => inputHasRepeatedValue(item.name, itemName))) {
 			setAddItemErrMessage('This item is already in your list');
 			form.reset();
 			return;
