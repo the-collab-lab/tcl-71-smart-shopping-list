@@ -12,13 +12,15 @@ export function Home({ data, setListPath, userId, userEmail }) {
 			<p>
 				Hello from the home (<code>/</code>) page!
 			</p>
-			<ListForm
-				setMessage={setMessage}
-				setListPath={setListPath}
-				userId={userId}
-				userEmail={userEmail}
-			/>
-			<ErrorMessage errorMessage={message} />
+			<div className="Home__form">
+				<ListForm
+					setMessage={setMessage}
+					setListPath={setListPath}
+					userId={userId}
+					userEmail={userEmail}
+				/>
+				{message !== '' && <ErrorMessage errorMessage={message} />}
+			</div>
 			<ul>
 				{data.map((list, i) => (
 					<SingleList
