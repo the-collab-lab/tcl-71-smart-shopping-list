@@ -5,7 +5,7 @@ import ListForm from '../components/ListForm';
 import ErrorMessage from '../components/ErrorMessage';
 
 export function Home({ data, setListPath, userId, userEmail }) {
-	const [message, setMessage] = useState(null);
+	const [message, setMessage] = useState('');
 
 	return (
 		<div className="Home">

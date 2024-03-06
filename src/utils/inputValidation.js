@@ -8,7 +8,7 @@ export const inputHasOnlyNUmbers = (string) => {
 
 export const inputHasRepeatedValue = (string, value) => {
 	const regex = /[^a-z]/g;
-	const stringOne = string.toLowerCase().replace(regex, '');
-	const stringTwo = value.toLowerCase().replace(regex, '');
+	const stringOne = string.toLowerCase().trim().replace(regex, '');
+	const stringTwo = value.toLowerCase().trim().replace(regex, '');
 	return stringOne === stringTwo ? true : false;
 };
