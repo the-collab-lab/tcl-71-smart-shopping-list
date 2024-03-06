@@ -189,26 +189,29 @@ export async function updateItem(listPath, itemId) {
 	const itemDocumentRef = doc(listCollectionRef, itemId);
 	const item = await getDoc(itemDocumentRef);
 	const itemTotalPurchases = item.data().totalPurchases;
-	const dateLastPurchased = item.data().dateLastPurchased.toDate();
-	const prevDateNextPurchased = item.data().dateNextPurchased.toDate();
+	const dateLastPurchased = item.data().dateLastPurchased?.toDate();
+	const dateCreated = item.data().dateCreated.toDate();
+	const dateNextPurchased = item.data().dateNextPurchased.toDate();
 	const now = new Date();
-	const daysSinceLastPurchase = getDaysBetweenDates(now, dateLastPurchased); // First buy: 0.
-	const prevEstimate = getDaysBetweenDates(
-		prevDateNextPurchased,
-		dateLastPurchased,
+	const daysSinceLastPurchase = getDaysBetweenDates(
+		now,
+		dateLastPurchased ? dateLastPurchased : dateCreated,
 	);
+	const prevEstimate = dateLastPurchased
+		? getDaysBetweenDates(dateNextPurchased, dateLastPurchased)
+		: undefined;
 	const nextEstimate = calculateEstimate(
 		prevEstimate,
 		daysSinceLastPurchase,
 		itemTotalPurchases,
 	);
-	const dateNextPurchased = getFutureDate(nextEstimate);
 
 	await updateDoc(itemDocumentRef, {
 		dateLastPurchased: now,
-		dateNextPurchased: dateNextPurchased,
+		dateNextPurchased: getFutureDate(nextEstimate),
 		totalPurchases: itemTotalPurchases + 1,
 	});
+
 	return itemDocumentRef;
 }
 
