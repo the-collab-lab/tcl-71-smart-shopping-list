@@ -200,7 +200,7 @@ export async function updateItem(listPath, itemId) {
 	);
 	const prevEstimate = dateLastPurchased
 		? getDaysBetweenDates(dateNextPurchased, dateLastPurchased)
-		: daysUntilNextPurchase;
+		: undefined;
 	const nextEstimate = calculateEstimate(
 		prevEstimate,
 		daysSinceLastPurchase,
