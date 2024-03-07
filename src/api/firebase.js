@@ -16,7 +16,6 @@ import {
 	isMoreThanADayAgo,
 } from '../utils';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
-import { daysUntilNextPurchase } from '../views/ManageList';
 
 /**
  * A custom hook that subscribes to the user's shopping lists in our Firestore
@@ -200,10 +199,10 @@ export async function updateItem(listPath, itemId) {
 	);
 	const prevEstimate = dateLastPurchased
 		? getDaysBetweenDates(dateNextPurchased, dateLastPurchased)
-		: undefined;
+		: getDaysBetweenDates(dateNextPurchased, dateCreated);
 	const nextEstimate = calculateEstimate(
 		prevEstimate,
-		daysSinceLastPurchase,
+		dateLastPurchased ? daysSinceLastPurchase : prevEstimate,
 		itemTotalPurchases,
 	);
 
