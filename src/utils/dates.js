@@ -21,3 +21,12 @@ export const isMoreThanADayAgo = (date) => {
 	const diff = now - dateInMiliseconds;
 	return ONE_DAY_IN_MILLISECONDS < diff;
 };
+
+/**
+ * Returns the number of days elapsed between two dates.
+ * @param {Date} dateFuture
+ * @param {Date} datePast
+ */
+export function getDaysBetweenDates(dateFuture, datePast) {
+	return Math.ceil((dateFuture.getTime() - datePast.getTime()) / 86400000);
+}
