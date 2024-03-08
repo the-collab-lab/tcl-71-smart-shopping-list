@@ -1,12 +1,17 @@
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
+import './ManageList.css';
+import ErrorMessage from '../components/ErrorMessage';
+import {
+	inputHasValue,
+	inputHasOnlyNUmbers,
+	inputHasRepeatedValue,
+} from '../utils/inputValidation';
 
-export function ManageList({ listPath, userId, userEmail }) {
-	const [errMessage, setErrMessage] = useState('');
-	const inputHasValue = (value) => {
-		return value.trim().length === 0 ? false : true;
-	};
+export function ManageList({ data, listPath, userId, userEmail }) {
+	const [addItemErrMessage, setAddItemErrMessage] = useState('');
+	const [shareListErrMessage, setShareListErrMessage] = useState('');
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -17,6 +22,18 @@ export function ManageList({ listPath, userId, userEmail }) {
 		let itemName = formData.get('item');
 		let time = formData.get('time');
 
+		if (!inputHasValue(itemName) || inputHasOnlyNUmbers(itemName)) {
+			setAddItemErrMessage('Please enter an item');
+			form.reset();
+			return;
+		}
+
+		if (data.some((item) => inputHasRepeatedValue(item.name, itemName))) {
+			setAddItemErrMessage('This item is already in your list');
+			form.reset();
+			return;
+		}
+
 		let daysUntilNextPurchase;
 		if (time === 'soon') {
 			daysUntilNextPurchase = 7;
@@ -26,10 +43,6 @@ export function ManageList({ listPath, userId, userEmail }) {
 			daysUntilNextPurchase = 30;
 		}
 
-		if (!inputHasValue(itemName)) {
-			form.reset();
-			return;
-		}
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
 		if (response) {
@@ -49,13 +62,13 @@ export function ManageList({ listPath, userId, userEmail }) {
 		let email = mailFormData.get('email');
 
 		if (!inputHasValue(email)) {
-			setErrMessage('Share the list by entering a valid user email');
+			setShareListErrMessage('Share the list by entering a valid user email');
 			mailForm.reset();
 			return;
 		}
 
 		if (email === userEmail) {
-			setErrMessage(
+			setShareListErrMessage(
 				'To share the list, enter the email of a user that is not you',
 			);
 			mailForm.reset();
@@ -72,37 +85,49 @@ export function ManageList({ listPath, userId, userEmail }) {
 	}
 
 	return (
-		<>
+		<div className="ManageList">
 			<p>
 				Hello from the <code>/manage-list</code> page!
 			</p>
-			<form method="post" onSubmit={handleSubmit}>
-				<label>
-					Add item
-					<input type="text" name="item"></input>
-				</label>
-				<label htmlFor="time-select">When do I need it?</label>
-				<select name="time" id="time-select">
-					<option value="soon">Soon (within 7 days)</option>
-					<option value="soonIsh">Soon-ish (in 14 days)</option>
-					<option value="notSoon">Not soon (in 30 days)</option>
-				</select>
-				<button type="submit">Submit</button>
-			</form>
-			<hr></hr>
-			<form method="post" onSubmit={sendInvite}>
-				<label htmlFor="email">
-					Share List with another user
-					<input
-						type="email"
-						name="email"
-						id="email"
-						onChange={() => setErrMessage('')}
-					></input>
-				</label>
-				<button type="submit">Submit</button>
-			</form>
-			{errMessage !== '' ? <p>{errMessage}</p> : null}
-		</>
+			<div className="ManageList__form">
+				<form method="post" onSubmit={handleSubmit}>
+					<label>
+						Add item
+						<input
+							type="text"
+							name="item"
+							onChange={() => setAddItemErrMessage('')}
+						></input>
+					</label>
+					<label htmlFor="time-select">When do I need it?</label>
+					<select name="time" id="time-select">
+						<option value="soon">Soon (within 7 days)</option>
+						<option value="soonIsh">Soon-ish (in 14 days)</option>
+						<option value="notSoon">Not soon (in 30 days)</option>
+					</select>
+					<button type="submit">Submit</button>
+				</form>
+				{addItemErrMessage !== '' && (
+					<ErrorMessage errorMessage={addItemErrMessage} />
+				)}
+			</div>
+			<div className="ManageList__form">
+				<form method="post" onSubmit={sendInvite}>
+					<label htmlFor="email">
+						Share List with another user
+						<input
+							type="email"
+							name="email"
+							id="email"
+							onChange={() => setShareListErrMessage('')}
+						></input>
+					</label>
+					<button type="submit">Submit</button>
+				</form>
+				{shareListErrMessage !== '' && (
+					<ErrorMessage errorMessage={shareListErrMessage} />
+				)}
+			</div>
+		</div>
 	);
 }

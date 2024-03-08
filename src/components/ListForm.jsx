@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { createList } from '../api';
 import { useNavigate } from 'react-router-dom';
+import { inputHasValue } from '../utils/inputValidation';
 
 const ListForm = (props) => {
 	const { setMessage, setListPath, userId, userEmail } = props;
@@ -9,7 +10,8 @@ const ListForm = (props) => {
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		if (newList.trim().length === 0) {
+
+		if (!inputHasValue(newList)) {
 			setMessage('Please type a list name :)');
 			setNewList('');
 			return;
