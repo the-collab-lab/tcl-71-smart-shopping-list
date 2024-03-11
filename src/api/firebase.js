@@ -1,20 +1,17 @@
 import {
-	arrayUnion,
-	getDoc,
-	setDoc,
-	collection,
-	doc,
-	onSnapshot,
-	updateDoc,
 	addDoc,
+	arrayUnion,
+	collection,
+	deleteDoc,
+	doc,
+	getDoc,
+	onSnapshot,
+	setDoc,
+	updateDoc,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import {
-	getFutureDate,
-	getDaysBetweenDates,
-	isMoreThanADayAgo,
-} from '../utils';
+import { getDaysBetweenDates, getFutureDate } from '../utils';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
 /**
@@ -215,10 +212,9 @@ export async function updateItem(listPath, itemId) {
 	return itemDocumentRef;
 }
 
-export async function deleteItem() {
-	/**
-	 * TODO: Fill this out so that it uses the correct Firestore function
-	 * to delete an existing item. You'll need to figure out what arguments
-	 * this function must accept!
-	 */
+export async function deleteItem(listPath, itemId) {
+	const listCollectionRef = collection(db, listPath, 'items');
+	const itemDocumentRef = doc(listCollectionRef, itemId);
+
+	await deleteDoc(itemDocumentRef);
 }

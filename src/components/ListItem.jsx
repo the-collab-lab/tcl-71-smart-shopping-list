@@ -1,4 +1,5 @@
 import './ListItem.css';
+import { deleteItem } from '../api/firebase';
 
 export function ListItem({
 	isRecentlyPurchased,
@@ -27,6 +28,7 @@ export function ListItem({
 					className="ListItem__label"
 				>{`Mark ${name} as purchased`}</label>
 			</div>
+			<button onClick={() => deleteItem(listPath, itemId)}>Delete item</button>
 		</li>
 	);
 }

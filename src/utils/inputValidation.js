@@ -6,7 +6,7 @@ export const inputHasOnlyNUmbers = (string) => {
 	return !!string.match(/^\d+$/);
 };
 
-export const inputHasRepeatedValue = (string, value) => {
+export const stringsHaveSameValue = (string, value) => {
 	const regex = /[^a-z]/g;
 	const stringOne = string.toLowerCase().trim().replace(regex, '');
 	const stringTwo = value.toLowerCase().trim().replace(regex, '');
