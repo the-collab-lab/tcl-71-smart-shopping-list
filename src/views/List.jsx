@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ListItem } from '../components';
 import SearchList from '../components/SearchList';
 import { useParams, useNavigate } from 'react-router-dom';
-import { updateItem } from '../api/firebase';
+import { updateItem, comparePurchaseUrgency } from '../api/firebase';
 import { isMoreThanADayAgo } from '../utils';
 import './List.css';
 import addFirstItem from '../pictures/addFirstItem.png';
@@ -13,7 +13,9 @@ export function List({ data, lists, listPath }) {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		setNewList(data);
+		const getDataSorted = comparePurchaseUrgency(data);
+		setNewList(getDataSorted);
+		// console.log('getDataSorted', getDataSorted);
 	}, [data]);
 
 	const wasRecentlyPurchased = (item) => {
@@ -64,6 +66,7 @@ export function List({ data, lists, listPath }) {
 					</button>
 				</div>
 			)}
+
 			{data.length > 0 && (
 				<div>
 					<SearchList data={data} setNewList={setNewList} />
