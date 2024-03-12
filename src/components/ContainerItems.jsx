@@ -1,18 +1,30 @@
+import { useEffect, useState } from 'react';
 import { ListItem } from './ListItem';
 import { Fragment } from 'react';
 
-const ContainerItems = ({
+export const ContainerItems = ({
 	category,
 	newList,
 	wasRecentlyPurchased,
 	listPath,
 	updatePurchaseDate,
 }) => {
-	return (
+	const [filteredItemsList, setFilteredItemsList] = useState([]);
+
+	useEffect(() => {
+		const newItemList = newList.filter((item) => {
+			if (item.category === category) {
+				return true;
+			} else return false;
+		});
+		setFilteredItemsList(newItemList);
+	}, [newList, category]);
+
+	return filteredItemsList[0] ? (
 		<section>
 			<h2>{category}</h2>
 			<ul>
-				{newList.map((item, i) => {
+				{filteredItemsList.map((item, i) => {
 					if (item.category === category) {
 						return (
 							<ListItem
@@ -30,7 +42,7 @@ const ContainerItems = ({
 				})}
 			</ul>
 		</section>
+	) : (
+		<> </>
 	);
 };
-
-export default ContainerItems;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ContainerItems } from '../components';
-import SearchList from '../components/SearchList';
+import { SearchList } from '../components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateItem, comparePurchaseUrgency } from '../api/firebase';
 import { isMoreThanADayAgo } from '../utils';

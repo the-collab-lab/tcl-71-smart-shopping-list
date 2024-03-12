@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const SearchList = ({ data, setNewList }) => {
+export const SearchList = ({ data, setNewList }) => {
 	const [value, setValue] = useState('');
 
 	const handleFiltering = (e) => {
@@ -37,4 +37,4 @@ const SearchList = ({ data, setNewList }) => {
 	);
 };
 
-export default SearchList;
+// export default SearchList;
