@@ -30,7 +30,10 @@ export function ListItem({
 			</div>
 			<button
 				className="ListItem__delete-button"
-				onClick={() => deleteItem(listPath, itemId)}
+				onClick={() =>
+					window.confirm('Do you really want to delete this item?') &&
+					deleteItem(listPath, itemId)
+				}
 			>
 				Delete item
 			</button>
