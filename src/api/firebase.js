@@ -218,3 +218,12 @@ export async function deleteItem(listPath, itemId) {
 
 	await deleteDoc(itemDocumentRef);
 }
+
+export async function deleteList(userId, userEmail, listName) {
+	const listDocRef = doc(db, userId, listName);
+	const listDocumentRef = doc(listDocRef, userEmail);
+
+	await deleteDoc(listDocumentRef, {
+		owner: userId,
+	});
+}

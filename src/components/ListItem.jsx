@@ -35,7 +35,7 @@ export function ListItem({
 					deleteItem(listPath, itemId)
 				}
 			>
-				Delete item
+				Delete Item
 			</button>
 		</li>
 	);
