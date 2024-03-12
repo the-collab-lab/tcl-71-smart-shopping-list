@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ListItem } from '../components';
+import { ContainerItems } from '../components';
 import SearchList from '../components/SearchList';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateItem, comparePurchaseUrgency } from '../api/firebase';
@@ -9,13 +9,21 @@ import addFirstItem from '../pictures/addFirstItem.png';
 
 export function List({ data, lists, listPath }) {
 	const [newList, setNewList] = useState([]);
+	const [sortedList, setSortedList] = useState([]);
 	const { path } = useParams();
 	const navigate = useNavigate();
+	const categoryArray = [
+		'Overdue',
+		'Buy Soon',
+		'Buy Soonish',
+		'Buy Not Soon',
+		'Inactive',
+	];
 
 	useEffect(() => {
 		const getDataSorted = comparePurchaseUrgency(data);
 		setNewList(getDataSorted);
-		// console.log('getDataSorted', getDataSorted);
+		setSortedList(getDataSorted);
 	}, [data]);
 
 	const wasRecentlyPurchased = (item) => {
@@ -69,21 +77,17 @@ export function List({ data, lists, listPath }) {
 
 			{data.length > 0 && (
 				<div>
-					<SearchList data={data} setNewList={setNewList} />
-					<ul>
-						{newList.map((item) => (
-							<ListItem
-								dateLastPurchased={item.dateLastPurchased}
-								isRecentlyPurchased={wasRecentlyPurchased(item)}
-								itemId={item.id}
-								key={item.id}
-								listPath={listPath}
-								name={item.name}
-								purchaseDate={item.dateLastPurchased}
-								updatePurchaseDate={updatePurchaseDate}
-							/>
-						))}
-					</ul>
+					<SearchList data={sortedList} setNewList={setNewList} />
+					{categoryArray.map((category, i) => (
+						<ContainerItems
+							key={i}
+							category={category}
+							newList={newList}
+							wasRecentlyPurchased={wasRecentlyPurchased}
+							listPath={listPath}
+							updatePurchaseDate={updatePurchaseDate}
+						/>
+					))}
 				</div>
 			)}
 		</>

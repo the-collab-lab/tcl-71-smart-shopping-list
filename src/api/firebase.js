@@ -224,116 +224,37 @@ export async function deleteItem() {
 }
 
 export function comparePurchaseUrgency(data) {
-	// const buySoon = [];
-	// const buySoonish = [];
-	// const buyNotSoon = [];
-	// const inactifItems = [];
-	// const overdueItem = [];
 	const now = new Date();
-
 	const newData = data.map((item) => {
-		let daysBeforePurchase = getDaysBetweenDates(
+		const daysBeforePurchase = getDaysBetweenDates(
 			item.dateNextPurchased.toDate(),
 			now,
 		);
+
 		item.daysBeforePurchase = daysBeforePurchase;
+
+		if (daysBeforePurchase < -60) {
+			item.category = 'Inactive';
+		} else if (daysBeforePurchase >= -60 && daysBeforePurchase < 0) {
+			item.category = 'Overdue';
+		} else if (daysBeforePurchase >= 0 && daysBeforePurchase <= 7) {
+			item.category = 'Buy Soon';
+		} else if (daysBeforePurchase > 7 && daysBeforePurchase <= 14) {
+			item.category = 'Buy Soonish';
+		} else {
+			item.category = 'Buy Not Soon';
+		}
+
 		return item;
 	});
 
-	console.log('newData', newData);
-
 	const dataSortedByDaysLeft = newData.sort((itemA, itemB) => {
-		if (itemA.daysBeforePurchase < itemB.daysBeforePurchase) return -1;
-		if (itemA.daysBeforePurchase > itemB.daysBeforePurchase) return 1;
-		if (itemA.name.toLowerCase() < itemB.name.toLowerCase()) return -1;
-		if (itemA.name.toLowerCase() > itemB.name.toLowerCase()) return 1;
-		return 0;
+		if (itemA.category === itemB.category) {
+			return itemA.name.localeCompare(itemB.name);
+		}
+
+		return itemA.daysBeforePurchase - itemB.daysBeforePurchase;
 	});
-	// const dataSortedByAlphabeticOrder = dataSortedByDaysLeft.sort(
-	// 	(itemA, itemB) => {
-	// 		if
-	// 			(itemA.daysBeforePurchase && itemB.daysBeforePurchase < 0) {
-	// 				const compare = itemB.name.localeCompare(itemA.name);
-	// 			console.log('compare', compare);
-	// 			return compare;} else if (itemA.daysBeforePurchase &&
-	// 				itemB.daysBeforePurchase >= 0 &&
-	// 				itemA.daysBeforePurchase &&
-	// 				itemB.daysBeforePurchase <= 7){
-	// 					const compare = itemB.name.localeCompare(itemA.name);
-	// 					console.log('compare', compare);
-	// 					return compare;
-	// 			}
-	// 			(itemA.daysBeforePurchase &&
-	// 				itemB.daysBeforePurchase > 7 &&
-	// 				itemA.daysBeforePurchase &&
-	// 				itemB.daysBeforePurchase <= 14) ||
-	// 			(itemA.daysBeforePurchase &&
-	// 				itemB.daysBeforePurchase > 14 &&
-	// 				itemA.daysBeforePurchase &&
-	// 				itemB.daysBeforePurchase <= 60) ||
-	// 			(itemA.daysBeforePurchase && itemB.daysBeforePurchase > 60)
-	// 		) {
-	// 			const compare = itemB.name.localeCompare(itemA.name);
-	// 			console.log('compare', compare);
-	// 			return compare;
-	// 		}
-	// 	},
-	// );
 
-	// const dataSortedByAlphabeticOrder = () => {
-	// 	for (let i = 0; i < dataSortedByDaysLeft.length; i++) {
-	// 		for (let j = 0; j < dataSortedByDaysLeft.length; j++) {
-	// 			if (
-	// 				dataSortedByDaysLeft[i].daysBeforePurchase &&
-	// 				dataSortedByDaysLeft[j].daysBeforePurchase < 0
-	// 			) {
-	// 				const compare = dataSortedByDaysLeft[j].name.localeCompare(
-	// 					dataSortedByDaysLeft[i].name,
-	// 				);
-	// 				console.log('compare', compare);
-	// 				return compare;
-	// 			} else if (
-	// 				dataSortedByDaysLeft[i].daysBeforePurchase &&
-	// 				dataSortedByDaysLeft[j].daysBeforePurchase > 0 &&
-	// 				dataSortedByDaysLeft[i].daysBeforePurchase &&
-	// 				dataSortedByDaysLeft[j].daysBeforePurchase >= 7
-	// 			) {
-	// 				const compare = dataSortedByDaysLeft[j].name.localeCompare(
-	// 					dataSortedByDaysLeft[i].name,
-	// 				);
-	// 				return compare;
-	// 			}
-	// 		}
-	// 		return;
-	// 	}
-	// };
-	// dataSortedByAlphabeticOrder();
-
-	// const dataSortedByAlphabeticOrder = dataSortedByDaysLeft.sort(
-	// 	(itemA, itemB) => {
-
-	// 	},
-	// );
-	// console.log('dataSortedByAlphabeticOrder', dataSortedByAlphabeticOrder);
-
-	console.log('dataSortedByDaysLeft', dataSortedByDaysLeft);
-
-	// for (let i = 0; i < data.length; i++) {
-	// 	let daysBeforePurchase = getDaysBetweenDates(
-	// 		data[i].dateNextPurchased.toDate(),
-	// 		now,
-	// 	);
-	// 	if (daysBeforePurchase >= 0 && daysBeforePurchase <= 7) {
-	// 		buySoon.push(data[i]);
-	// 	} else if (daysBeforePurchase < 0) {
-	// 		overdueItem.push(data[i]);
-	// 	} else if (daysBeforePurchase > 7 && daysBeforePurchase <= 14) {
-	// 		buySoonish.push(data[i]);
-	// 	} else if (daysBeforePurchase > 14 && daysBeforePurchase <= 60) {
-	// 		buyNotSoon.push(data[i]);
-	// 	} else if (daysBeforePurchase > 60) {
-	// 		inactifItems.push(data[i]);
-	// 	}
-	// }
 	return dataSortedByDaysLeft;
 }
