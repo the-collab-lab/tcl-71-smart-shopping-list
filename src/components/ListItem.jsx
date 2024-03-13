@@ -8,6 +8,16 @@ export function ListItem({
 	name,
 	updatePurchaseDate,
 }) {
+	const handleDelete = (listPath, itemId, itemName) => {
+		if (
+			window.confirm(
+				`Do you really want to delete ${itemName.toUpperCase()} from this list?`,
+			)
+		) {
+			deleteItem(listPath, itemId);
+		}
+		return;
+	};
 	return (
 		<li className="ListItem">
 			<span className={isRecentlyPurchased ? 'ListItem__checked' : ''}>
@@ -30,10 +40,7 @@ export function ListItem({
 			</div>
 			<button
 				className="ListItem__delete-button"
-				onClick={() =>
-					window.confirm('Do you really want to delete this item?') &&
-					deleteItem(listPath, itemId)
-				}
+				onClick={() => handleDelete(listPath, itemId, name)}
 			>
 				Delete Item
 			</button>
