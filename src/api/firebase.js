@@ -1,20 +1,20 @@
 import {
-	arrayUnion,
-	getDoc,
-	setDoc,
-	collection,
-	doc,
-	onSnapshot,
-	updateDoc,
 	addDoc,
+	arrayUnion,
+	collection,
+	deleteDoc,
+	doc,
+	getDoc,
+	getDocs,
+	onSnapshot,
+	query,
+	setDoc,
+	updateDoc,
+	where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import {
-	getFutureDate,
-	getDaysBetweenDates,
-	isMoreThanADayAgo,
-} from '../utils';
+import { getDaysBetweenDates, getFutureDate } from '../utils';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
 /**
@@ -161,6 +161,38 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 		sharedLists: arrayUnion(listDocumentRef),
 	});
 	return userDocumentRef;
+}
+
+/**
+ * Delete a user's list only if the current user is the list owner.
+ * @param {string} userId The id of the user who owns the list.
+ * @param {string} listPath The path of the list to delete.
+ * @param {string} listId The id of the list to delete.
+ */
+export async function deleteList(userId, listPath, listId) {
+	// Check if current user is owner.
+	if (!listPath.includes(userId)) {
+		return;
+	}
+
+	// Delete list doc
+	const listCollectionRef = collection(db, userId);
+	const listDocumentRef = doc(listCollectionRef, listId);
+	await deleteDoc(listDocumentRef);
+
+	// Update users doc that include a list reference
+	const q = query(
+		collection(db, 'users'),
+		where('sharedLists', 'array-contains', listDocumentRef),
+	);
+	const querySnapshot = await getDocs(q);
+	querySnapshot.forEach(async (d) => {
+		await updateDoc(doc(db, 'users', d.data().email), {
+			sharedLists: d
+				.data()
+				.sharedLists.filter((list) => list.path !== listPath),
+		});
+	});
 }
 
 /**
