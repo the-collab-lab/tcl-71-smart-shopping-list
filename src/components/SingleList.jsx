@@ -11,7 +11,9 @@ export function SingleList({ name, path, setListPath, userId }) {
 
 	function handleDelete(user, listPath, listName) {
 		if (
-			window.confirm(`Do you really want to delete ${name.toUpperCase()} list?`)
+			window.confirm(
+				`Do you really want to delete ${listName.toUpperCase()} list?`,
+			)
 		) {
 			deleteList(user, listPath, listName);
 		}
@@ -21,12 +23,14 @@ export function SingleList({ name, path, setListPath, userId }) {
 	return (
 		<li className="SingleList">
 			<button onClick={handleClick}>{name}</button>
-			<button
-				className="List__delete-button"
-				onClick={() => handleDelete(userId, path, name)}
-			>
-				Delete List
-			</button>
+			{path.includes(userId) && (
+				<button
+					className="List__delete-button"
+					onClick={() => handleDelete(userId, path, name)}
+				>
+					Delete List
+				</button>
+			)}
 		</li>
 	);
 }
