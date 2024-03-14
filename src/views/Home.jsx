@@ -29,6 +29,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 						path={list.path}
 						setListPath={setListPath}
 						userId={userId}
+						userEmail={userEmail}
 					/>
 				))}
 			</ul>
