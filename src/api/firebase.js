@@ -249,12 +249,12 @@ export function comparePurchaseUrgency(data) {
 	});
 
 	const dataSortedByDaysLeft = newData.sort((itemA, itemB) => {
-		if (itemA.category === itemB.category) {
+		if (itemA.daysBeforePurchase === itemB.daysBeforePurchase) {
 			return itemA.name.localeCompare(itemB.name);
 		}
 
 		return itemA.daysBeforePurchase - itemB.daysBeforePurchase;
 	});
-
+	console.log('dataSortedByDaysLeft', dataSortedByDaysLeft);
 	return dataSortedByDaysLeft;
 }
