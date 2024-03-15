@@ -6,7 +6,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import {
 	inputHasValue,
 	inputHasOnlyNUmbers,
-	inputHasRepeatedValue,
+	stringsHaveSameValue,
 } from '../utils/inputValidation';
 
 export function ManageList({ data, listPath, userId, userEmail }) {
@@ -28,7 +28,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 			return;
 		}
 
-		if (data.some((item) => inputHasRepeatedValue(item.name, itemName))) {
+		if (data.some((item) => stringsHaveSameValue(item.name, itemName))) {
 			setAddItemErrMessage('This item is already in your list');
 			form.reset();
 			return;

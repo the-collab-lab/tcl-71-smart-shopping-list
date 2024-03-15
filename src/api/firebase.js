@@ -10,7 +10,7 @@ import {
 	query,
 	setDoc,
 	updateDoc,
-	where,
+	where
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
@@ -256,10 +256,14 @@ export async function updateItem(listPath, itemId) {
 	return itemDocumentRef;
 }
 
-export async function deleteItem() {
-	/**
-	 * TODO: Fill this out so that it uses the correct Firestore function
-	 * to delete an existing item. You'll need to figure out what arguments
-	 * this function must accept!
-	 */
+/**
+ * Delete an item from user's list in Firestore.
+ * @param {string} listPath The path of the list we're adding to.
+ * @param {string} itemId The id of the item.
+ */
+export async function deleteItem(listPath, itemId) {
+	const listCollectionRef = collection(db, listPath, 'items');
+	const itemDocumentRef = doc(listCollectionRef, itemId);
+
+	await deleteDoc(itemDocumentRef);
 }
