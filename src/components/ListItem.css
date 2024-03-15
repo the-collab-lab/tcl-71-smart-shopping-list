@@ -25,3 +25,7 @@
 	font-size: 0.5em;
 	padding: 0.8em 0;
 }
+
+.ListItem__delete-button {
+	margin-inline-start: 0.5em;
+}

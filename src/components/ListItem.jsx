@@ -1,4 +1,5 @@
 import './ListItem.css';
+import { deleteItem } from '../api/firebase';
 
 export function ListItem({
 	isRecentlyPurchased,
@@ -7,6 +8,16 @@ export function ListItem({
 	name,
 	updatePurchaseDate,
 }) {
+	const handleDelete = (listPath, itemId, itemName) => {
+		if (
+			window.confirm(
+				`Do you really want to delete ${itemName.toUpperCase()} from this list?`,
+			)
+		) {
+			deleteItem(listPath, itemId);
+		}
+		return;
+	};
 	return (
 		<li className="ListItem">
 			<span className={isRecentlyPurchased ? 'ListItem__checked' : ''}>
@@ -27,6 +38,12 @@ export function ListItem({
 					className="ListItem__label"
 				>{`Mark ${name} as purchased`}</label>
 			</div>
+			<button
+				className="ListItem__delete-button"
+				onClick={() => handleDelete(listPath, itemId, name)}
+			>
+				Delete Item
+			</button>
 		</li>
 	);
 }
