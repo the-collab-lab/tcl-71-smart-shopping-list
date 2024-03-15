@@ -267,3 +267,52 @@ export async function deleteItem(listPath, itemId) {
 
 	await deleteDoc(itemDocumentRef);
 }
+
+export function comparePurchaseUrgency(data) {
+	const dayItemIsInactive = -60;
+	const dayOfExpectedPurchase = 0;
+	const dayItemIsBuySoon = 7;
+	const dayItemIsBuySoonish = 14;
+
+	const now = new Date();
+	const newData = data.map((item) => {
+		const daysBeforePurchase = getDaysBetweenDates(
+			item.dateNextPurchased.toDate(),
+			now,
+		);
+
+		item.daysBeforePurchase = daysBeforePurchase;
+
+		if (daysBeforePurchase < dayItemIsInactive) {
+			item.category = 'Inactive';
+		} else if (
+			daysBeforePurchase >= dayItemIsInactive &&
+			daysBeforePurchase < dayOfExpectedPurchase
+		) {
+			item.category = 'Overdue';
+		} else if (
+			daysBeforePurchase >= dayOfExpectedPurchase &&
+			daysBeforePurchase <= dayItemIsBuySoon
+		) {
+			item.category = 'Buy Soon';
+		} else if (
+			daysBeforePurchase > dayItemIsBuySoon &&
+			daysBeforePurchase <= dayItemIsBuySoonish
+		) {
+			item.category = 'Buy Soonish';
+		} else {
+			item.category = 'Buy Not Soon';
+		}
+
+		return item;
+	});
+
+	const dataSortedByDaysLeft = newData.sort((itemA, itemB) => {
+		if (itemA.daysBeforePurchase === itemB.daysBeforePurchase) {
+			return itemA.name.localeCompare(itemB.name);
+		}
+
+		return itemA.daysBeforePurchase - itemB.daysBeforePurchase;
+	});
+	return dataSortedByDaysLeft;
+}
