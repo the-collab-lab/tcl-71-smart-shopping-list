@@ -2,11 +2,21 @@ import { useState } from 'react';
 import { createList } from '../api';
 import { useNavigate } from 'react-router-dom';
 import { inputHasValue } from '../utils/inputValidation';
+import { stringsHaveSameValue } from '../utils/inputValidation';
+//import { db } from '../api/config';
 
 const ListForm = (props) => {
 	const { setMessage, setListPath, userId, userEmail } = props;
 	const [newList, setNewList] = useState('');
 	const navigate = useNavigate();
+
+	// Idea being that the new list is being stored in a variable
+	// getting the lists from the database as an array and loop through
+
+	//const compare = db;
+	//console.log(createdList, compare)
+
+	// compare.forEach((list, i)=> stringsHaveSameValue(list[i],newList))
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
