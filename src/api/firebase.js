@@ -151,24 +151,25 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 	const usersCollectionRef = collection(db, 'users');
 	const recipientDoc = await getDoc(doc(usersCollectionRef, recipientEmail));
 
-	// if !user, return { code: 'missing' }
-
 	// If the recipient user doesn't exist, we can't share the list.
 	if (!recipientDoc.exists()) {
-		return;
+		return { code: 'missing' };
 	}
 
-	// check if list already shared, return { code: 'existing' }
-
-	// add list to user, return { code: 'ok' }
-
-	// Add the list to the recipient user's sharedLists array.
 	const listDocumentRef = doc(db, listPath);
 	const userDocumentRef = doc(db, 'users', recipientEmail);
+	const userLists = (await getDoc(userDocumentRef)).data().sharedLists;
+
+	// Check if list is already in recipient user's sharedLists array
+	if (userLists.some((list) => list.path === listPath)) {
+		return { code: 'existing' };
+	}
+
+	// Add the list to the recipient user's sharedLists array.
 	updateDoc(userDocumentRef, {
 		sharedLists: arrayUnion(listDocumentRef),
 	});
-	return userDocumentRef;
+	return { code: 'ok' };
 }
 
 /**
