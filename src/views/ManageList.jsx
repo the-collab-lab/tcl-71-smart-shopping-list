@@ -75,6 +75,8 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 			return;
 		}
 
+		// Borja: I'm not sure we can check whether the user is part of the list before calling shareList, since it'd involve making a call to the database to check. Or rather, it'd require a separate function to first ask the database, which is what shareList is already doing. Maybe we could set-up a 'coded' response system? Something like response === 'ok', alert added, and so on. Lines 154, 161, 163 in firebase.js
+
 		const response = await shareList(listPath, userId, email);
 		if (response) {
 			alert(`The list has been shared with ${email}!`);
