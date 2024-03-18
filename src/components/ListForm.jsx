@@ -16,7 +16,11 @@ const ListForm = (props) => {
 	//const compare = db;
 	//console.log(createdList, compare)
 
-	// compare.forEach((list, i)=> stringsHaveSameValue(list[i],newList))
+	// compare.forEach((list, i)=>
+	//   if (stringsHaveSameValue(list[i],newList)){
+	// setMessage('There is a list with that name')
+	//   }
+	//)
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
