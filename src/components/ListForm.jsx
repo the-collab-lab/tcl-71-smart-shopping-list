@@ -10,17 +10,25 @@ const ListForm = (props) => {
 	const [newList, setNewList] = useState('');
 	const navigate = useNavigate();
 
-	// Idea being that the new list is being stored in a variable
-	// getting the lists from the database as an array and loop through
+	/*
+	Idea being that the new list is being stored in a variable
+	getting the lists from the database as an array and loop through
 
-	//const compare = db;
-	//console.log(createdList, compare)
+	const compare = [db] -- tried to look it up and failed on that;
+	console.log(createdList, compare)
 
-	// compare.forEach((list, i)=>
-	//   if (stringsHaveSameValue(list[i],newList)){
-	// setMessage('There is a list with that name')
-	//   }
-	//)
+	for (let i = 0; i < db.length; i++){
+		if (stringsHaveSameValue(newList,db[i])){
+			setMessage('A List with this name already exists');
+			break;
+		}
+	}
+
+	I am hoping my idea being clear here - obviously if the list name
+	isn't a duplicate, the loop will run from start to finish.
+
+	Maybe there is a nicer way.
+	*/
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
