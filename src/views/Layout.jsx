@@ -16,21 +16,27 @@ export function Layout({ listPath }) {
 					{!!user ? <SignOutButton /> : <SignInButton />}
 				</header>
 				<main className="Layout-main">
-					<Outlet />
+					{!!user ? (
+						<Outlet />
+					) : (
+						<h3>Log in to start using the shopping list app</h3>
+					)}
 				</main>
-				<nav className="Nav">
-					<div className="Nav-container">
-						<NavLink to="/" className="Nav-link">
-							Home
-						</NavLink>
-						<NavLink to={`/list/${listPath}`} className="Nav-link">
-							List
-						</NavLink>
-						<NavLink to="/manage-list" className="Nav-link">
-							Manage List
-						</NavLink>
-					</div>
-				</nav>
+				{!!user && (
+					<nav className="Nav">
+						<div className="Nav-container">
+							<NavLink to="/" className="Nav-link">
+								Home
+							</NavLink>
+							<NavLink to={`/list/${listPath}`} className="Nav-link">
+								List
+							</NavLink>
+							<NavLink to="/manage-list" className="Nav-link">
+								Manage List
+							</NavLink>
+						</div>
+					</nav>
+				)}
 			</div>
 		</>
 	);
