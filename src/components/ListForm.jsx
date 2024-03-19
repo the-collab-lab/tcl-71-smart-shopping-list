@@ -20,6 +20,7 @@ const ListForm = (props) => {
 	for (let i = 0; i < db.length; i++){
 		if (stringsHaveSameValue(newList,db[i])){
 			setMessage('A List with this name already exists');
+			setNewList('');
 			break;
 		}
 	}
