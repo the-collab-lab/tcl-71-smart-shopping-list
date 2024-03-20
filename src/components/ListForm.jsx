@@ -3,39 +3,28 @@ import { createList } from '../api';
 import { useNavigate } from 'react-router-dom';
 import { inputHasValue } from '../utils/inputValidation';
 import { stringsHaveSameValue } from '../utils/inputValidation';
-//import { db } from '../api/config';
 
 const ListForm = (props) => {
-	const { setMessage, setListPath, userId, userEmail } = props;
+	const { setMessage, setListPath, userId, userEmail, data } = props;
 	const [newList, setNewList] = useState('');
 	const navigate = useNavigate();
 
-	/*
-	Idea being that the new list is being stored in a variable
-	getting the lists from the database as an array and loop through
-
-	const compare = [db] -- tried to look it up and failed on that;
-	console.log(createdList, compare)
-
-	for (let i = 0; i < db.length; i++){
-		if (stringsHaveSameValue(newList,db[i])){
-			setMessage('A List with this name already exists');
-			setNewList('');
-			break;
+	const checkNameNewList = (newList) => {
+		if (data.some((item) => stringsHaveSameValue(newList, item.name))) {
+			return true;
 		}
-	}
-
-	I am hoping my idea being clear here - obviously if the list name
-	isn't a duplicate, the loop will run from start to finish.
-
-	Maybe there is a nicer way.
-	*/
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		if (!inputHasValue(newList)) {
 			setMessage('Please type a list name :)');
+			setNewList('');
+			return;
+		}
+		if (checkNameNewList(newList)) {
+			setMessage('A List with this name already exists');
 			setNewList('');
 			return;
 		}
