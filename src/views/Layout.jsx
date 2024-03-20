@@ -28,12 +28,16 @@ export function Layout({ listPath }) {
 							<NavLink to="/" className="Nav-link">
 								Home
 							</NavLink>
-							<NavLink to={`/list/${listPath}`} className="Nav-link">
-								List
-							</NavLink>
-							<NavLink to="/manage-list" className="Nav-link">
-								Manage List
-							</NavLink>
+							{listPath && (
+								<>
+									<NavLink to={`/list/${listPath}`} className="Nav-link">
+										List
+									</NavLink>
+									<NavLink to="/manage-list" className="Nav-link">
+										Manage List
+									</NavLink>
+								</>
+							)}
 						</div>
 					</nav>
 				)}
