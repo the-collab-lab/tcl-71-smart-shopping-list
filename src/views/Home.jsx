@@ -27,7 +27,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 					<h3>Create a new list</h3>
 				</>
 			) : (
-				<h3>Start creating a new list</h3>
+				<h3>Start by creating a list</h3>
 			)}
 
 			<div className="Home__form">

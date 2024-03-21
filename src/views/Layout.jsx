@@ -4,7 +4,7 @@ import './Layout.css';
 import { auth } from '../api/config.js';
 import { SignInButton, SignOutButton, useAuth } from '../api/useAuth.jsx';
 
-export function Layout({ listPath }) {
+export function Layout({ lists, listPath }) {
 	const { user } = useAuth();
 
 	return (
@@ -12,23 +12,27 @@ export function Layout({ listPath }) {
 			<div className="Layout">
 				<header className="Layout-header">
 					<h1>Smart shopping list</h1>
-					<p>{user?.displayName ? `Welcome ${user?.displayName}` : null}</p>
-					{!!user ? <SignOutButton /> : <SignInButton />}
-				</header>
-				<main className="Layout-main">
+
 					{!!user ? (
-						<Outlet />
+						<>
+							<p>{`Welcome ${user?.displayName}`}</p>
+							<SignOutButton />
+						</>
 					) : (
-						<h3>Log in to start using the shopping list app</h3>
+						<>
+							<h3>Log in to begin using the shopping list app</h3>
+							<SignInButton />
+						</>
 					)}
-				</main>
+				</header>
+				<main className="Layout-main">{!!user ? <Outlet /> : null}</main>
 				{!!user && (
 					<nav className="Nav">
 						<div className="Nav-container">
 							<NavLink to="/" className="Nav-link">
 								Home
 							</NavLink>
-							{listPath && (
+							{!!listPath && !!lists[0] && (
 								<>
 									<NavLink to={`/list/${listPath}`} className="Nav-link">
 										List
@@ -38,6 +42,7 @@ export function Layout({ listPath }) {
 									</NavLink>
 								</>
 							)}
+							{!!user ? <SignOutButton /> : <SignInButton />}
 						</div>
 					</nav>
 				)}
