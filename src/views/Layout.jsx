@@ -42,7 +42,7 @@ export function Layout({ lists, listPath }) {
 									</NavLink>
 								</>
 							)}
-							{!!user ? <SignOutButton /> : <SignInButton />}
+							<SignOutButton />
 						</div>
 					</nav>
 				)}
