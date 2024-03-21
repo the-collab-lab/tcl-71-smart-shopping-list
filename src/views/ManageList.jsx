@@ -54,32 +54,40 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		form.reset();
 	}
 
+	const createShareListMessages = (recipientEmail) => {
+		return {
+			ok: `The list has been shared with ${recipientEmail}!`,
+			missing: `It seems like "${recipientEmail}" isn't a valid user email`,
+			existing: `The list is already shared with ${recipientEmail}`,
+			invalidEmail: 'Share the list by entering a valid user email',
+			repeatedEmail:
+				'To share the list, enter the email of a user that is not you',
+		};
+	};
+
 	async function sendInvite(e) {
 		e.preventDefault();
 
 		const mailForm = e.target;
 		const mailFormData = new FormData(mailForm);
 		let email = mailFormData.get('email');
-
+		const shareListMessages = createShareListMessages(email);
 		if (!inputHasValue(email)) {
-			setShareListErrMessage('Share the list by entering a valid user email');
+			setShareListErrMessage(shareListMessages['invalidEmail']);
 			mailForm.reset();
 			return;
 		}
 
 		if (email === userEmail) {
-			setShareListErrMessage(
-				'To share the list, enter the email of a user that is not you',
-			);
+			setShareListErrMessage(shareListMessages['repeatedEmail']);
 			mailForm.reset();
 			return;
 		}
 
 		const response = await shareList(listPath, userId, email);
+
 		if (response) {
-			alert(`The list has been shared with ${email}!`);
-		} else {
-			alert(`It seems like "${email}" isn't a valid user email`);
+			alert(shareListMessages[response.code]);
 		}
 		mailForm.reset();
 	}

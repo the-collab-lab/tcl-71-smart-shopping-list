@@ -10,7 +10,7 @@ import {
 	query,
 	setDoc,
 	updateDoc,
-	where
+	where,
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
@@ -150,17 +150,26 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 	// Get the document for the recipient user.
 	const usersCollectionRef = collection(db, 'users');
 	const recipientDoc = await getDoc(doc(usersCollectionRef, recipientEmail));
+
 	// If the recipient user doesn't exist, we can't share the list.
 	if (!recipientDoc.exists()) {
-		return;
+		return { code: 'missing' };
 	}
-	// Add the list to the recipient user's sharedLists array.
+
 	const listDocumentRef = doc(db, listPath);
 	const userDocumentRef = doc(db, 'users', recipientEmail);
+	const userLists = (await getDoc(userDocumentRef)).data().sharedLists;
+
+	// Check if list is already in recipient user's sharedLists array
+	if (userLists.some((list) => list.path === listPath)) {
+		return { code: 'existing' };
+	}
+
+	// Add the list to the recipient user's sharedLists array.
 	updateDoc(userDocumentRef, {
 		sharedLists: arrayUnion(listDocumentRef),
 	});
-	return userDocumentRef;
+	return { code: 'ok' };
 }
 
 /**
