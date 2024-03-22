@@ -9,9 +9,27 @@ export function Home({ data, setListPath, userId, userEmail }) {
 
 	return (
 		<div className="Home">
-			<p>
-				Hello from the home (<code>/</code>) page!
-			</p>
+			{!!data[0] ? (
+				<>
+					<h3>My lists</h3>
+					<ul>
+						{data.map((list, i) => (
+							<SingleList
+								key={i}
+								name={list.name}
+								path={list.path}
+								setListPath={setListPath}
+								userId={userId}
+								userEmail={userEmail}
+							/>
+						))}
+					</ul>
+					<h3>Create a new list</h3>
+				</>
+			) : (
+				<h3>Start by creating a list</h3>
+			)}
+
 			<div className="Home__form">
 				<ListForm
 					setMessage={setMessage}
@@ -22,18 +40,6 @@ export function Home({ data, setListPath, userId, userEmail }) {
 				/>
 				{message !== '' && <ErrorMessage errorMessage={message} />}
 			</div>
-			<ul>
-				{data.map((list, i) => (
-					<SingleList
-						key={i}
-						name={list.name}
-						path={list.path}
-						setListPath={setListPath}
-						userId={userId}
-						userEmail={userEmail}
-					/>
-				))}
-			</ul>
 		</div>
 	);
 }
