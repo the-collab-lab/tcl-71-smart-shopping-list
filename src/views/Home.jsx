@@ -18,6 +18,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 					setListPath={setListPath}
 					userId={userId}
 					userEmail={userEmail}
+					data={data}
 				/>
 				{message !== '' && <ErrorMessage errorMessage={message} />}
 			</div>

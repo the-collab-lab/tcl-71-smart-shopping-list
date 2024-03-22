@@ -2,17 +2,29 @@ import { useState } from 'react';
 import { createList } from '../api';
 import { useNavigate } from 'react-router-dom';
 import { inputHasValue } from '../utils/inputValidation';
+import { stringsHaveSameValue } from '../utils/inputValidation';
 
 const ListForm = (props) => {
-	const { setMessage, setListPath, userId, userEmail } = props;
+	const { setMessage, setListPath, userId, userEmail, data } = props;
 	const [newList, setNewList] = useState('');
 	const navigate = useNavigate();
+
+	const checkNameNewList = (newList) => {
+		if (data.some((item) => stringsHaveSameValue(newList, item.name))) {
+			return true;
+		}
+	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		if (!inputHasValue(newList)) {
 			setMessage('Please type a list name :)');
+			setNewList('');
+			return;
+		}
+		if (checkNameNewList(newList)) {
+			setMessage('A List with this name already exists');
 			setNewList('');
 			return;
 		}
