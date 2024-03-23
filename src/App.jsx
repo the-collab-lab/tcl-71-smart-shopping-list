@@ -40,7 +40,7 @@ export function App() {
 	 * This custom hook takes our token and fetches the data for our list.
 	 * Check ./api/firestore.js for its implementation.
 	 */
-	const data = useShoppingListData(listPath);
+	const { data, isLoadingListData } = useShoppingListData(listPath);
 
 	return (
 		<Router>
@@ -59,7 +59,14 @@ export function App() {
 					/>
 					<Route
 						path="/list/:path/:path"
-						element={<List data={data} lists={lists} listPath={listPath} />}
+						element={
+							<List
+								data={data}
+								lists={lists}
+								listPath={listPath}
+								isLoadingListData={isLoadingListData}
+							/>
+						}
 					/>
 					<Route
 						path="/manage-list"

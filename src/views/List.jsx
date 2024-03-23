@@ -4,10 +4,11 @@ import { SearchList } from '../components';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateItem, comparePurchaseUrgency } from '../api/firebase';
 import { isMoreThanADayAgo } from '../utils';
+import Loading from '../components/Loading';
 import './List.css';
 import addFirstItem from '../pictures/addFirstItem.png';
 
-export function List({ data, lists, listPath }) {
+export function List({ data, lists, listPath, isLoadingListData }) {
 	const [newList, setNewList] = useState([]);
 	const [sortedList, setSortedList] = useState([]);
 	const { path } = useParams();
@@ -36,6 +37,10 @@ export function List({ data, lists, listPath }) {
 	const updatePurchaseDate = (listPath, item, date) => {
 		updateItem(listPath, item, date);
 	};
+
+	if (isLoadingListData) {
+		return <Loading />;
+	}
 
 	return (
 		<>
