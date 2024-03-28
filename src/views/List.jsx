@@ -6,7 +6,7 @@ import { updateItem, comparePurchaseUrgency } from '../api/firebase';
 import { isMoreThanADayAgo } from '../utils';
 import Loading from '../components/Loading';
 import './List.css';
-import addFirstItem from '../pictures/addFirstItem.png';
+import addFirstItem from '../assets/addFirstItem.png';
 
 export function List({ data, lists, listPath, isLoadingListData }) {
 	const [newList, setNewList] = useState([]);
