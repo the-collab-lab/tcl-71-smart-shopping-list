@@ -11,7 +11,16 @@ export function Layout({ lists, listPath }) {
 		<>
 			<div className="Layout">
 				<header className="Layout-header">
-					<h1>Smart shopping list</h1>
+					{/* Example how to use the font families and the colors with tailwindCSS */}
+					<h1 className="font-amiru text-alertRed">Smart shopping list</h1>
+					{/* example how to use awesome font. To style the icon, wrap it around a span and use tailwindCSS */}
+					<span className="text-alertRed">
+						<i className="fa-solid fa-trash"></i>
+						<i class="fa-solid fa-share-nodes"></i>
+						<i class="fa-solid fa-right-from-bracket"></i>
+						<i class="fa-solid fa-plus"></i>
+						<i class="fa-solid fa-xmark"></i>
+					</span>
 
 					{!!user ? (
 						<>
