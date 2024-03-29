@@ -42,32 +42,62 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 
 	return (
 		<div className="text-center flex-column ">
-			<h1 className="font-amiri text-5xl text-darkPurple ">{path}</h1>
+			<h1 className="font-amiri text-4xl text-darkPurple p-6">{path}</h1>
 
 			{data.length === 0 ? (
-				<div className="text-3xl font-poppins text-darkPurple">
-					<p>This is your new list. There are no items added yet...</p>
-					<p>
+				<div className="text-2xl py-6">
+					<p className="py-5 text-darkPurple font-poppins">
+						This is your new list. There are no items added yet...
+					</p>
+					<p className="py-6 text-darkPurple font-poppins">
 						You can now add items, specify when you need to purchase them,
 						and/or share the list with other users
 					</p>
 
-					<button className="font-poppins bg-lightRurple p-5 rounded-lg w-3/4">
-						<span
-							aria-hidden="true"
-							focusable="false"
-							width="24"
-							height="28"
-							viewBox="0 0 24 28"
+					<div className="grid grid-cols-3 gap-x-2 py-6">
+						<button
+							className="flex items-center justify-center bg-lightPurple rounded-lg col-span-2 py-5"
+							onClick={() => navigate('/manage-list')}
 						>
-							<i class="fa-solid fa-plus"></i>
-						</span>
-						<span className="text-white">Add item</span>
-					</button>
+							<i class="fa-solid fa-plus inverse"></i>
+
+							<span className="ps-2 text-white text-lg font-poppins">
+								Add item
+							</span>
+						</button>
+						<button
+							className="flex items-center justify-center bg-white border rounded-lg col-span-1"
+							onClick={() => navigate('/manage-list')}
+						>
+							<i class="fa-solid fa-share-nodes"></i>
+
+							<span className="ps-2 text-lg font-poppins">Share list</span>
+						</button>
+					</div>
 				</div>
 			) : (
 				<div>
 					<SearchList data={sortedList} setNewList={setNewList} />
+					<div className="grid grid-cols-3 gap-x-2 py-6">
+						<button
+							className="flex items-center justify-center bg-lightPurple rounded-lg col-span-2 py-5 hover:opacity-75"
+							onClick={() => navigate('/manage-list')}
+						>
+							<i class="fa-solid fa-plus inverse"></i>
+
+							<span className="ps-2 text-white text-lg font-poppins">
+								Add item
+							</span>
+						</button>
+						<button
+							className="flex items-center justify-center bg-white border rounded-lg col-span-1"
+							onClick={() => navigate('/manage-list')}
+						>
+							<i class="fa-solid fa-share-nodes"></i>
+
+							<span className="ps-2 text-lg font-poppins">Share list</span>
+						</button>
+					</div>
 					{categoryArray.map((category, i) => (
 						<ContainerItems
 							key={i}

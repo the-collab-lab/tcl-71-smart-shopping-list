@@ -21,8 +21,10 @@ export const ContainerItems = ({
 	}, [newList, category]);
 
 	return filteredItemsList[0] ? (
-		<section>
-			<h2>{category}</h2>
+		<section className="text-left">
+			<h2 className="font-poppins uppercase font-bold text-darkPurple">
+				{category}
+			</h2>
 			<ul>
 				{filteredItemsList.map((item, i) => {
 					if (item.category === category) {

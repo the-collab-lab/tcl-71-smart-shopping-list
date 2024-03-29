@@ -13,7 +13,7 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="h-dvh flex flex-col text-poppins">
+		<div className="h-dvh flex flex-col text-poppins align-center">
 			<NavBar user={user} lists={lists} listPath={listPath} />
 			<header className="Layout-header">
 				{/* Example how to use the font families and the colors with tailwindCSS */}
@@ -43,7 +43,7 @@ export function Layout({ lists, listPath }) {
 					</>
 				)}
 			</header>
-			<main className="Layout-main">{!!user ? <Outlet /> : null}</main>
+			<main className="Layout-main  w-3/4">{!!user ? <Outlet /> : null}</main>
 		</div>
 	);
 }
