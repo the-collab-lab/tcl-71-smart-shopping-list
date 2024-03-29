@@ -11,7 +11,7 @@ export default {
 			puurWhite: '#FFFFFF' /* for text in buttons and background*/,
 			lightGrey: '#FCFCFD' /* background items */,
 			offWhite: '#FCFAFA' /* background header & footer */,
-			lightRurple: '#6966A8' /* background buttons & checkout boxes */,
+			lightPurple: '#6966A8' /* background buttons & checkout boxes */,
 			alertRed: '#d52c2c' /* alert */,
 		},
 		screens: {

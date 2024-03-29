@@ -8,29 +8,24 @@ import { addUserToDatabase } from './firebase.js';
  * the button redirects the user to the Google OAuth sign-in page.
  * After the user signs in, they are redirected back to the app.
  */
-export const SignInButton = () => (
-	<button
-		type="button"
-		onClick={() => signInWithRedirect(auth, new GoogleAuthProvider())}
-	>
-		Sign In
-	</button>
-);
+export const SignIn = () => {
+	try {
+		signInWithRedirect(auth, new GoogleAuthProvider());
+	} catch (error) {
+		console.log('error', error);
+	}
+};
 
 /**
  * A button that signs the user out of the app using Firebase Auth.
  */
-export const SignOutButton = () => (
-	<button
-		type="button"
-		onClick={() => {
-			auth.signOut();
-			localStorage.clear();
-		}}
-	>
-		Sign Out
-	</button>
-);
+export const SignOut = () => {
+	try {
+		auth.signOut();
+	} catch (error) {
+		console.log('error', error);
+	}
+};
 
 /**
  * A custom hook that listens for changes to the user's auth state.
