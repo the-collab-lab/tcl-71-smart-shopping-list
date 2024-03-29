@@ -27,19 +27,6 @@ export const SignOut = () => {
 	}
 };
 
-// <button
-// 	className="pr-12 font-poppins text-lg"
-// 	type="button"
-// 	onClick={() => {
-// 		localStorage.clear();
-// 	}}
-// >
-// 	<span className="pr-1.5">
-// 		<i className="fa-solid fa-right-from-bracket fa-sm"></i>
-// 	</span>
-// 	Sign Out
-// </button>
-
 /**
  * A custom hook that listens for changes to the user's auth state.
  * Check out the Firebase docs for more info on auth listeners:
