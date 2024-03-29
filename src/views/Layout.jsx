@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import './Layout.css';
 import { auth } from '../api/config.js';
@@ -8,7 +8,6 @@ import { SignOutButton } from '../api/useAuth.jsx';
 
 export function Layout({ lists, listPath }) {
 	const { user } = useAuth();
-	const navigate = useNavigate();
 
 	const handleClickSignIn = () => {
 		SignInButton();

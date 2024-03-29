@@ -1,19 +1,25 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { SignOutButton } from '../api/useAuth.jsx';
 import { NavigationLink } from './NavigationLink.jsx';
+import { ButtonWithIcon } from './ButtonWithIcon.jsx';
 
 export function NavBar({ user, lists, listPath }) {
 	const [isNavOpen, setIsNavOpen] = useState(false);
-	console.log('isNavOpen', isNavOpen);
-
+	const navigate = useNavigate();
 	const onClickNavLink = () => {
 		setIsNavOpen(false);
 	};
 
 	const onClickSignOut = () => {
-		SignOutButton();
-		setIsNavOpen(false);
-		localStorage.clear();
+		try {
+			SignOutButton();
+			setIsNavOpen(false);
+			navigate('/');
+			localStorage.clear();
+		} catch (error) {
+			console.log('error', error);
+		}
 	};
 
 	const LogOutIcon = () => {
@@ -26,12 +32,12 @@ export function NavBar({ user, lists, listPath }) {
 	return (
 		<>
 			{/* DESKTOP MENU */}
-			<nav className="h-16 sm:hidden md:hidden lg:flex flex-row shadow-md justify-between items-center bg-offWhite text-darkPurple">
+			<nav className="h-16 hidden lg:flex flex-row shadow-md justify-between items-center bg-offWhite text-darkPurple">
 				<div className="h-full flex items-center pl-12">
 					<h1 className="font-amiri text-2xl font-bold">Smart Shopping List</h1>
 				</div>
 				{!!user && (
-					<div className="h-full flex flex-row">
+					<div className="h-full flex flex-row items-center">
 						<NavigationLink text={'All my lists'} destination={'/'} />
 
 						{!!listPath && !!lists[0] && (
@@ -47,9 +53,8 @@ export function NavBar({ user, lists, listPath }) {
 								/>
 							</>
 						)}
-						<NavigationLink
-							text={'SIGN OUT'}
-							// destination={'/'}
+						<ButtonWithIcon
+							text={'Sign out'}
 							icon={<LogOutIcon />}
 							handleClick={onClickSignOut}
 						/>
@@ -91,8 +96,7 @@ export function NavBar({ user, lists, listPath }) {
 								</span>
 							</button>
 							{/* NAVIGATION-MOBILE-OPEN */}
-							{/* {!!user && ( */}
-							<div className="h-full flex flex-col justify-center	items-center">
+							<div className="h-full flex flex-col pt-12 justify-center	items-center">
 								<NavigationLink
 									text={'All my lists'}
 									destination={'/'}
@@ -114,9 +118,8 @@ export function NavBar({ user, lists, listPath }) {
 										/>
 									</>
 								)}
-								<NavigationLink
-									text={'SIGN OUT'}
-									// destination={'/'}
+								<ButtonWithIcon
+									text={'Sign out'}
 									icon={<LogOutIcon />}
 									handleClick={onClickSignOut}
 								/>
