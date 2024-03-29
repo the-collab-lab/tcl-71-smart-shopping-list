@@ -8,34 +8,37 @@ import { addUserToDatabase } from './firebase.js';
  * the button redirects the user to the Google OAuth sign-in page.
  * After the user signs in, they are redirected back to the app.
  */
-export const SignInButton = () => (
-	<button
-		className="font-poppins text-lg"
-		type="button"
-		onClick={() => signInWithRedirect(auth, new GoogleAuthProvider())}
-	>
-		Sign In
-	</button>
-);
+export const SignInButton = () => {
+	try {
+		signInWithRedirect(auth, new GoogleAuthProvider());
+	} catch (error) {
+		console.log('error', error);
+	}
+};
 
 /**
  * A button that signs the user out of the app using Firebase Auth.
  */
-export const SignOutButton = () => (
-	<button
-		className="pr-12 font-poppins text-lg"
-		type="button"
-		onClick={() => {
-			auth.signOut();
-			localStorage.clear();
-		}}
-	>
-		<span className="pr-1.5">
-			<i className="fa-solid fa-right-from-bracket fa-sm"></i>
-		</span>
-		Sign Out
-	</button>
-);
+export const SignOutButton = () => {
+	try {
+		auth.signOut();
+	} catch (error) {
+		console.log('error', error);
+	}
+};
+
+// <button
+// 	className="pr-12 font-poppins text-lg"
+// 	type="button"
+// 	onClick={() => {
+// 		localStorage.clear();
+// 	}}
+// >
+// 	<span className="pr-1.5">
+// 		<i className="fa-solid fa-right-from-bracket fa-sm"></i>
+// 	</span>
+// 	Sign Out
+// </button>
 
 /**
  * A custom hook that listens for changes to the user's auth state.

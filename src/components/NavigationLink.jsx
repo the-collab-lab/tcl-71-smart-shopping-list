@@ -1,16 +1,18 @@
 import { NavLink } from 'react-router-dom';
 
-export function NavigationLink({ text, destination }) {
+export function NavigationLink({ text, destination, handleClick, icon }) {
 	return (
 		<NavLink
+			onClick={handleClick}
 			to={destination}
 			className={({ isActive }) =>
 				[
-					'pr-12 font-poppins text-lg',
+					'flex flex-row pr-12 font-poppins text-lg',
 					isActive ? 'font-bold underline' : '',
 				].join(' ')
 			}
 		>
+			{icon}
 			{text}
 		</NavLink>
 	);

@@ -1,12 +1,18 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import './Layout.css';
 import { auth } from '../api/config.js';
-import { SignInButton, SignOutButton, useAuth } from '../api/useAuth.jsx';
+import { SignInButton, useAuth } from '../api/useAuth.jsx';
 import { NavBar } from '../components/NavBar.jsx';
+import { SignOutButton } from '../api/useAuth.jsx';
 
 export function Layout({ lists, listPath }) {
 	const { user } = useAuth();
+	const navigate = useNavigate();
+
+	const handleClickSignIn = () => {
+		SignInButton();
+	};
 
 	return (
 		<div className="h-dvh flex flex-col text-poppins">
@@ -24,12 +30,20 @@ export function Layout({ lists, listPath }) {
 				{!!user ? (
 					<>
 						<p>{`Welcome ${user?.displayName}`}</p>
-						<SignOutButton />
+						{/* <button onClick={SignOutButton()}>sign out</button> */}
+						{/* <SignOutButton /> */}
 					</>
 				) : (
 					<>
 						<h3>Log in to begin using the shopping list app</h3>
-						<SignInButton />
+						<button
+							className="font-poppins text-lg"
+							type="button"
+							onClick={handleClickSignIn}
+						>
+							Sign In
+						</button>
+						{/* <SignInButton /> */}
 					</>
 				)}
 			</header>
