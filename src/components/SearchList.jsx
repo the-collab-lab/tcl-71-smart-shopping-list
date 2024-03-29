@@ -25,6 +25,7 @@ export const SearchList = ({ data, setNewList }) => {
 		<form>
 			<label htmlFor="search">Search item</label>
 			<input
+				className="size-max"
 				id="search"
 				type="text"
 				onChange={(e) => handleFiltering(e)}

@@ -5,8 +5,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { updateItem, comparePurchaseUrgency } from '../api/firebase';
 import { isMoreThanADayAgo } from '../utils';
 import Loading from '../components/Loading';
-import './List.css';
-import addFirstItem from '../assets/addFirstItem.png';
 
 export function List({ data, lists, listPath, isLoadingListData }) {
 	const [newList, setNewList] = useState([]);
@@ -43,44 +41,31 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	}
 
 	return (
-		<>
-			<h2>
-				You are on the <code>{path}</code> list!
-			</h2>
-			{data.length === 0 && lists.length === 1 && (
-				<div className="containerAddItem">
-					<p>Well done! You have created your very first list!</p>
-					<p>
-						You can now add some items and specify when you need to purchase
-						them. In the box for "Add item" you put the item you need to
-						purchase and then select how soon you need it on "When do I need it"
-					</p>
-					<img
-						className="addItemPNG"
-						src={addFirstItem}
-						alt="add item example"
-					/>
+		<div className="text-center flex-column ">
+			<h1 className="font-amiri text-5xl text-darkPurple ">{path}</h1>
 
-					<button id="addFirstItem" onClick={() => navigate('/manage-list')}>
-						Start adding items!
-					</button>
-				</div>
-			)}
-			{data.length === 0 && lists.length > 1 && (
-				<div className="containerAddItem">
-					<p>Well done! You have created a new list!</p>
+			{data.length === 0 ? (
+				<div className="text-3xl font-poppins text-darkPurple">
+					<p>This is your new list. There are no items added yet...</p>
 					<p>
-						You can now add some items and specify when you need to purchase
-						them.
+						You can now add items, specify when you need to purchase them,
+						and/or share the list with other users
 					</p>
 
-					<button id="addFirstItem" onClick={() => navigate('/manage-list')}>
-						Start adding items!
+					<button className="font-poppins bg-lightRurple p-5 rounded-lg w-3/4">
+						<span
+							aria-hidden="true"
+							focusable="false"
+							width="24"
+							height="28"
+							viewBox="0 0 24 28"
+						>
+							<i class="fa-solid fa-plus"></i>
+						</span>
+						<span className="text-white">Add item</span>
 					</button>
 				</div>
-			)}
-
-			{data.length > 0 && (
+			) : (
 				<div>
 					<SearchList data={sortedList} setNewList={setNewList} />
 					{categoryArray.map((category, i) => (
@@ -95,6 +80,6 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 					))}
 				</div>
 			)}
-		</>
+		</div>
 	);
 }
