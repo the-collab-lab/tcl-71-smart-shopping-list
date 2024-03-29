@@ -10,6 +10,7 @@ import { addUserToDatabase } from './firebase.js';
  */
 export const SignInButton = () => (
 	<button
+		className="font-poppins text-lg"
 		type="button"
 		onClick={() => signInWithRedirect(auth, new GoogleAuthProvider())}
 	>
@@ -22,12 +23,16 @@ export const SignInButton = () => (
  */
 export const SignOutButton = () => (
 	<button
+		className="pr-12 font-poppins text-lg"
 		type="button"
 		onClick={() => {
 			auth.signOut();
 			localStorage.clear();
 		}}
 	>
+		<span className="pr-1.5">
+			<i className="fa-solid fa-right-from-bracket fa-sm"></i>
+		</span>
 		Sign Out
 	</button>
 );
