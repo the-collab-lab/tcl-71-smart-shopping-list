@@ -1,34 +1,9 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { SignOutButton } from '../api/useAuth.jsx';
-import { NavigationLink } from './NavigationLink.jsx';
-import { ButtonWithIcon } from './ButtonWithIcon.jsx';
+import NavLinks from './NavLinks';
 
 export function NavBar({ user, lists, listPath }) {
 	const [isNavOpen, setIsNavOpen] = useState(false);
-	const navigate = useNavigate();
-	const onClickNavLink = () => {
-		setIsNavOpen(false);
-	};
 
-	const onClickSignOut = () => {
-		try {
-			SignOutButton();
-			setIsNavOpen(false);
-			navigate('/');
-			localStorage.clear();
-		} catch (error) {
-			console.log('error', error);
-		}
-	};
-
-	const LogOutIcon = () => {
-		return (
-			<span className="pr-1.5 text-darkPurple">
-				<i className="fa-solid fa-right-from-bracket fa-sm"></i>
-			</span>
-		);
-	};
 	return (
 		<>
 			{/* DESKTOP MENU */}
@@ -38,25 +13,10 @@ export function NavBar({ user, lists, listPath }) {
 				</div>
 				{!!user && (
 					<div className="h-full flex flex-row items-center">
-						<NavigationLink text={'All my lists'} destination={'/'} />
-
-						{!!listPath && !!lists[0] && (
-							<>
-								<NavigationLink
-									text={'List'}
-									destination={`/list/${listPath}`}
-								/>
-
-								<NavigationLink
-									text={'Manage List'}
-									destination={'/manage-list'}
-								/>
-							</>
-						)}
-						<ButtonWithIcon
-							text={'Sign out'}
-							icon={<LogOutIcon />}
-							handleClick={onClickSignOut}
+						<NavLinks
+							lists={lists}
+							listPath={listPath}
+							setIsNavOpen={setIsNavOpen}
 						/>
 					</div>
 				)}
@@ -97,31 +57,10 @@ export function NavBar({ user, lists, listPath }) {
 							</button>
 							{/* NAVIGATION-MOBILE-OPEN */}
 							<div className="h-full flex flex-col pt-12 justify-center	items-center">
-								<NavigationLink
-									text={'All my lists'}
-									destination={'/'}
-									handleClick={onClickNavLink}
-								/>
-
-								{!!listPath && !!lists[0] && (
-									<>
-										<NavigationLink
-											text={'List'}
-											destination={`/list/${listPath}`}
-											handleClick={onClickNavLink}
-										/>
-
-										<NavigationLink
-											text={'Manage List'}
-											destination={'/manage-list'}
-											handleClick={onClickNavLink}
-										/>
-									</>
-								)}
-								<ButtonWithIcon
-									text={'Sign out'}
-									icon={<LogOutIcon />}
-									handleClick={onClickSignOut}
+								<NavLinks
+									lists={lists}
+									listPath={listPath}
+									setIsNavOpen={setIsNavOpen}
 								/>
 							</div>
 						</div>
