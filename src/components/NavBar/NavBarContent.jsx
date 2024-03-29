@@ -1,7 +1,7 @@
-import { SignOutButton } from '../api/useAuth.jsx';
+import { SignOut } from '../../api/useAuth.jsx';
 import { NavigationLink } from './NavigationLink.jsx';
 import { useNavigate } from 'react-router-dom';
-import { ButtonWithIcon } from './ButtonWithIcon.jsx';
+import { ButtonWithIcon } from '../ButtonWithIcon.jsx';
 
 export default function NavLinks({ listPath, lists, setIsNavOpen }) {
 	const navigate = useNavigate();
@@ -11,7 +11,7 @@ export default function NavLinks({ listPath, lists, setIsNavOpen }) {
 
 	const onClickSignOut = () => {
 		try {
-			SignOutButton();
+			SignOut();
 			setIsNavOpen(false);
 			navigate('/');
 			localStorage.clear();

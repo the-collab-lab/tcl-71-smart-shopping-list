@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import NavLinks from './NavLinks';
+import NavBarContent from './NavBarContent';
 
 export function NavBar({ user, lists, listPath }) {
 	const [isNavOpen, setIsNavOpen] = useState(false);
@@ -9,11 +9,11 @@ export function NavBar({ user, lists, listPath }) {
 			{/* DESKTOP MENU */}
 			<nav className="h-16 hidden lg:flex flex-row shadow-md justify-between items-center bg-offWhite text-darkPurple">
 				<div className="h-full flex items-center pl-12">
-					<h1 className="font-amiri text-2xl font-bold">Smart Shopping List</h1>
+					<h2 className="font-amiri text-2xl font-bold">Smart Shopping List</h2>
 				</div>
 				{!!user && (
 					<div className="h-full flex flex-row items-center">
-						<NavLinks
+						<NavBarContent
 							lists={lists}
 							listPath={listPath}
 							setIsNavOpen={setIsNavOpen}
@@ -22,10 +22,10 @@ export function NavBar({ user, lists, listPath }) {
 				)}
 			</nav>
 
-			<nav className="h-12 w-full flex flex-row justify-between lg:hidden relative shadow-md bg-offWhite">
+			<nav className="h-12 w-full flex flex-row justify-between lg:hidden relative shadow-md text-darkPurple bg-offWhite">
 				{/* MOBILE-MENU */}
 				<div className="h-full flex items-center pl-12">
-					<h1 className="font-amiri text-2xl font-bold">Smart Shopping List</h1>
+					<h2 className="font-amiri text-2xl font-bold">Smart Shopping List</h2>
 				</div>
 				{!!user && (
 					<div className="flex items-center h-full pr-4">
@@ -33,16 +33,17 @@ export function NavBar({ user, lists, listPath }) {
 						<button
 							className="space-y-2"
 							onClick={() => setIsNavOpen((prev) => !prev)}
+							alt="toggle menu"
 						>
-							<span className="block h-0.5 w-8 bg-darkPurple"></span>
-							<span className="block h-0.5 w-8 bg-darkPurple"></span>
-							<span className="block h-0.5 w-8 bg-darkPurple"></span>
+							<span className="block  w-8 text-darkPurple">
+								<i className="fa-solid fa-bars"></i>
+							</span>
 						</button>
 
 						<div
 							className={
 								isNavOpen
-									? 'z-20 h-screen w-screen block absolute  bg-offWhite left-0 top-0'
+									? 'z-20 h-screen w-screen block absolute text-darkPurple bg-offWhite left-0 top-0'
 									: 'hidden'
 							}
 						>
@@ -50,6 +51,7 @@ export function NavBar({ user, lists, listPath }) {
 							<button
 								className="absolute top-0 right-0 px-8 py-8"
 								onClick={() => setIsNavOpen(false)}
+								alt="close menu"
 							>
 								<span className="text-darkPurple">
 									<i className="fa-solid fa-xmark"></i>
@@ -57,7 +59,7 @@ export function NavBar({ user, lists, listPath }) {
 							</button>
 							{/* NAVIGATION-MOBILE-OPEN */}
 							<div className="h-full flex flex-col pt-12 justify-center	items-center">
-								<NavLinks
+								<NavBarContent
 									lists={lists}
 									listPath={listPath}
 									setIsNavOpen={setIsNavOpen}

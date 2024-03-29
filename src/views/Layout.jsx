@@ -2,15 +2,14 @@ import { Outlet } from 'react-router-dom';
 
 import './Layout.css';
 import { auth } from '../api/config.js';
-import { SignInButton, useAuth } from '../api/useAuth.jsx';
-import { NavBar } from '../components/NavBar.jsx';
-import { SignOutButton } from '../api/useAuth.jsx';
+import { SignIn, useAuth } from '../api/useAuth.jsx';
+import { NavBar } from '../components/NavBar/NavBar.jsx';
 
 export function Layout({ lists, listPath }) {
 	const { user } = useAuth();
 
 	const handleClickSignIn = () => {
-		SignInButton();
+		SignIn();
 	};
 
 	return (
@@ -29,8 +28,6 @@ export function Layout({ lists, listPath }) {
 				{!!user ? (
 					<>
 						<p>{`Welcome ${user?.displayName}`}</p>
-						{/* <button onClick={SignOutButton()}>sign out</button> */}
-						{/* <SignOutButton /> */}
 					</>
 				) : (
 					<>
