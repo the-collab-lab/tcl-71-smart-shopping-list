@@ -56,11 +56,11 @@ export function ListItem({
 					</span>
 				</div>
 				<button
-					className="px-1 text-darkPurple"
+					className="px-2 text-darkPurple"
 					onClick={() => handleDelete(listPath, itemId, name)}
 					aria-label={`Delete ${name}`}
 				>
-					<i className="fa-solid fa-x fa-2xs"></i>
+					<i className="fa-solid fa-x fa-xs"></i>
 				</button>
 			</li>
 		</div>

@@ -42,7 +42,7 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	}
 
 	return (
-		<div className="text-center flex-column py-2">
+		<div className="text-center flex-column py-2 min-w-96">
 			<h1 className="font-amiri text-4xl text-darkPurple p-8">{path}</h1>
 
 			{data.length === 0 ? (
