@@ -14,9 +14,9 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="h-dvh w-screen xl:w-9/12	 flex flex-col m-auto	 text-poppins">
+		<div className="min-h-dvh w-screen xl:w-9/12 flex flex-col m-auto text-poppins">
 			<NavBar user={user} lists={lists} listPath={listPath} />
-			<main className="h-full w-full">
+			<main className="h-full w-full pb-4">
 				{!!user ? (
 					<Outlet />
 				) : (
