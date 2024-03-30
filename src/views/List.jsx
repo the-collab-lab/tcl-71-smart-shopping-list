@@ -42,22 +42,22 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	}
 
 	return (
-		<div className="text-center flex-column ">
-			<h1 className="font-amiri text-4xl text-darkPurple p-6">{path}</h1>
+		<div className="text-center flex-column py-2">
+			<h1 className="font-amiri text-4xl text-darkPurple p-8">{path}</h1>
 
 			{data.length === 0 ? (
-				<div className="text-2xl py-6">
-					<p className="py-5 text-darkPurple font-poppins">
+				<div className="text-2xl py-8">
+					<p className="pb-12 text-darkPurple font-poppins">
 						This is your new list. There are no items added yet...
 					</p>
-					<p className="py-6 text-darkPurple font-poppins">
+					<p className="pb-12 text-darkPurple font-poppins">
 						You can now add items, specify when you need to purchase them,
 						and/or share the list with other users
 					</p>
 					<ListButtons></ListButtons>
 				</div>
 			) : (
-				<div>
+				<div className="py-8">
 					<SearchList data={sortedList} setNewList={setNewList} />
 					<ListButtons></ListButtons>
 					{categoryArray.map((category, i) => (
