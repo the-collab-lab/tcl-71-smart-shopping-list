@@ -18,7 +18,10 @@ export function ListItem({
 		return;
 	};
 	return (
-		<div className="bg-lightGrey hover:bg-sky-700 rounded-lg p-5 my-3 font-poppins">
+		<div
+			href="/"
+			className="bg-lightGrey hover:bg-white rounded-lg p-5 my-3 font-poppins"
+		>
 			<li className="flex items-center justify-between">
 				<div>
 					<label className="flex items-center justify-center">
@@ -31,16 +34,18 @@ export function ListItem({
 								id={itemId}
 								// checked={isRecentlyPurchased}
 								// disabled={isRecentlyPurchased}
-								className="group absolute size-4 focus:bg-violet-600"
+								className="peer absolute size-4 opacity-0"
 							/>
+
 							<svg
-								width="40"
-								height="40"
+								width="22"
+								height="22"
 								version="1.1"
+								fill="white"
 								xmlns="http://www.w3.org/2000/svg"
-								className="fill-darkPurple"
+								className="rounded-xl fill-white stroke-2 stroke-darkPurple peer-focus:ring-2 ring-blue-900 peer-checked:fill-darkPurple"
 							>
-								<circle cx="10" cy="10" r="10" />
+								<circle cx="11" cy="11" r="10" />
 							</svg>
 						</div>
 						<span className=" group-focus:text-darkPurple">{`Mark ${name} as purchased`}</span>
