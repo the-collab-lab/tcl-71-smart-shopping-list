@@ -30,18 +30,18 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 	}
 
 	return (
-		<li className="mb-10 bg-lightRurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple relative text-2xl md:text-regular">
+		<li className="mb-8 bg-lightRurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out relative text-lg sm:text-xl md:text-regular">
 			<button
 				onClick={handleClick}
-				className="w-full px-10 py-4 overflow-x-hidden"
+				className="w-full px-4 py-2 overflow-x-hidden hover:bg-darkPurple rounded-md"
 			>
 				{name}
 			</button>
 			<button
-				className="transition ease-in-out hover:text-alertRed focus:text-alertRed px-10 py-4 absolute right-0 bg-lightRurple hover:bg-darkPurple"
+				className="rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed px-4 py-2 absolute right-0 bg-lightRurple hover:bg-darkPurple"
 				onClick={() => handleDelete(userId, userEmail, path, name)}
-				aria-label="Delete List"
-				title="Delete List"
+				aria-label={`Delete ${name} List`}
+				title={`Delete ${name} List`}
 			>
 				<i className="fa-solid fa-trash"></i>
 			</button>

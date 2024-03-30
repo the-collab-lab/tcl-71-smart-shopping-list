@@ -59,7 +59,10 @@ const ListForm = (props) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="flex gap-8 text-2xl">
+		<form
+			onSubmit={handleSubmit}
+			className="flex flex-col sm:flex-row gap-4 text-base sm:text-lg"
+		>
 			<input
 				aria-label="Type a new list name"
 				type="text"
@@ -68,11 +71,11 @@ const ListForm = (props) => {
 				value={newList}
 				onChange={(event) => handleInputChange(event)}
 				onClick={(event) => handleKeyPressed(event)}
-				className="grow bg-puurWhite border border-darkPurple rounded-md shadow-lg px-2 sm:px-6 py-4 placeholder:text-darkPurple"
+				className="grow shrink bg-puurWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 			/>
 			<button
 				type="submit"
-				className="bg-lightRurple text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 sm:px-6 py-4 gap-6 shrink-0"
+				className="bg-lightRurple text-puurWhite flex justify-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
 			>
 				<div>
 					<i className="fa-solid fa-plus"></i>
