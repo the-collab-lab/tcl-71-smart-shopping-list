@@ -42,11 +42,11 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	}
 
 	return (
-		<div className="text-center flex-column py-2 min-w-96">
+		<div className="text-center flex flex-col py-2 min-w-96 justify-center items-center align-center m-auto">
 			<h1 className="font-amiri text-4xl text-darkPurple p-8">{path}</h1>
 
 			{data.length === 0 ? (
-				<div className="text-2xl py-8">
+				<div className="text-2xl py-8 md:w-2/4 w-3/4">
 					<p className="pb-12 text-darkPurple font-poppins">
 						This is your new list. There are no items added yet...
 					</p>
@@ -57,7 +57,7 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 					<ListButtons></ListButtons>
 				</div>
 			) : (
-				<div className="py-8">
+				<div className="py-8 md:w-2/4 w-3/4">
 					<SearchList data={sortedList} setNewList={setNewList} />
 					<ListButtons></ListButtons>
 					{categoryArray.map((category, i) => (
