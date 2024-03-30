@@ -7,12 +7,12 @@ export function Home({ data, setListPath, userId, userEmail }) {
 	const [message, setMessage] = useState('');
 
 	return (
-		<div className="mx-auto max-w-2xl flex flex-col text-center">
+		<div className="my-16 mx-auto max-w-2xl flex flex-col text-center text-darkPurple font-poppins">
 			<h1 className="font-amiri text-4xl mb-10">All My Lists</h1>
 			<p className="mb-20 text-3xl">
 				{data[0]
-					? 'Select the list you need to use today or create a new one'
-					: 'Start by creating a list'}
+					? 'Select the list you need to use today or create a new one.'
+					: 'Start by creating a list.'}
 			</p>
 
 			{data[0] && (
