@@ -35,7 +35,7 @@ export const SearchList = ({ data, setNewList }) => {
 				/>
 				<button
 					onClick={(e) => resetInput(e)}
-					aria-label="clear"
+					aria-label="clear the search bar"
 					className="border rounded-sm h-7 px-1  absolute end-5 flex items-center"
 				>
 					<i className="fa-solid fa-x fa-2xs"></i>
