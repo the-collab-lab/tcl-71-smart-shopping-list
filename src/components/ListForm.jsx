@@ -68,7 +68,7 @@ const ListForm = (props) => {
 				value={newList}
 				onChange={(event) => handleInputChange(event)}
 				onClick={(event) => handleKeyPressed(event)}
-				className="grow bg-puurWhite border border-darkPurple rounded-md shadow-lg px-2 sm:px-6 py-4"
+				className="grow bg-puurWhite border border-darkPurple rounded-md shadow-lg px-2 sm:px-6 py-4 placeholder:text-darkPurple"
 			/>
 			<button
 				type="submit"
