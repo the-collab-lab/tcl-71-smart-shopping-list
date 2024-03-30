@@ -1,4 +1,3 @@
-import './Home.css';
 import { SingleList } from '../components';
 import { useState } from 'react';
 import ListForm from '../components/ListForm';
@@ -8,10 +7,19 @@ export function Home({ data, setListPath, userId, userEmail }) {
 	const [message, setMessage] = useState('');
 
 	return (
-		<div className="Home">
-			{!!data[0] ? (
-				<>
-					<h3>My lists</h3>
+		<div className="my-16 mx-auto max-w-xl flex flex-col text-center text-darkPurple font-poppins px-4">
+			<h1 className="font-amiri text-2xl sm:text-3xl mb-10">All My Lists</h1>
+			<p className="mb-16 text-xl sm:text-2xl">
+				{data[0]
+					? 'Select the list you need to use today or create a new one.'
+					: 'Start by creating a list.'}
+			</p>
+
+			{data[0] && (
+				<section className="mb-20">
+					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
+						SELECT A LIST
+					</h2>
 					<ul>
 						{data.map((list, i) => (
 							<SingleList
@@ -24,13 +32,13 @@ export function Home({ data, setListPath, userId, userEmail }) {
 							/>
 						))}
 					</ul>
-					<h3>Create a new list</h3>
-				</>
-			) : (
-				<h3>Start by creating a list</h3>
+				</section>
 			)}
 
-			<div className="Home__form">
+			<section>
+				<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
+					CREATE A NEW LIST
+				</h2>
 				<ListForm
 					setMessage={setMessage}
 					setListPath={setListPath}
@@ -38,8 +46,8 @@ export function Home({ data, setListPath, userId, userEmail }) {
 					userEmail={userEmail}
 					data={data}
 				/>
-				{message !== '' && <ErrorMessage errorMessage={message} />}
-			</div>
+				{message && <ErrorMessage errorMessage={message} />}
+			</section>
 		</div>
 	);
 }
