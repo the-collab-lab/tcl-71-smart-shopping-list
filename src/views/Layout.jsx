@@ -4,6 +4,7 @@ import './Layout.css';
 import { auth } from '../api/config.js';
 import { SignIn, useAuth } from '../api/useAuth.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
+import Groceries from '../assets/groceries.png';
 
 export function Layout({ lists, listPath }) {
 	const { user } = useAuth();
@@ -13,37 +14,33 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="h-dvh flex flex-col text-poppins">
+		<div className="h-dvh w-screen xl:w-9/12	 flex flex-col m-auto	 text-poppins">
 			<NavBar user={user} lists={lists} listPath={listPath} />
-			<header className="Layout-header">
-				{/* Example how to use the font families and the colors with tailwindCSS */}
-				{/* example how to use awesome font. To style the icon, wrap it around a span and use tailwindCSS */}
-				<span className="text-alertRed">
-					<i className="fa-solid fa-trash"></i>
-					<i className="fa-solid fa-share-nodes"></i>
-					<i className="fa-solid fa-plus"></i>
-					<i className="fa-solid fa-xmark"></i>
-				</span>
-
+			<main className="h-full w-full">
 				{!!user ? (
-					<>
-						<p>{`Welcome ${user?.displayName}`}</p>
-					</>
+					<Outlet />
 				) : (
-					<>
-						<h3>Log in to begin using the shopping list app</h3>
-						<button
-							className="font-poppins text-lg"
-							type="button"
-							onClick={handleClickSignIn}
-						>
-							Sign In
-						</button>
-						{/* <SignInButton /> */}
-					</>
+					<div className="h-full w-full flex justify-center pt-10 lg:pt-0 lg:flex-row relative">
+						<div className="lg:w-fit flex flex-col items-center	 lg:top-36 lg:left-44 lg:absolute">
+							<h3 className="w-96 font-amiri text-4xl text-darkPurple leading-[3.5rem]	">
+								Simplify your shopping with{' '}
+								<span className="font-semibold">SmartShoppingList</span>, the
+								intuitive list organizer.
+							</h3>
+							<button
+								className="w-80 mt-8 p-2 rounded-md font-poppins text-lg  text-puurWhite bg-lightPurple"
+								type="button"
+								onClick={handleClickSignIn}
+							>
+								Sign in to start
+							</button>
+						</div>
+						<div className="hidden lg:flex lg:w-5/12 right-10 bottom-10 absolute justify-end justify-end ">
+							<img src={Groceries} width={400} height={400} alt="groceries" />
+						</div>
+					</div>
 				)}
-			</header>
-			<main className="Layout-main">{!!user ? <Outlet /> : null}</main>
+			</main>
 		</div>
 	);
 }
