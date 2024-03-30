@@ -5,6 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { updateItem, comparePurchaseUrgency } from '../api/firebase';
 import { isMoreThanADayAgo } from '../utils';
 import Loading from '../components/Loading';
+import ListButtons from '../components/ListButtons';
 
 export function List({ data, lists, listPath, isLoadingListData }) {
 	const [newList, setNewList] = useState([]);
@@ -53,51 +54,12 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 						You can now add items, specify when you need to purchase them,
 						and/or share the list with other users
 					</p>
-
-					<div className="grid grid-cols-3 gap-x-2 py-6">
-						<button
-							className="flex items-center justify-center bg-lightPurple rounded-lg col-span-2 py-5"
-							onClick={() => navigate('/manage-list')}
-						>
-							<i class="fa-solid fa-plus inverse"></i>
-
-							<span className="ps-2 text-white text-lg font-poppins">
-								Add item
-							</span>
-						</button>
-						<button
-							className="flex items-center justify-center bg-white border rounded-lg col-span-1"
-							onClick={() => navigate('/manage-list')}
-						>
-							<i class="fa-solid fa-share-nodes"></i>
-
-							<span className="ps-2 text-lg font-poppins">Share list</span>
-						</button>
-					</div>
+					<ListButtons></ListButtons>
 				</div>
 			) : (
 				<div>
 					<SearchList data={sortedList} setNewList={setNewList} />
-					<div className="grid grid-cols-3 gap-x-2 py-6">
-						<button
-							className="flex items-center justify-center bg-lightPurple rounded-lg col-span-2 py-5 hover:opacity-75"
-							onClick={() => navigate('/manage-list')}
-						>
-							<i class="fa-solid fa-plus inverse"></i>
-
-							<span className="ps-2 text-white text-lg font-poppins">
-								Add item
-							</span>
-						</button>
-						<button
-							className="flex items-center justify-center bg-white border rounded-lg col-span-1"
-							onClick={() => navigate('/manage-list')}
-						>
-							<i class="fa-solid fa-share-nodes"></i>
-
-							<span className="ps-2 text-lg font-poppins">Share list</span>
-						</button>
-					</div>
+					<ListButtons></ListButtons>
 					{categoryArray.map((category, i) => (
 						<ContainerItems
 							key={i}
