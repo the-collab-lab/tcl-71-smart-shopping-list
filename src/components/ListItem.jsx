@@ -17,6 +17,7 @@ export function ListItem({
 		}
 		return;
 	};
+
 	return (
 		<div
 			href="/"
@@ -51,7 +52,9 @@ export function ListItem({
 						<span className="sr-only">{`Mark ${name} as purchased`}</span>
 					</label>
 
-					<span className="{{ isRecentlyPurchased ? 'line-through text-lightGrey' : 'text-darkPurple' }} text-darkPurple text-lg ps-5">
+					<span
+						className={`text-lg ps-5 text-darkPurple ${isRecentlyPurchased && 'line-through'}`}
+					>
 						{name}
 					</span>
 				</div>
