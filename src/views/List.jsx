@@ -54,12 +54,12 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 						You can now add items, specify when you need to purchase them,
 						and/or share the list with other users
 					</p>
-					<ListButtons></ListButtons>
+					<ListButtons colorAdd={'purple'} colorShare={'white'}></ListButtons>
 				</div>
 			) : (
 				<div className="py-8 md:w-2/4 w-3/4">
 					<SearchList data={sortedList} setNewList={setNewList} />
-					<ListButtons></ListButtons>
+					<ListButtons colorAdd={'white'} colorShare={'white'}></ListButtons>
 					{categoryArray.map((category, i) => (
 						<ContainerItems
 							key={i}

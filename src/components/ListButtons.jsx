@@ -1,27 +1,42 @@
 import { useNavigate } from 'react-router-dom';
-const ListButtons = () => {
+const ListButtons = (props) => {
 	const navigate = useNavigate();
+
+	const buttonVariants = {
+		purple: 'flex items-center justify-center rounded-lg bg-lightPurple',
+		white:
+			'flex items-center justify-center  rounded-lg bg-white border text-darkPurple',
+	};
+
+	const iconVariants = {
+		purple: 'fa-inverse',
+		white: '',
+	};
+
+	const textVariants = {
+		purple: 'ps-2 text-lg text-offWhite font-poppins',
+		white: 'ps-2 text-lg text-darkPurple font-poppins',
+	};
+
 	return (
 		<div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 py-6">
 			<button
-				className="flex items-center justify-center bg-lightPurple rounded-lg sm:col-span-2  py-5"
+				className={`sm:col-span-2  py-5 ${buttonVariants[props.colorAdd]}`}
 				onClick={() => navigate('/manage-list')}
 			>
-				<i class="fa-solid fa-plus fa-inverse"></i>
+				<i class={`${iconVariants[props.colorAdd]} fa-solid fa-plus `}></i>
 
-				<span className="ps-2 text-lg text-offWhite font-poppins">
-					Add item
-				</span>
+				<span className={`${textVariants[props.colorAdd]}`}>Add item</span>
 			</button>
 			<button
-				className="flex items-center justify-center bg-white border rounded-lg sm:col-span-1  text-darkPurple"
+				className={`sm:col-span-1  ${buttonVariants[props.colorShare]}`}
 				onClick={() => navigate('/manage-list')}
 			>
-				<i class="fa-solid fa-share-nodes"></i>
+				<i
+					class={`${iconVariants[props.colorShare]} fa-solid fa-share-nodes`}
+				></i>
 
-				<span className="ps-2 text-lg text-darkPurple font-poppins">
-					Share list
-				</span>
+				<span className={`${textVariants[props.colorShare]}`}>Share list</span>
 			</button>
 		</div>
 	);
