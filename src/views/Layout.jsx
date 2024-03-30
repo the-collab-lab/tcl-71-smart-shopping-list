@@ -1,6 +1,4 @@
 import { Outlet } from 'react-router-dom';
-
-import './Layout.css';
 import { auth } from '../api/config.js';
 import { SignIn, useAuth } from '../api/useAuth.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
