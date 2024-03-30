@@ -36,9 +36,9 @@ export const SearchList = ({ data, setNewList }) => {
 				<button
 					onClick={(e) => resetInput(e)}
 					aria-label="clear"
-					className="border rounded-lg px-2  absolute end-5 top-2.5"
+					className="border rounded-sm h-7 px-1  absolute end-5 flex items-center"
 				>
-					<i className="fa-solid fa-x fa-xs"></i>
+					<i className="fa-solid fa-x fa-2xs"></i>
 				</button>
 			</div>
 		</form>
