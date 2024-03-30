@@ -14,13 +14,13 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="min-h-dvh w-screen xl:w-9/12 flex flex-col m-auto text-poppins">
+		<div className="min-h-dvh w-screen xl:w-9/12 flex flex-col m-auto text-poppins relative">
 			<NavBar user={user} lists={lists} listPath={listPath} />
 			<main className="h-full w-full pb-4">
 				{!!user ? (
 					<Outlet />
 				) : (
-					<div className="h-full w-full flex justify-center pt-10 lg:pt-0 lg:flex-row relative">
+					<div className="h-full w-full flex justify-center pt-10 lg:pt-0 lg:flex-row ">
 						<div className="lg:w-fit flex flex-col items-center	 lg:top-36 lg:left-44 lg:absolute">
 							<h3 className="w-96 font-amiri text-4xl text-darkPurple leading-[3.5rem]	">
 								Simplify your shopping with{' '}

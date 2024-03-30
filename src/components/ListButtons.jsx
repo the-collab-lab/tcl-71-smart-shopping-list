@@ -24,7 +24,7 @@ const ListButtons = (props) => {
 				className={`sm:col-span-2  py-5 ${buttonVariants[props.colorAdd]}`}
 				onClick={() => navigate('/manage-list')}
 			>
-				<i class={`${iconVariants[props.colorAdd]} fa-solid fa-plus `}></i>
+				<i className={`${iconVariants[props.colorAdd]} fa-solid fa-plus `}></i>
 
 				<span className={`${textVariants[props.colorAdd]}`}>Add item</span>
 			</button>
@@ -33,7 +33,7 @@ const ListButtons = (props) => {
 				onClick={() => navigate('/manage-list')}
 			>
 				<i
-					class={`${iconVariants[props.colorShare]} fa-solid fa-share-nodes`}
+					className={`${iconVariants[props.colorShare]} fa-solid fa-share-nodes`}
 				></i>
 
 				<span className={`${textVariants[props.colorShare]}`}>Share list</span>
