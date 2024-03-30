@@ -3,13 +3,27 @@
 @tailwind utilities;
 
 @font-face {
-	font-family: 'Poppins Regular';
-	src: url('../public/fonts/Poppins/Poppins-Regular.ttf');
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(../public/fonts/Poppins/Poppins-Regular.ttf);
 }
 
 @font-face {
-	font-family: 'Amiri Regular';
-	src: url('../public/fonts/Amiri/Amiri-Regular.ttf');
+	font-family: 'Poppins';
+	font-style: bold;
+	font-weight: 900;
+	font-display: swap;
+	src: url(../public/fonts/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+	font-family: 'Amiri';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(../public/fonts/Amiri/Amiri-Regular.ttf);
 }
 
 :root {

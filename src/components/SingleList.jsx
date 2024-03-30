@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import './SingleList.css';
 import { deleteList } from '../api/firebase';
 
 export function SingleList({ userEmail, name, path, setListPath, userId }) {
@@ -31,13 +30,20 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 	}
 
 	return (
-		<li className="SingleList">
-			<button onClick={handleClick}>{name}</button>
+		<li className="mb-8 bg-lightRurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out relative text-lg sm:text-xl md:text-regular">
 			<button
-				className="List__delete-button"
-				onClick={() => handleDelete(userId, userEmail, path, name)}
+				onClick={handleClick}
+				className="w-full px-4 py-2 overflow-x-hidden hover:bg-darkPurple rounded-md"
 			>
-				Delete List
+				{name}
+			</button>
+			<button
+				className="rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed px-4 py-2 absolute right-0 bg-lightRurple hover:bg-darkPurple"
+				onClick={() => handleDelete(userId, userEmail, path, name)}
+				aria-label={`Delete ${name} List`}
+				title={`Delete ${name} List`}
+			>
+				<i className="fa-solid fa-trash"></i>
 			</button>
 		</li>
 	);
