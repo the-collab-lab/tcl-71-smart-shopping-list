@@ -12,13 +12,13 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="min-h-dvh w-screen xl:w-9/12 flex flex-col m-auto text-poppins relative">
+		<div className="h-dvh max-w-screen flex flex-col text-poppins ">
 			<NavBar user={user} lists={lists} listPath={listPath} />
-			<main className="h-full w-full pb-4">
+			<main className="h-full w-full lg:pt-16  pb-4 xl:w-9/12  xl:mx-auto">
 				{!!user ? (
 					<Outlet />
 				) : (
-					<div className="h-full w-full flex justify-center pt-10 lg:pt-0 lg:flex-row ">
+					<div className="h-full w-full flex justify-center pt-10 lg:pt-0 lg:flex-row relative">
 						<div className="lg:w-fit flex flex-col items-center	 lg:top-36 lg:left-44 lg:absolute">
 							<h3 className="w-96 font-amiri text-4xl text-darkPurple leading-[3.5rem]	">
 								Simplify your shopping with{' '}
@@ -33,7 +33,7 @@ export function Layout({ lists, listPath }) {
 								Sign in to start
 							</button>
 						</div>
-						<div className="hidden lg:flex lg:w-5/12 right-10 bottom-10 absolute justify-end justify-end ">
+						<div className="hidden lg:flex w-5/12 right-10 bottom-10 absolute justify-end justify-end ">
 							<img src={Groceries} width={400} height={400} alt="groceries" />
 						</div>
 					</div>
