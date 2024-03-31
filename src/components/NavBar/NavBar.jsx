@@ -7,19 +7,23 @@ export function NavBar({ user, lists, listPath }) {
 	return (
 		<>
 			{/* DESKTOP MENU */}
-			<nav className="h-16 hidden lg:flex flex-row shadow-md justify-between items-center bg-offWhite text-darkPurple">
-				<div className="h-full flex items-center pl-12">
-					<h2 className="font-amiri text-2xl font-bold">Smart Shopping List</h2>
-				</div>
-				{!!user && (
-					<div className="h-full flex flex-row items-center">
-						<NavBarContent
-							lists={lists}
-							listPath={listPath}
-							setIsNavOpen={setIsNavOpen}
-						/>
+			<nav className="h-16 hidden fixed z-20 w-full lg:flex shadow-md bg-offWhite text-darkPurple">
+				<div className="h-full w-full flex flex-row justify-between items-center xl:w-9/12 xl:mx-auto ">
+					<div className="h-full flex items-center pl-12">
+						<h2 className="font-amiri text-2xl font-bold">
+							Smart Shopping List
+						</h2>
 					</div>
-				)}
+					{!!user && (
+						<div className="h-full flex flex-row items-center">
+							<NavBarContent
+								lists={lists}
+								listPath={listPath}
+								setIsNavOpen={setIsNavOpen}
+							/>
+						</div>
+					)}
+				</div>
 			</nav>
 
 			<nav className="h-12 w-full flex flex-row justify-between lg:hidden relative shadow-md text-darkPurple bg-offWhite">
