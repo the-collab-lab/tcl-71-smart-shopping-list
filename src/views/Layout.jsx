@@ -44,7 +44,7 @@ export function Layout({ lists, listPath }) {
 				)}
 			</header>
 			<main className="Layout-main">{!!user ? <Outlet /> : null}</main>
-			<footer className="w-full lg:flex bg-offWhite text-darkPurple p-4 font-poppins text-2xl">
+			<footer className="w-full fixed bottom-0 lg:flex bg-offWhite text-darkPurple p-4 font-poppins text-xl">
 				<span>
 					<a
 						href="https://github.com/the-collab-lab/tcl-71-smart-shopping-list/tree/main"
