@@ -44,6 +44,40 @@ export function Layout({ lists, listPath }) {
 				)}
 			</header>
 			<main className="Layout-main">{!!user ? <Outlet /> : null}</main>
+			<footer className="w-full lg:flex bg-offWhite text-darkPurple p-4 font-poppins text-2xl">
+				<span>
+					<a
+						href="https://github.com/the-collab-lab/tcl-71-smart-shopping-list/tree/main"
+						className="ps-8"
+						aria-label="Source code on GitHub"
+						target="blank"
+					>
+						<i className="fa-brands fa-github pe-2"></i>
+					</a>
+					Built by{' '}
+					<a href="https://www.linkedin.com/in/borjamarticalvo/" target="blank">
+						Borja
+					</a>
+					,{' '}
+					<a
+						href="https://www.linkedin.com/in/celinelecorvaisier/"
+						target="blank"
+					>
+						Céline
+					</a>
+					,{' '}
+					<a
+						href="https://www.linkedin.com/in/judith-kraziewicz/"
+						target="blank"
+					>
+						Judith
+					</a>{' '}
+					and{' '}
+					<a href="https://www.linkedin.com/in/viviana-yanez/" target="blank">
+						Viviana
+					</a>
+				</span>
+			</footer>
 		</div>
 	);
 }
