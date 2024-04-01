@@ -53,14 +53,14 @@ export function Layout({ lists, listPath }) {
 					>
 						<i className="fa-brands fa-github pe-2"></i>
 					</a>
-					Built by
+					Built by&nbsp;
 					<span>
 						<a
 							href="https://www.linkedin.com/in/borjamarticalvo/"
 							target="blank"
 							className=" hover:underline"
 						>
-							&nbsp;Borja
+							Borja
 						</a>
 						,&nbsp;
 						<a
