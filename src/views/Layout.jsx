@@ -45,48 +45,49 @@ export function Layout({ lists, listPath }) {
 				)}
 			</main>
 			<footer className="w-full fixed bottom-0  bg-offWhite text-darkPurple p-4 font-poppins text-xl">
-				<span className="min-w-96 flex flex-nowrap">
+				<div className="ps-8">
 					<a
 						href="https://github.com/the-collab-lab/tcl-71-smart-shopping-list/tree/main"
-						className="ps-8"
 						aria-label="Source code on GitHub"
 						target="blank"
 					>
 						<i className="fa-brands fa-github pe-2"></i>
 					</a>
-					Built by &nbsp;
-					<a
-						href="https://www.linkedin.com/in/borjamarticalvo/"
-						target="blank"
-						className=" hover:underline"
-					>
-						Borja
-					</a>
-					,&nbsp;
-					<a
-						href="https://www.linkedin.com/in/celinelecorvaisier/"
-						target="blank"
-						className=" hover:underline"
-					>
-						Céline
-					</a>
-					,&nbsp;
-					<a
-						href="https://www.linkedin.com/in/judith-kraziewicz/"
-						target="blank"
-						className=" hover:underline"
-					>
-						Judith
-					</a>
-					&nbsp; and &nbsp;
-					<a
-						href="https://www.linkedin.com/in/viviana-yanez/"
-						target="blank"
-						className=" hover:underline"
-					>
-						Viviana
-					</a>
-				</span>
+					Built by
+					<span>
+						<a
+							href="https://www.linkedin.com/in/borjamarticalvo/"
+							target="blank"
+							className=" hover:underline"
+						>
+							&nbsp;Borja
+						</a>
+						,&nbsp;
+						<a
+							href="https://www.linkedin.com/in/celinelecorvaisier/"
+							target="blank"
+							className=" hover:underline"
+						>
+							Céline
+						</a>
+						,&nbsp;
+						<a
+							href="https://www.linkedin.com/in/judith-kraziewicz/"
+							target="blank"
+							className=" hover:underline"
+						>
+							Judith
+						</a>
+						&nbsp; and &nbsp;
+						<a
+							href="https://www.linkedin.com/in/viviana-yanez/"
+							target="blank"
+							className=" hover:underline"
+						>
+							Viviana
+						</a>
+					</span>
+				</div>
 			</footer>
 		</div>
 	);
