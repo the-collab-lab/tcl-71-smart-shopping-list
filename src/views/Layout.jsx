@@ -12,14 +12,14 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="h-dvh max-w-screen flex flex-col text-poppins ">
+		<div className="max-w-screen flex flex-col text-poppins min-w-96 ">
 			<NavBar user={user} lists={lists} listPath={listPath} />
 			<main className="w-full lg:pt-16  pb-12 xl:w-9/12  xl:mx-auto">
 				{!!user ? (
 					<Outlet />
 				) : (
-					<div className="h-full w-full flex justify-center pt-10 lg:pt-0 lg:flex-row relative">
-						<div className="lg:w-fit flex flex-col items-center	 lg:top-36 lg:left-44 lg:absolute">
+					<div className="flex justify-evenly m-20 lg:pt-0 lg:flex-row">
+						<div className="lg:w-fit flex flex-col items-center	ps-10">
 							<h3 className="w-96 font-amiri text-4xl text-darkPurple leading-[3.5rem]	">
 								Simplify your shopping with{' '}
 								<span className="font-semibold">SmartShoppingList</span>, the
@@ -33,14 +33,19 @@ export function Layout({ lists, listPath }) {
 								Sign in to start
 							</button>
 						</div>
-						<div className="hidden lg:flex w-5/12 right-10 bottom-10 absolute justify-end justify-end ">
-							<img src={Groceries} width={400} height={400} alt="groceries" />
+						<div className="hidden lg:flex w-5/12 pt-10 ">
+							<img
+								src={Groceries}
+								width={400}
+								height={400}
+								alt="Illustration of a person with a shopping cart holding a fruit with one hand and a mobile with an open shopping app in the background"
+							/>
 						</div>
 					</div>
 				)}
 			</main>
-			<footer className="w-full fixed bottom-0 lg:flex bg-offWhite text-darkPurple p-4 font-poppins text-xl">
-				<span>
+			<footer className="w-full fixed bottom-0  bg-offWhite text-darkPurple p-4 font-poppins text-xl">
+				<span className="min-w-96 flex flex-nowrap">
 					<a
 						href="https://github.com/the-collab-lab/tcl-71-smart-shopping-list/tree/main"
 						className="ps-8"
@@ -49,26 +54,36 @@ export function Layout({ lists, listPath }) {
 					>
 						<i className="fa-brands fa-github pe-2"></i>
 					</a>
-					Built by{' '}
-					<a href="https://www.linkedin.com/in/borjamarticalvo/" target="blank">
+					Built by &nbsp;
+					<a
+						href="https://www.linkedin.com/in/borjamarticalvo/"
+						target="blank"
+						className=" hover:underline"
+					>
 						Borja
 					</a>
-					,{' '}
+					,&nbsp;
 					<a
 						href="https://www.linkedin.com/in/celinelecorvaisier/"
 						target="blank"
+						className=" hover:underline"
 					>
 						Céline
 					</a>
-					,{' '}
+					,&nbsp;
 					<a
 						href="https://www.linkedin.com/in/judith-kraziewicz/"
 						target="blank"
+						className=" hover:underline"
 					>
 						Judith
-					</a>{' '}
-					and{' '}
-					<a href="https://www.linkedin.com/in/viviana-yanez/" target="blank">
+					</a>
+					&nbsp; and &nbsp;
+					<a
+						href="https://www.linkedin.com/in/viviana-yanez/"
+						target="blank"
+						className=" hover:underline"
+					>
 						Viviana
 					</a>
 				</span>
