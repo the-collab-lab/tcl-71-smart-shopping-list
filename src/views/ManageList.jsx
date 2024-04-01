@@ -101,62 +101,87 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 				</p>
 			</div>
 			<section className="mb-20 pb-20">
-				<div className="ManageList__form">
-					<form method="post" onSubmit={handleSubmit}>
-						<label className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 my-8">
+				<div className="flex flex-col">
+					<form method="post" onSubmit={handleSubmit} className="flex flex-col">
+						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
 							ADD A NEW ITEM
-							<input
-								type="text"
-								placeholder="Type a new item name"
-								name="item"
-								className="my-5 grow shrink bg-puurWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
-								onChange={() => setAddItemErrMessage('')}
-							></input>
-						</label>
-						<div className="my-5 grow shrink bg-puurWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple">
-							<label htmlFor="time-select">
-								Choose item's likely need date
-							</label>
-							<select name="time" id="time-select ">
-								<option value="soon">Soon (within 7 days)</option>
-								<option value="soonIsh">Soon-ish (in 14 days)</option>
-								<option value="notSoon">Not soon (in 30 days)</option>
-							</select>
+						</h2>
+
+						<input
+							aria-label="Add a new item"
+							type="text"
+							placeholder="Type a new item name"
+							name="item"
+							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+							onChange={() => setAddItemErrMessage('')}
+						></input>
+						<div className="flex flex-row">
+							<div className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple">
+								<select
+									name="time"
+									id="time-select "
+									aria-label="When do you need this item?"
+								>
+									<option value="none" selected disabled hidden>
+										When do you need it?
+									</option>
+
+									<option value="soon">Soon (within 7 days)</option>
+									<option value="soonIsh">Soon-ish (in 14 days)</option>
+									<option value="notSoon">Not soon (in 30 days)</option>
+								</select>
+							</div>
+							<button
+								type="submit"
+								className="flex items-center justify-center  gap-6 rounded-lg bg-lightPurple border-lightPurple text-offWhite"
+							>
+								<span>
+									<i class="fa-solid fa-plus"></i>
+								</span>
+								Add
+							</button>
 						</div>
-						<button
-							type="submit"
-							className="flex items-center justify-center  rounded-lg bg-darkPurple border-darkPurple text-offWhite"
-						>
-							Submit
-						</button>
 					</form>
 					{addItemErrMessage !== '' && (
 						<ErrorMessage errorMessage={addItemErrMessage} />
 					)}
 				</div>
 			</section>
-			<section className="my-20">
-				<form method="post" onSubmit={sendInvite}>
-					<label
+			<section className="flex flex-col my-20">
+				<form
+					method="post"
+					onSubmit={sendInvite}
+					className="flex flex-col text-base sm:text-lg"
+				>
+					{/* <label
 						htmlFor="email"
 						className="my-8 text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2"
 					>
 						SHARE THE LIST
+					</label> */}
+					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
+						SHARE THE LIST
+					</h2>
+					<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-lg">
 						<input
+							aria-label="Share the list"
 							type="email"
 							name="email"
 							id="email"
 							placeholder="Share this list with another user"
-							className="my-5 grow shrink bg-puurWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							onChange={() => setShareListErrMessage('')}
 						></input>
-					</label>
-					<button
-						type="submit"
-						className="flex items-center justify-center  rounded-lg bg-white border-offWhite text-darkPurple"
-					>
-						Submit
-					</button>
+						<button
+							type="submit"
+							className="bg-offWhite  text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+						>
+							<span>
+								<i class="fa-solid fa-share-nodes"></i>
+							</span>
+							Share
+						</button>
+					</div>
 				</form>
 				{shareListErrMessage !== '' && (
 					<ErrorMessage errorMessage={shareListErrMessage} />
