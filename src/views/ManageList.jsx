@@ -112,18 +112,18 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							type="text"
 							placeholder="Type a new item name"
 							name="item"
-							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5"
 							onChange={() => setAddItemErrMessage('')}
 						></input>
 						<div className="flex flex-row">
-							<div className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple">
+							<div className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5 mr-5">
 								<select
 									name="time"
 									id="time-select "
 									aria-label="When do you need this item?"
 								>
 									<option value="none" selected disabled hidden>
-										When do you need it?
+										Choose item's likely need date
 									</option>
 
 									<option value="soon">Soon (within 7 days)</option>
@@ -133,7 +133,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							</div>
 							<button
 								type="submit"
-								className="flex items-center justify-center  gap-6 rounded-lg bg-lightPurple border-lightPurple text-offWhite"
+								className="flex items-center justify-center  gap-6 rounded-lg bg-lightPurple border-lightPurple text-offWhite my-5 px-5"
 							>
 								<span>
 									<i class="fa-solid fa-plus"></i>
