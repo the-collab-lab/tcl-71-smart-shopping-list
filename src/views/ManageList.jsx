@@ -100,7 +100,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					Add new items and share your list with other users
 				</p>
 			</div>
-			<section className="mb-20 pb-20">
+			<section className="flex flex-col">
 				<div className="flex flex-col">
 					<form method="post" onSubmit={handleSubmit} className="flex flex-col">
 						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
