@@ -15,7 +15,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
 		console.log(listPath[i]);
-		if (listPath[i] == '/') {
+		if (listPath[i] === '/') {
 			displayName = listPath.slice(i + 1);
 			break;
 		}
