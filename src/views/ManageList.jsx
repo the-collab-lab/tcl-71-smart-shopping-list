@@ -12,6 +12,14 @@ import {
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
+	let displayName;
+	for (let i = 0; i < listPath.length; i++) {
+		console.log(listPath[i]);
+		if (listPath[i] == '/') {
+			displayName = listPath.slice(i + 1);
+			break;
+		}
+	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -94,7 +102,8 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 
 	return (
 		<div className="my-16 flex flex-col text-center items-center text-darkPurple font-poppins px-4">
-			<h1 className="font-amiri text-4xl text-darkPurple p-8">{listPath}</h1>
+			<h1 className="font-amiri text-4xl text-darkPurple p-8">{displayName}</h1>
+			{console.log(listPath)}
 			<div className="text-xl mx-auto py-8 md:w-2/4 w-3/4">
 				<p className="pb-12 text-darkPurple font-poppins">
 					Add new items and share your list with other users
