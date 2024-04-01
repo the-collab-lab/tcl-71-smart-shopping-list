@@ -12,6 +12,14 @@ import {
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
+	let displayName;
+	for (let i = 0; i < listPath.length; i++) {
+		console.log(listPath[i]);
+		if (listPath[i] === '/') {
+			displayName = listPath.slice(i + 1);
+			break;
+		}
+	}
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -93,49 +101,102 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	}
 
 	return (
-		<div className="ManageList">
-			<p>
-				Hello from the <code>/manage-list</code> page!
-			</p>
-			<div className="ManageList__form">
-				<form method="post" onSubmit={handleSubmit}>
-					<label>
-						Add item
+		<div className="my-16 flex flex-col text-center items-center text-darkPurple font-poppins px-4">
+			<h1 className="font-amiri text-4xl text-darkPurple p-8">{displayName}</h1>
+			{console.log(listPath)}
+			<div className="text-xl mx-auto py-8 md:w-2/4 w-3/4">
+				<p className="pb-12 text-darkPurple font-poppins">
+					Add new items and share your list with other users
+				</p>
+			</div>
+			<section className="flex flex-col">
+				<div className="flex flex-col">
+					<form method="post" onSubmit={handleSubmit} className="flex flex-col">
+						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
+							ADD A NEW ITEM
+						</h2>
+
 						<input
+							aria-label="Add a new item"
 							type="text"
+							placeholder="Type a new item name"
 							name="item"
+							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5"
 							onChange={() => setAddItemErrMessage('')}
 						></input>
-					</label>
-					<label htmlFor="time-select">When do I need it?</label>
-					<select name="time" id="time-select">
-						<option value="soon">Soon (within 7 days)</option>
-						<option value="soonIsh">Soon-ish (in 14 days)</option>
-						<option value="notSoon">Not soon (in 30 days)</option>
-					</select>
-					<button type="submit">Submit</button>
-				</form>
-				{addItemErrMessage !== '' && (
-					<ErrorMessage errorMessage={addItemErrMessage} />
-				)}
-			</div>
-			<div className="ManageList__form">
-				<form method="post" onSubmit={sendInvite}>
-					<label htmlFor="email">
-						Share List with another user
+						<div className="flex flex-row">
+							<div>
+								<select
+									name="time"
+									id="time-select "
+									aria-label="When do you need this item?"
+									className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5 mr-5"
+								>
+									<option value="none" selected disabled hidden>
+										Choose item's likely need date
+									</option>
+
+									<option value="soon">Soon (within 7 days)</option>
+									<option value="soonIsh">Soon-ish (in 14 days)</option>
+									<option value="notSoon">Not soon (in 30 days)</option>
+								</select>
+							</div>
+							<button
+								type="submit"
+								className="flex items-center justify-center  gap-6 rounded-lg bg-lightPurple border-lightPurple text-offWhite my-5 px-5"
+							>
+								<span>
+									<i class="fa-solid fa-plus"></i>
+								</span>
+								Add
+							</button>
+						</div>
+					</form>
+					{addItemErrMessage !== '' && (
+						<ErrorMessage errorMessage={addItemErrMessage} />
+					)}
+				</div>
+			</section>
+			<section className="flex flex-col my-20">
+				<form
+					method="post"
+					onSubmit={sendInvite}
+					className="flex flex-col text-base sm:text-lg"
+				>
+					{/* <label
+						htmlFor="email"
+						className="my-8 text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2"
+					>
+						SHARE THE LIST
+					</label> */}
+					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
+						SHARE THE LIST
+					</h2>
+					<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl">
 						<input
+							aria-label="Share the list"
 							type="email"
 							name="email"
 							id="email"
+							placeholder="Share this list with another user"
+							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							onChange={() => setShareListErrMessage('')}
 						></input>
-					</label>
-					<button type="submit">Submit</button>
+						<button
+							type="submit"
+							className="bg-offWhite  text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+						>
+							<span>
+								<i class="fa-solid fa-share-nodes"></i>
+							</span>
+							Share
+						</button>
+					</div>
 				</form>
 				{shareListErrMessage !== '' && (
 					<ErrorMessage errorMessage={shareListErrMessage} />
 				)}
-			</div>
+			</section>
 		</div>
 	);
 }
