@@ -75,7 +75,7 @@ const ListForm = (props) => {
 			/>
 			<button
 				type="submit"
-				className="bg-lightPurple text-puurWhite flex justify-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+				className="bg-lightPurple text-puurWhite flex justify-center shadow-lg rounded-md transition ease-in-out hover:bg-hoverPurple px-4 py-2 gap-6 shrink-0"
 			>
 				<div>
 					<i className="fa-solid fa-plus"></i>

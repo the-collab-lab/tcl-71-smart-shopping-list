@@ -13,6 +13,7 @@ export default {
 			offWhite: '#FCFAFA' /* background header & footer */,
 			lightPurple: '#6966A8' /* background buttons & checkout boxes */,
 			alertRed: '#d52c2c' /* alert */,
+			hoverPurple: '#565384' /* transition from lightPurple on hover */,
 		},
 		screens: {
 			sm: '640px',

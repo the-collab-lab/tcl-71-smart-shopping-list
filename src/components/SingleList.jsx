@@ -30,15 +30,15 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 	}
 
 	return (
-		<li className="mb-8 bg-lightPurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out relative text-lg sm:text-xl md:text-regular">
+		<li className="mb-8 bg-lightPurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out relative text-lg sm:text-xl md:text-regular hover:bg-hoverPurple">
 			<button
 				onClick={handleClick}
-				className="w-full px-4 py-2 overflow-x-hidden hover:bg-darkPurple rounded-md"
+				className="w-full px-4 py-2 overflow-x-hidden rounded-md"
 			>
 				{name}
 			</button>
 			<button
-				className="rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed px-4 py-2 absolute right-0 bg-lightPurple hover:bg-darkPurple"
+				className="rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed px-4 py-2"
 				onClick={() => handleDelete(userId, userEmail, path, name)}
 				aria-label={`Delete ${name} List`}
 				title={`Delete ${name} List`}
