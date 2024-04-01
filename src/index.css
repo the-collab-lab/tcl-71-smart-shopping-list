@@ -2,8 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(../public/fonts/Poppins/Poppins-Regular.ttf);
+}
+
+@font-face {
+	font-family: 'Poppins';
+	font-style: bold;
+	font-weight: 900;
+	font-display: swap;
+	src: url(../public/fonts/Poppins/Poppins-Bold.ttf);
+}
+
+@font-face {
+	font-family: 'Amiri';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(../public/fonts/Amiri/Amiri-Regular.ttf);
+}
+
 :root {
-	--color-black: hsla(220, 13%, 18%, 1);
+	/* --color-black: hsla(220, 13%, 18%, 1);
 	--color-gray-dark: hsla(220, 13%, 25%, 1);
 	--color-white: hsla(210, 20%, 98%, 1);
 	--color-gray-light: hsla(220, 13%, 94%, 1);
@@ -20,24 +44,24 @@
 	--color-border: hsla(220, 13%, 32%, 1);
 	--color-error: var(--color-red);
 	--color-text: var(--color-white);
-	--color-checked: var(--color-gray-medium-dark);
+	--color-checked: var(--color-gray-medium-dark); */
 }
 
 @media screen and (prefers-color-scheme: light) {
 	:root {
-		--color-accent: var(--color-cobalt-blue);
+		/* --color-accent: var(--color-cobalt-blue);
 		--color-bg: var(--color-white);
 		--color-border: hsla(220, 13%, 78%, 1);
 		--color-text: var(--color-black);
-		--color-checked: var(--color-gray-medium-light);
+		--color-checked: var(--color-gray-medium-light); */
 	}
 }
 
 :root.theme-light {
-	--color-accent: var(--color-cobalt-blue);
+	/* --color-accent: var(--color-cobalt-blue);
 	--color-bg: var(--color-white);
 	--color-border: hsla(220, 13%, 78%, 1);
-	--color-text: var(--color-black);
+	--color-text: var(--color-black); */
 }
 
 *,
@@ -51,6 +75,7 @@
  */
 body {
 	height: 100dvh;
+	box-sizing: border-box;
 }
 
 /**
@@ -59,7 +84,7 @@ body {
  * (The default is 16px. 16 * 62.5% = 10)
  */
 html {
-	font-size: 62.5%;
+	font-size: 16px;
 }
 
 body {
@@ -87,12 +112,12 @@ body {
 }
 
 code {
-	--color-bg: var(--color-gray-dark);
-	--color-text: var(--color-accent);
+	/* --color-bg: var(--color-gray-dark);
+	--color-text: var(--color-accent); */
 
-	background-color: var(--color-bg);
+	/* background-color: var(--color-bg); */
 	border-radius: 4px;
-	color: var(--color-text);
+	/* color: var(--color-text); */
 	display: inline-block;
 	font-family:
 		Menlo,
@@ -107,10 +132,10 @@ code {
 
 @media screen and (prefers-color-scheme: light) {
 	code {
-		--color-bg: var(--color-gray-light);
+		/* --color-bg: var(--color-gray-light); */
 	}
 }
 
 :root.theme-light code {
-	--color-bg: var(--color-gray-light);
+	/* --color-bg: var(--color-gray-light); */
 }

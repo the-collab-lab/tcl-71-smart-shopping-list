@@ -23,16 +23,24 @@ export const SearchList = ({ data, setNewList }) => {
 
 	return (
 		<form>
-			<label htmlFor="search">Search item</label>
-			<input
-				id="search"
-				type="text"
-				onChange={(e) => handleFiltering(e)}
-				value={value}
-			/>
-			<button onClick={(e) => resetInput(e)} aria-label="clear search bar">
-				x
-			</button>
+			<div className="relative flex items-center ">
+				<input
+					className="bg-white border rounded-lg col-span-1 w-full	font-poppins text-base p-5 "
+					id="search"
+					type="text"
+					onChange={(e) => handleFiltering(e)}
+					value={value}
+					aria-label="Search item"
+					placeholder="Search an item"
+				/>
+				<button
+					onClick={(e) => resetInput(e)}
+					aria-label="clear the search bar"
+					className="border rounded-sm h-7 px-1  absolute end-5 flex items-center"
+				>
+					<i className="fa-solid fa-x fa-2xs"></i>
+				</button>
+			</div>
 		</form>
 	);
 };

@@ -59,16 +59,29 @@ const ListForm = (props) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit}>
-			<label htmlFor="new list name">Name new list</label>
+		<form
+			onSubmit={handleSubmit}
+			className="flex flex-col sm:flex-row gap-4 text-base sm:text-lg"
+		>
 			<input
+				aria-label="Type a new list name"
 				type="text"
 				id="new list name"
+				placeholder="Type a new list name"
 				value={newList}
 				onChange={(event) => handleInputChange(event)}
 				onClick={(event) => handleKeyPressed(event)}
+				className="grow shrink bg-puurWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 			/>
-			<button type="submit">Create list</button>
+			<button
+				type="submit"
+				className="bg-lightPurple text-puurWhite flex justify-center shadow-lg rounded-md transition ease-in-out hover:bg-hoverPurple px-4 py-2 gap-6 shrink-0"
+			>
+				<div>
+					<i className="fa-solid fa-plus"></i>
+				</div>
+				Create List
+			</button>
 		</form>
 	);
 };
