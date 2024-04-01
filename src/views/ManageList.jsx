@@ -125,11 +125,12 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							onChange={() => setAddItemErrMessage('')}
 						></input>
 						<div className="flex flex-row">
-							<div className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5 mr-5">
+							<div>
 								<select
 									name="time"
 									id="time-select "
 									aria-label="When do you need this item?"
+									className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5 mr-5"
 								>
 									<option value="none" selected disabled hidden>
 										Choose item's likely need date
