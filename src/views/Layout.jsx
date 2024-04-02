@@ -2,6 +2,8 @@ import { Outlet } from 'react-router-dom';
 import { auth } from '../api/config.js';
 import { SignIn, useAuth } from '../api/useAuth.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
+import { useState } from 'react';
+import Loading from '../components/Loading';
 import Groceries from '../assets/groceries.png';
 
 export function Layout({ lists, listPath }) {
