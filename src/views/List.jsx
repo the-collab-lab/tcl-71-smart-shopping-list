@@ -44,7 +44,7 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	return (
 		<div className="text-center flex flex-col py-2 min-w-96 justify-center items-center align-center mx-auto">
 			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple p-8">
-				{path}
+				{path[0].toUpperCase() + path.slice(1)}
 			</h1>
 
 			{data.length === 0 ? (

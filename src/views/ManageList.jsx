@@ -14,7 +14,6 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
-		console.log(listPath[i]);
 		if (listPath[i] === '/') {
 			displayName = listPath.slice(i + 1);
 			break;
@@ -103,9 +102,8 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	return (
 		<div className="my-16 flex flex-col text-center items-center text-darkPurple font-poppins px-4">
 			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple p-8">
-				{displayName}
+				{displayName[0].toUpperCase() + displayName.slice(1)}
 			</h1>
-			{console.log(listPath)}
 			<div className="mx-auto py-8 md:w-2/4 w-3/4">
 				<p className="pb-12 text-darkPurple font-poppins text-xl sm:text-2xl">
 					Add new items and share your list with other users
