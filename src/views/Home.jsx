@@ -7,7 +7,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 	const [message, setMessage] = useState('');
 
 	return (
-		<div className="my-16 mx-auto max-w-xl flex flex-col text-center text-darkPurple font-poppins px-4">
+		<div className="pt-16 pb-24 mx-auto max-w-xl flex flex-col text-center text-darkPurple font-poppins px-4">
 			<h1 className="font-amiri text-2xl sm:text-3xl mb-10">All My Lists</h1>
 			<p className="mb-16 text-xl sm:text-2xl">
 				{data[0]
@@ -36,7 +36,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 			)}
 
 			<section>
-				<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
+				<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8 ">
 					CREATE A NEW LIST
 				</h2>
 				<ListForm

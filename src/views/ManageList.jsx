@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
-import './ManageList.css';
 import ErrorMessage from '../components/ErrorMessage';
 import {
 	inputHasValue,
@@ -101,15 +100,14 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	}
 
 	return (
-		<div className="my-16 flex flex-col text-center items-center text-darkPurple font-poppins px-4">
-			<h1 className="font-amiri text-4xl text-darkPurple p-8">{displayName}</h1>
-			{console.log(listPath)}
-			<div className="text-xl mx-auto py-8 md:w-2/4 w-3/4">
+		<div className="pt-16 pb-24 mx-auto max-w-xl flex flex-col text-center items-center text-darkPurple font-poppins px-4">
+			<h1 className="font-amiri text-4xl text-darkPurple ">{displayName}</h1>
+			<div className="text-xl mx-auto py-8">
 				<p className="pb-12 text-darkPurple font-poppins">
 					Add new items and share your list with other users
 				</p>
 			</div>
-			<section className="flex flex-col">
+			<section className="flex flex-col w-full">
 				<div className="flex flex-col">
 					<form method="post" onSubmit={handleSubmit} className="flex flex-col">
 						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
@@ -121,29 +119,27 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							type="text"
 							placeholder="Type a new item name"
 							name="item"
-							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5"
+							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
 							onChange={() => setAddItemErrMessage('')}
 						></input>
-						<div className="flex flex-row">
-							<div>
-								<select
-									name="time"
-									id="time-select "
-									aria-label="When do you need this item?"
-									className="bag-4 bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple my-5 mr-5"
-								>
-									<option value="none" selected disabled hidden>
-										Choose item's likely need date
-									</option>
+						<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl">
+							<select
+								name="time"
+								id="time-select "
+								aria-label="When do you need this item?"
+								className="grow shrink  bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+							>
+								<option value="none" selected disabled hidden>
+									Choose item's likely need date
+								</option>
 
-									<option value="soon">Soon (within 7 days)</option>
-									<option value="soonIsh">Soon-ish (in 14 days)</option>
-									<option value="notSoon">Not soon (in 30 days)</option>
-								</select>
-							</div>
+								<option value="soon">Soon (within 7 days)</option>
+								<option value="soonIsh">Soon-ish (in 14 days)</option>
+								<option value="notSoon">Not soon (in 30 days)</option>
+							</select>
 							<button
 								type="submit"
-								className="flex items-center justify-center  gap-6 rounded-lg bg-lightPurple border-lightPurple text-offWhite my-5 px-5"
+								className="flex items-center justify-center shrink-0  gap-6 shadow-lg rounded-md bg-lightPurple hover:bg-hoverPurple text-offWhite transition ease-in-out px-4 py-2"
 							>
 								<span>
 									<i class="fa-solid fa-plus"></i>
@@ -157,18 +153,12 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					)}
 				</div>
 			</section>
-			<section className="flex flex-col my-20">
+			<section className="flex flex-col w-full my-20">
 				<form
 					method="post"
 					onSubmit={sendInvite}
 					className="flex flex-col text-base sm:text-lg"
 				>
-					{/* <label
-						htmlFor="email"
-						className="my-8 text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2"
-					>
-						SHARE THE LIST
-					</label> */}
 					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
 						SHARE THE LIST
 					</h2>
@@ -184,7 +174,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 						></input>
 						<button
 							type="submit"
-							className="bg-offWhite  text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+							className="bg-offWhite text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
 						>
 							<span>
 								<i class="fa-solid fa-share-nodes"></i>
