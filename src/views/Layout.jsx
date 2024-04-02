@@ -20,7 +20,7 @@ export function Layout({ lists, listPath }) {
 				) : (
 					<div className="flex justify-evenly m-20 lg:pt-0 lg:flex-row">
 						<div className="lg:w-fit flex flex-col items-center	ps-10">
-							<h1 className="w-96 font-amiri text-3xl sm:text-4xl text-darkPurple leading-[3rem] sm:leading-[3rem]">
+							<h1 className="max-w-sm font-amiri text-3xl sm:text-4xl text-darkPurple leading-[3rem] sm:leading-[3rem]">
 								Simplify your shopping with{' '}
 								<span className="font-semibold">SmartShoppingList</span>, the
 								intuitive list organizer.
