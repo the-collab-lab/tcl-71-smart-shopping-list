@@ -30,7 +30,7 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 	}
 
 	return (
-		<li className="mb-8 bg-lightPurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out relative text-lg sm:text-xl md:text-regular hover:bg-hoverPurple">
+		<li className="mb-8 bg-lightPurple w-full text-puurWhite flex justify-end shadow-lg rounded-md transition ease-in-out relative text-lg sm:text-xl hover:bg-hoverPurple">
 			<button
 				onClick={handleClick}
 				className="w-full px-4 py-2 overflow-x-hidden rounded-md"
