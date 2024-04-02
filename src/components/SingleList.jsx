@@ -16,6 +16,7 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 				)
 			) {
 				deleteList(user, email, listPath, listName);
+				setListPath('');
 			}
 			return;
 		}
@@ -25,6 +26,7 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 			)
 		) {
 			deleteList(user, email, listPath, listName);
+			setListPath('');
 		}
 		return;
 	}
