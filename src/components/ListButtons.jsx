@@ -5,7 +5,7 @@ const ListButtons = (props) => {
 	const buttonVariants = {
 		purple: 'flex items-center justify-center rounded-lg bg-lightPurple',
 		white:
-			'flex items-center justify-center  rounded-lg bg-white border text-darkPurple',
+			'flex items-center justify-center  rounded-lg bg-puurWhite border text-darkPurple',
 	};
 
 	const iconVariants = {
