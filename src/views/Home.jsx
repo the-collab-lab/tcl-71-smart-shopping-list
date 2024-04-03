@@ -35,7 +35,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 				</section>
 			)}
 
-			<section>
+			<section className="min-h-72 sm:min-h-52">
 				<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8 ">
 					CREATE A NEW LIST
 				</h2>

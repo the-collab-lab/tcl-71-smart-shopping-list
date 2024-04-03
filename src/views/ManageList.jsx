@@ -115,7 +115,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					Add new items and share your list with other users
 				</p>
 			</div>
-			<section className="flex flex-col w-full">
+			<section className="flex flex-col w-full min-h-80 sm:min-h-72">
 				<div className="flex flex-col">
 					<form
 						method="post"
@@ -169,7 +169,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					{addItemMessage !== '' && <Message message={addItemMessage} />}
 				</div>
 			</section>
-			<section className="flex flex-col w-full my-20">
+			<section className="flex flex-col w-full min-h-72 sm:min-h-52">
 				<form
 					method="post"
 					onSubmit={sendInvite}
