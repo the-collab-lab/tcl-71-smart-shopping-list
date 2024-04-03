@@ -7,7 +7,7 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url(../public/fonts/Poppins/Poppins-Regular.ttf);
+	src: url(../fonts/Poppins/Poppins-Regular.ttf);
 }
 
 @font-face {
@@ -15,7 +15,7 @@
 	font-style: bold;
 	font-weight: 900;
 	font-display: swap;
-	src: url(../public/fonts/Poppins/Poppins-Bold.ttf);
+	src: url(../fonts/Poppins/Poppins-Bold.ttf);
 }
 
 @font-face {
@@ -23,45 +23,7 @@
 	font-style: normal;
 	font-weight: 400;
 	font-display: swap;
-	src: url(../public/fonts/Amiri/Amiri-Regular.ttf);
-}
-
-:root {
-	/* --color-black: hsla(220, 13%, 18%, 1);
-	--color-gray-dark: hsla(220, 13%, 25%, 1);
-	--color-white: hsla(210, 20%, 98%, 1);
-	--color-gray-light: hsla(220, 13%, 94%, 1);
-	--color-gray-medium-dark: hsla(0, 0%, 72%, 1);
-	--color-gray-medium-light: hsla(222, 7%, 34%, 1);
-	--color-emerald-green: hsla(168, 92%, 25%, 1);
-	--color-vermillion-green: hsla(168, 92%, 43%, 1);
-	--color-cobalt-blue: hsla(215, 100%, 34%, 1);
-	--color-pastel-blue: hsla(215, 100%, 73%, 1);
-	--color-red: hsl(0, 68%, 42%);
-
-	--color-accent: var(--color-pastel-blue);
-	--color-bg: var(--color-black);
-	--color-border: hsla(220, 13%, 32%, 1);
-	--color-error: var(--color-red);
-	--color-text: var(--color-white);
-	--color-checked: var(--color-gray-medium-dark); */
-}
-
-@media screen and (prefers-color-scheme: light) {
-	:root {
-		/* --color-accent: var(--color-cobalt-blue);
-		--color-bg: var(--color-white);
-		--color-border: hsla(220, 13%, 78%, 1);
-		--color-text: var(--color-black);
-		--color-checked: var(--color-gray-medium-light); */
-	}
-}
-
-:root.theme-light {
-	/* --color-accent: var(--color-cobalt-blue);
-	--color-bg: var(--color-white);
-	--color-border: hsla(220, 13%, 78%, 1);
-	--color-text: var(--color-black); */
+	src: url(../fonts/Amiri/Amiri-Regular.ttf);
 }
 
 *,
@@ -79,17 +41,13 @@ body {
 }
 
 /**
- * Set the value of 1rem to 10px to make relative units
- * easier to work with.
- * (The default is 16px. 16 * 62.5% = 10)
+ * Keep 1 rem as 16px for better Tailwind integration.
  */
 html {
 	font-size: 16px;
 }
 
 body {
-	background-color: var(--color-bg);
-	color: var(--color-text);
 	font-family:
 		-apple-system,
 		BlinkMacSystemFont,
@@ -112,12 +70,7 @@ body {
 }
 
 code {
-	/* --color-bg: var(--color-gray-dark);
-	--color-text: var(--color-accent); */
-
-	/* background-color: var(--color-bg); */
 	border-radius: 4px;
-	/* color: var(--color-text); */
 	display: inline-block;
 	font-family:
 		Menlo,
@@ -128,14 +81,4 @@ code {
 		monospace;
 	font-size: 0.9em;
 	padding: 0.15em 0.15em;
-}
-
-@media screen and (prefers-color-scheme: light) {
-	code {
-		/* --color-bg: var(--color-gray-light); */
-	}
-}
-
-:root.theme-light code {
-	/* --color-bg: var(--color-gray-light); */
 }

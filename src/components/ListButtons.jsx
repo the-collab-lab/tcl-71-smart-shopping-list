@@ -5,7 +5,7 @@ const ListButtons = (props) => {
 	const buttonVariants = {
 		purple: 'flex items-center justify-center rounded-lg bg-lightPurple',
 		white:
-			'flex items-center justify-center  rounded-lg bg-puurWhite border text-darkPurple',
+			'flex items-center justify-center rounded-lg bg-white border text-darkPurple',
 	};
 
 	const iconVariants = {
@@ -14,12 +14,12 @@ const ListButtons = (props) => {
 	};
 
 	const textVariants = {
-		purple: 'ps-2 text-lg text-offWhite font-poppins',
-		white: 'ps-2 text-lg text-darkPurple font-poppins',
+		purple: 'ps-2 text-offWhite font-poppins',
+		white: 'ps-2 text-darkPurple font-poppins',
 	};
 
 	return (
-		<div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 py-6">
+		<div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 py-6 text-base sm:text-lg">
 			<button
 				className={`sm:col-span-2  py-5 ${buttonVariants[props.colorAdd]}`}
 				onClick={() => navigate('/manage-list')}

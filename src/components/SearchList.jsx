@@ -25,7 +25,7 @@ export const SearchList = ({ data, setNewList }) => {
 		<form>
 			<div className="relative flex items-center ">
 				<input
-					className="bg-puurWhite border text-darkPurple rounded-lg col-span-1 w-full	font-poppins text-base p-5 "
+					className="bg-white border rounded-lg col-span-1 w-full	font-poppins p-5 "
 					id="search"
 					type="text"
 					onChange={(e) => handleFiltering(e)}

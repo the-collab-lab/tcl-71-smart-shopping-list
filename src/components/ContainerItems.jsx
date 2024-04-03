@@ -22,7 +22,7 @@ export const ContainerItems = ({
 
 	return filteredItemsList[0] ? (
 		<section className="text-left">
-			<h2 className="font-poppins uppercase font-bold text-darkPurple pt-8">
+			<h2 className="font-poppins uppercase font-bold text-darkPurple pt-8 text-lg sm:text-xl">
 				{category}
 			</h2>
 			<ul>

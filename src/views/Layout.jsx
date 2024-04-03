@@ -20,13 +20,13 @@ export function Layout({ lists, listPath }) {
 				) : (
 					<div className="flex justify-evenly m-20 lg:pt-0 lg:flex-row">
 						<div className="lg:w-fit flex flex-col items-center	ps-10">
-							<h3 className="w-96 font-amiri text-4xl text-darkPurple leading-[3.5rem]	">
+							<h1 className="max-w-sm font-amiri text-3xl sm:text-4xl text-darkPurple leading-[3rem] sm:leading-[3rem]">
 								Simplify your shopping with{' '}
 								<span className="font-semibold">SmartShoppingList</span>, the
 								intuitive list organizer.
-							</h3>
+							</h1>
 							<button
-								className="w-80 mt-8 p-2 rounded-md font-poppins text-lg  text-puurWhite bg-lightPurple"
+								className="w-80 mt-8 p-2 rounded-md font-poppins text-base sm:text-lg  text-puurWhite bg-lightPurple"
 								type="button"
 								onClick={handleClickSignIn}
 							>
@@ -44,7 +44,7 @@ export function Layout({ lists, listPath }) {
 					</div>
 				)}
 			</main>
-			<footer className="w-full fixed bottom-0  bg-offWhite text-darkPurple p-4 font-poppins text-xl">
+			<footer className="w-full fixed bottom-0  bg-offWhite text-darkPurple p-4 font-poppins text-lg sm:text-xl">
 				<div className="ps-8">
 					<a
 						href="https://github.com/the-collab-lab/tcl-71-smart-shopping-list/tree/main"

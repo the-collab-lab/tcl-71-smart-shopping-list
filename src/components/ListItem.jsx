@@ -21,7 +21,7 @@ export function ListItem({
 	return (
 		<div
 			href="/"
-			className="bg-lightGrey hover:bg-white rounded-lg p-5 my-3 font-poppins"
+			className="bg-lightGrey hover:bg-white rounded-lg p-5 my-3 font-poppins text-base sm:text-lg"
 		>
 			<li className="flex items-center justify-between">
 				<div className=" flex items-center justify-start">
@@ -53,7 +53,7 @@ export function ListItem({
 					</label>
 
 					<span
-						className={`text-lg ps-5 text-darkPurple ${isRecentlyPurchased && 'line-through'}`}
+						className={`ps-5 text-darkPurple ${isRecentlyPurchased && 'line-through'}`}
 					>
 						{name}
 					</span>
