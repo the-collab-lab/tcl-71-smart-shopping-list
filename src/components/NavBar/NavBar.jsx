@@ -9,10 +9,11 @@ export function NavBar({ user, lists, listPath }) {
 			{/* DESKTOP MENU */}
 			<nav className="h-16 hidden fixed z-20 w-full lg:flex shadow-md bg-offWhite text-darkPurple text-lg sm:text-xl">
 				<div className="h-full w-full flex flex-row justify-between items-center xl:w-9/12 xl:mx-auto ">
-					<div className="h-full flex items-center pl-12">
-						<h2 className="font-amiri text-xl sm:text-2xl font-bold">
-							Smart Shopping List
+					<div className="h-full flex flex-col justify-center pl-12">
+						<h2 className="font-amiri text-2xl sm:text-3xl font-bold">
+							Despiensa
 						</h2>
+						<p className="text-xs font-poppins">Un-think your pantry</p>
 					</div>
 					{!!user && (
 						<div className="h-full flex flex-row items-center">
@@ -29,8 +30,8 @@ export function NavBar({ user, lists, listPath }) {
 			<nav className="h-12 w-full flex flex-row justify-between lg:hidden relative shadow-md text-darkPurple bg-offWhite text-lg sm:text-xl">
 				{/* MOBILE-MENU */}
 				<div className="h-full flex items-center pl-12">
-					<h2 className="font-amiri text-xl sm:text-2xl font-bold">
-						Smart Shopping List
+					<h2 className="font-amiri text-2xl sm:text-3xl font-bold">
+						Despiensa
 					</h2>
 				</div>
 				{!!user && (
