@@ -5,8 +5,7 @@ const ListButtons = (props) => {
 	const buttonVariants = {
 		purple: 'flex items-center justify-center rounded-md bg-lightPurple',
 		white:
-			'flex items-center justify-center  rounded-md bg-white border border-slate-300 text-darkPurple',
-		// 'flex items-center justify-center rounded-lg bg-white border text-darkPurple',
+			'flex items-center justify-center  rounded-md bg-lightGrey border text-darkPurple',
 	};
 
 	const iconVariants = {
@@ -15,10 +14,8 @@ const ListButtons = (props) => {
 	};
 
 	const textVariants = {
-		purple: 'text-base text-offWhite font-poppins',
-		white: 'text-base text-darkPurple font-poppins',
-		// purple: 'ps-2 text-offWhite font-poppins',
-		// white: 'ps-2 text-darkPurple font-poppins',
+		purple: 'text-base sm:text-lg text-offWhite font-poppins',
+		white: 'text-base sm:text-lg text-darkPurple font-poppins',
 	};
 
 	return (

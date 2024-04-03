@@ -42,8 +42,8 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	}
 
 	return (
-		<div className="flex flex-col py-16 px-4  max-w-xl justify-center items-center align-center mx-auto">
-			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple p-8">
+		<div className="flex flex-col pt-16 pb-24 px-4  max-w-xl justify-center items-center align-center mx-auto">
+			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple mb-10">
 				{path[0].toUpperCase() + path.slice(1)}
 			</h1>
 

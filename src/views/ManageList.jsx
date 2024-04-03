@@ -100,13 +100,9 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 
 	return (
 		<div className="pt-16 pb-24 mx-auto max-w-xl flex flex-col text-center items-center text-darkPurple font-poppins px-4">
-			{/* <h1 className="font-amiri text-4xl text-darkPurple ">{displayName}</h1> */}
-			{/* <p className="pb-12 text-darkPurple font-poppins"> */}
-			{/* <div className="my-16 flex flex-col text-center items-center text-darkPurple font-poppins px-4"> */}
-			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple">
+			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple mb-10">
 				{displayName[0].toUpperCase() + displayName.slice(1)}
 			</h1>
-			{/* <div className="mx-auto py-8 md:w-2/4 w-3/4"> */}
 			<div className="mx-auto py-8">
 				<p className="pb-12 text-darkPurple font-poppins text-xl sm:text-2xl">
 					Add new items and share your list with other users
@@ -128,7 +124,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							type="text"
 							placeholder="Type a new item name"
 							name="item"
-							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
+							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
 							onChange={() => setAddItemErrMessage('')}
 						></input>
 						<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl">
@@ -136,7 +132,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 								name="time"
 								id="time-select "
 								aria-label="When do you need this item?"
-								className="grow shrink  bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+								className="grow shrink  bg-lightGrey text-base sm:text-lg border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							>
 								<option value="none" selected disabled hidden>
 									Choose item's likely need date
@@ -148,10 +144,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							</select>
 							<button
 								type="submit"
-								className="flex items-center justify-center shrink-0  gap-6 shadow-lg rounded-md bg-lightPurple hover:bg-hoverPurple text-offWhite transition ease-in-out px-4 py-2"
+								className="flex items-center text-base sm:text-lg justify-center shrink-0  gap-6 shadow-lg rounded-md bg-lightPurple hover:bg-hoverPurple text-offWhite transition ease-in-out px-4 py-2"
 							>
 								<span>
-									<i class="fa-solid fa-plus"></i>
+									<i className="fa-solid fa-plus"></i>
 								</span>
 								Add
 							</button>
@@ -178,15 +174,15 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							name="email"
 							id="email"
 							placeholder="Share this list with another user"
-							className="grow shrink bg-offWhite border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							onChange={() => setShareListErrMessage('')}
 						></input>
 						<button
 							type="submit"
-							className="bg-offWhite text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+							className="bg-lightGrey text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
 						>
 							<span>
-								<i class="fa-solid fa-share-nodes"></i>
+								<i className="fa-solid fa-share-nodes"></i>
 							</span>
 							Share
 						</button>
