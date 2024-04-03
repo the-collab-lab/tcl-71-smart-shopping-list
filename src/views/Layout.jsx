@@ -12,7 +12,7 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="max-w-screen flex flex-col text-poppins min-w-96 ">
+		<div className="max-w-screen flex flex-col text-poppins min-w-96 bg-puurWhite min-h-screen">
 			<NavBar user={user} lists={lists} listPath={listPath} />
 			<main className="w-full lg:pt-16  pb-12 xl:w-9/12  xl:mx-auto">
 				{!!user ? (
