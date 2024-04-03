@@ -7,10 +7,10 @@ export function NavBar({ user, lists, listPath }) {
 	return (
 		<>
 			{/* DESKTOP MENU */}
-			<nav className="h-16 hidden fixed z-20 w-full lg:flex shadow-md bg-offWhite text-darkPurple">
+			<nav className="h-16 hidden fixed z-20 w-full lg:flex shadow-md bg-offWhite text-darkPurple text-lg sm:text-xl">
 				<div className="h-full w-full flex flex-row justify-between items-center xl:w-9/12 xl:mx-auto ">
 					<div className="h-full flex items-center pl-12">
-						<h2 className="font-amiri text-2xl font-bold">
+						<h2 className="font-amiri text-xl sm:text-2xl font-bold">
 							Smart Shopping List
 						</h2>
 					</div>
@@ -26,10 +26,12 @@ export function NavBar({ user, lists, listPath }) {
 				</div>
 			</nav>
 
-			<nav className="h-12 w-full flex flex-row justify-between lg:hidden relative shadow-md text-darkPurple bg-offWhite">
+			<nav className="h-12 w-full flex flex-row justify-between lg:hidden relative shadow-md text-darkPurple bg-offWhite text-lg sm:text-xl">
 				{/* MOBILE-MENU */}
 				<div className="h-full flex items-center pl-12">
-					<h2 className="font-amiri text-2xl font-bold">Smart Shopping List</h2>
+					<h2 className="font-amiri text-xl sm:text-2xl font-bold">
+						Smart Shopping List
+					</h2>
 				</div>
 				{!!user && (
 					<div className="flex items-center h-full pr-4">
@@ -62,7 +64,7 @@ export function NavBar({ user, lists, listPath }) {
 								</span>
 							</button>
 							{/* NAVIGATION-MOBILE-OPEN */}
-							<div className="h-full flex flex-col pt-12 justify-center	items-center">
+							<div className="h-full flex flex-col justify-center	items-center">
 								<NavBarContent
 									lists={lists}
 									listPath={listPath}
