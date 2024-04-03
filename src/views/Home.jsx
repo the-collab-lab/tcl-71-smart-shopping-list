@@ -16,7 +16,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 			</p>
 
 			{data[0] && (
-				<section className="mb-20">
+				<section className="mb-8">
 					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
 						SELECT A LIST
 					</h2>
@@ -35,7 +35,7 @@ export function Home({ data, setListPath, userId, userEmail }) {
 				</section>
 			)}
 
-			<section>
+			<section className="mb-8">
 				<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8 ">
 					CREATE A NEW LIST
 				</h2>

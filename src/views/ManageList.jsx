@@ -108,7 +108,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					Add new items and share your list with other users
 				</p>
 			</div>
-			<section className="flex flex-col w-full">
+			<section className="flex flex-col w-full mb-8">
 				<div className="flex flex-col">
 					<form
 						method="post"
@@ -127,12 +127,13 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
 							onChange={() => setAddItemErrMessage('')}
 						></input>
-						<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl">
+						{/* <div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl"> */}
+						<div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 text-base sm:text-lg">
 							<select
 								name="time"
 								id="time-select "
 								aria-label="When do you need this item?"
-								className="grow shrink  bg-lightGrey text-base sm:text-lg border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+								className="sm:col-span-2 gap-6  bg-lightGrey text-base sm:text-lg border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							>
 								<option value="none" selected disabled hidden>
 									Choose item's likely need date
@@ -144,7 +145,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							</select>
 							<button
 								type="submit"
-								className="flex items-center text-base sm:text-lg justify-center shrink-0  gap-6 shadow-lg rounded-md bg-lightPurple hover:bg-hoverPurple text-offWhite transition ease-in-out px-4 py-2"
+								className="sm:col-span-1 gap-6 flex items-center text-base sm:text-lg justify-center shadow-lg rounded-md bg-lightPurple hover:bg-hoverPurple text-offWhite transition ease-in-out px-4 py-2"
 							>
 								<span>
 									<i className="fa-solid fa-plus"></i>
@@ -158,7 +159,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					)}
 				</div>
 			</section>
-			<section className="flex flex-col w-full my-20">
+			<section className="flex flex-col w-full my-8">
 				<form
 					method="post"
 					onSubmit={sendInvite}
@@ -167,19 +168,19 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
 						SHARE THE LIST
 					</h2>
-					<div className="flex flex-col sm:flex-row gap-4">
+					<div className="grid sm:grid-cols-3 grid-cols-2 gap-x-2 text-base sm:text-lg">
 						<input
 							aria-label="Share the list"
 							type="email"
 							name="email"
 							id="email"
 							placeholder="Share this list with another user"
-							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
+							className="sm:col-span-2 bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							onChange={() => setShareListErrMessage('')}
 						></input>
 						<button
 							type="submit"
-							className="bg-lightGrey text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+							className="sm:col-span-1 flex bg-lightGrey text-darkPurple border border-darkPurple justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
 						>
 							<span>
 								<i className="fa-solid fa-share-nodes"></i>
