@@ -127,7 +127,6 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
 							onChange={() => setAddItemErrMessage('')}
 						></input>
-						{/* <div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl"> */}
 						<div className="grid sm:grid-cols-3 grid-cols-1 grid-rows-2 sm:grid-rows-1  gap-y-4 sm:gap-x-2  text-base sm:text-lg">
 							<select
 								name="time"
