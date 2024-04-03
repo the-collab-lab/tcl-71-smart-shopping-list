@@ -31,7 +31,7 @@ const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 						<div className="flex justify-center content-center flex-wrap gap-4 sm:gap8">
 							<button
 								onClick={onConfirm}
-								aria-label="Confirmar"
+								aria-label="Confirm"
 								className="flex items-center justify-center cursor-pointer border-2 hover:border-alertRed bg-none hover:bg-alertRed hover:text-puurWhite transition ease-in-out rounded-md text-base sm:text-lg text-alertRed px-4 py-2 gap-6 shadow-lg min-w-36 sm:min-w-40"
 							>
 								<i className="fa-solid fa-check"></i>
@@ -39,7 +39,7 @@ const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 							</button>
 							<button
 								onClick={onClose}
-								aria-label="Cancelar"
+								aria-label="Cancel"
 								ref={cancelRef}
 								className="flex items-center justify-center cursor-pointer border-2 border-lightPurple hover:border-hoverPurple bg-lightPurple hover:bg-hoverPurple transition ease-in-out rounded-md text-base sm:text-lg text-puurWhite px-4 py-2 gap-6 shadow-lg min-w-36 sm:min-w-40"
 							>
