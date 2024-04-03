@@ -43,10 +43,12 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 
 	return (
 		<div className="flex flex-col py-16 px-4  max-w-xl justify-center items-center align-center mx-auto">
-			<h1 className="font-amiri text-4xl text-darkPurple mb-10">{path}</h1>
+			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple p-8">
+				{path[0].toUpperCase() + path.slice(1)}
+			</h1>
 
 			{data.length === 0 ? (
-				<div className="text-2xl  md:w-2/4 w-3/4">
+				<div className="text-xl sm:text-2xl py-8 w-full">
 					<p className="pb-12 text-darkPurple font-poppins">
 						This is your new list. There are no items added yet...
 					</p>
@@ -54,12 +56,12 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 						You can now add items, specify when you need to purchase them,
 						and/or share the list with other users
 					</p>
-					<ListButtons colorAdd={'purple'} colorShare={'white'}></ListButtons>
+					<ListButtons colorAdd={'purple'} colorShare={'white'} />
 				</div>
 			) : (
-				<div className="py-8 w-full">
+				<div className="py-8 w-full text-base sm:text-lg">
 					<SearchList data={sortedList} setNewList={setNewList} />
-					<ListButtons colorAdd={'white'} colorShare={'white'}></ListButtons>
+					<ListButtons colorAdd={'white'} colorShare={'white'} />
 					{categoryArray.map((category, i) => (
 						<ContainerItems
 							key={i}

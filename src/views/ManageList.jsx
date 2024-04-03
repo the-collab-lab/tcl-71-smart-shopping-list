@@ -13,7 +13,6 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
-		console.log(listPath[i]);
 		if (listPath[i] === '/') {
 			displayName = listPath.slice(i + 1);
 			break;
@@ -101,15 +100,25 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 
 	return (
 		<div className="pt-16 pb-24 mx-auto max-w-xl flex flex-col text-center items-center text-darkPurple font-poppins px-4">
-			<h1 className="font-amiri text-4xl text-darkPurple ">{displayName}</h1>
-			<div className="text-xl mx-auto py-8">
-				<p className="pb-12 text-darkPurple font-poppins">
+			{/* <h1 className="font-amiri text-4xl text-darkPurple ">{displayName}</h1> */}
+			{/* <p className="pb-12 text-darkPurple font-poppins"> */}
+			{/* <div className="my-16 flex flex-col text-center items-center text-darkPurple font-poppins px-4"> */}
+			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple">
+				{displayName[0].toUpperCase() + displayName.slice(1)}
+			</h1>
+			{/* <div className="mx-auto py-8 md:w-2/4 w-3/4"> */}
+			<div className="mx-auto py-8">
+				<p className="pb-12 text-darkPurple font-poppins text-xl sm:text-2xl">
 					Add new items and share your list with other users
 				</p>
 			</div>
 			<section className="flex flex-col w-full">
 				<div className="flex flex-col">
-					<form method="post" onSubmit={handleSubmit} className="flex flex-col">
+					<form
+						method="post"
+						onSubmit={handleSubmit}
+						className="flex flex-col text-base sm:text-lg"
+					>
 						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
 							ADD A NEW ITEM
 						</h2>
@@ -162,7 +171,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
 						SHARE THE LIST
 					</h2>
-					<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl">
+					<div className="flex flex-col sm:flex-row gap-4">
 						<input
 							aria-label="Share the list"
 							type="email"
