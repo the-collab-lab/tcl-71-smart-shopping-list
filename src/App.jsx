@@ -26,7 +26,7 @@ export function App() {
 	 * This custom hook holds info about the current signed in user.
 	 * Check ./api/useAuth.jsx for its implementation.
 	 */
-	const { user } = useAuth();
+	const { user, isLoadingUser } = useAuth();
 	const userId = user?.uid;
 	const userEmail = user?.email;
 
@@ -45,7 +45,17 @@ export function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Layout listPath={listPath} lists={lists} />}>
+				<Route
+					path="/"
+					element={
+						<Layout
+							listPath={listPath}
+							lists={lists}
+							user={user}
+							isLoadingUser={isLoadingUser}
+						/>
+					}
+				>
 					<Route
 						index
 						element={

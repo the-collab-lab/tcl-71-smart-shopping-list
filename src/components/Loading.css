@@ -18,7 +18,7 @@
 .spinner {
 	width: 5rem; /* 1 */
 	padding: 0.5rem; /* 2 */
-	background: var(--color-accent); /* 3 */
+	background: #6966a8; /* 3 */
 
 	aspect-ratio: 1;
 	border-radius: 50%;
