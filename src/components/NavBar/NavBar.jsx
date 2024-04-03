@@ -64,7 +64,7 @@ export function NavBar({ user, lists, listPath }) {
 								</span>
 							</button>
 							{/* NAVIGATION-MOBILE-OPEN */}
-							<div className="h-full flex flex-col pt-12 justify-center	items-center">
+							<div className="h-full flex flex-col justify-center	items-center">
 								<NavBarContent
 									lists={lists}
 									listPath={listPath}

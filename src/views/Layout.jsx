@@ -12,14 +12,14 @@ export function Layout({ lists, listPath }) {
 	};
 
 	return (
-		<div className="max-w-screen flex flex-col text-poppins min-w-96 bg-puurWhite min-h-screen">
+		<div className="w-screen flex flex-col text-poppins min-w-96 bg-puurWhite">
 			<NavBar user={user} lists={lists} listPath={listPath} />
-			<main className="w-full lg:pt-16  pb-12 xl:w-9/12  xl:mx-auto">
+			<main className="h-screen w-full lg:pt-16 xl:w-9/12  xl:mx-auto">
 				{!!user ? (
 					<Outlet />
 				) : (
-					<div className="flex justify-evenly m-20 lg:pt-0 lg:flex-row">
-						<div className="lg:w-fit flex flex-col items-center	ps-10">
+					<div className="flex flex-col justify-items-center	pt-12 lg:justify-between lg:m-20 lg:pt-0 lg:flex-row">
+						<div className="lg:w-fit flex flex-col items-center">
 							<h1 className="max-w-sm font-amiri text-3xl sm:text-4xl text-darkPurple leading-[3rem] sm:leading-[3rem]">
 								Simplify your shopping with{' '}
 								<span className="font-semibold">SmartShoppingList</span>, the

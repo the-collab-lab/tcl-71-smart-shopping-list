@@ -42,13 +42,13 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	}
 
 	return (
-		<div className="text-center flex flex-col py-2 min-w-96 justify-center items-center align-center mx-auto">
-			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple p-8">
+		<div className="flex flex-col pt-16 pb-24 px-4  max-w-xl justify-center items-center align-center mx-auto">
+			<h1 className="font-amiri text-2xl sm:text-3xl text-darkPurple mb-10">
 				{path[0].toUpperCase() + path.slice(1)}
 			</h1>
 
 			{data.length === 0 ? (
-				<div className="text-xl sm:text-2xl py-8 md:w-2/4 w-3/4">
+				<div className="text-xl sm:text-2xl py-8 w-full">
 					<p className="pb-12 text-darkPurple font-poppins">
 						This is your new list. There are no items added yet...
 					</p>
@@ -59,7 +59,7 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 					<ListButtons colorAdd={'purple'} colorShare={'white'} />
 				</div>
 			) : (
-				<div className="py-8 md:w-2/4 w-3/4 text-base sm:text-lg">
+				<div className="py-8 w-full text-base sm:text-lg">
 					<SearchList data={sortedList} setNewList={setNewList} />
 					<ListButtons colorAdd={'white'} colorShare={'white'} />
 					{categoryArray.map((category, i) => (

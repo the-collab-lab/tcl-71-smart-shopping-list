@@ -25,7 +25,7 @@ export const SearchList = ({ data, setNewList }) => {
 		<form>
 			<div className="relative flex items-center ">
 				<input
-					className="bg-white border rounded-lg col-span-1 w-full	font-poppins p-5 "
+					className="bg-lightGrey border rounded-md col-span-1 w-full	shadow-lg font-poppins py-2 px-4 "
 					id="search"
 					type="text"
 					onChange={(e) => handleFiltering(e)}
@@ -36,9 +36,9 @@ export const SearchList = ({ data, setNewList }) => {
 				<button
 					onClick={(e) => resetInput(e)}
 					aria-label="clear the search bar"
-					className="border text-darkPurple rounded-sm h-7 px-1  absolute end-5 flex items-center"
+					className="border text-darkPurple rounded-sm h-6 px-1  absolute end-5 flex items-center"
 				>
-					<i className="fa-solid fa-x fa-2xs"></i>
+					<i className="fa-solid fa-x"></i>
 				</button>
 			</div>
 		</form>
