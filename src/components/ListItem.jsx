@@ -1,4 +1,4 @@
-import { deleteItem } from '../api/firebase';
+import DeleteItem from './DeleteItem';
 
 export function ListItem({
 	isRecentlyPurchased,
@@ -7,17 +7,6 @@ export function ListItem({
 	name,
 	updatePurchaseDate,
 }) {
-	const handleDelete = (listPath, itemId, itemName) => {
-		if (
-			window.confirm(
-				`Do you really want to delete ${itemName.toUpperCase()} from this list?`,
-			)
-		) {
-			deleteItem(listPath, itemId);
-		}
-		return;
-	};
-
 	return (
 		<div
 			href="/"
@@ -58,13 +47,7 @@ export function ListItem({
 						{name}
 					</span>
 				</div>
-				<button
-					className="px-2 text-darkPurple"
-					onClick={() => handleDelete(listPath, itemId, name)}
-					aria-label={`Delete ${name}`}
-				>
-					<i className="fa-solid fa-trash"></i>
-				</button>
+				<DeleteItem itemName={name} listPath={listPath} itemId={itemId} />
 			</li>
 		</div>
 	);

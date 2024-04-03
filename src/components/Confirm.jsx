@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import Loading from './Loading';
 
 const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 	const confirmRef = useRef(null);
@@ -14,33 +15,35 @@ const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 	}, [open]);
 
 	return (
-		<dialog className="dialog" ref={confirmRef} onClose={onClose}>
-			<div className="dialog__container">
-				<div className="dialog__header">
-					<h1 className="dialog__title">{title}</h1>
-				</div>
+		<dialog
+			className="rounded-md shadow-lg bg-puurWhite text-darkPurple"
+			ref={confirmRef}
+			onClose={onClose}
+		>
+			<div className="flex flex-col p-8 gap-8">
+				<h1 className="text-2xl sm:text-3xl">{title}</h1>
 
 				{loading ? (
-					<div className="loading-block">
-						<div className="spinner"></div>
-					</div>
+					<Loading />
 				) : (
 					<>
 						{children}
-						<div className="dialog__controls">
+						<div className="flex justify-center content-center flex-wrap gap-4 sm:gap8">
 							<button
 								onClick={onConfirm}
 								aria-label="Confirmar"
-								className="dialog__button dialog__button--alert"
+								className="flex items-center justify-center cursor-pointer border-2 hover:border-alertRed bg-none hover:bg-alertRed hover:text-puurWhite transition ease-in-out rounded-md text-base sm:text-lg text-alertRed px-4 py-2 gap-6 shadow-lg min-w-36 sm:min-w-40"
 							>
+								<i className="fa-solid fa-check"></i>
 								Confirm
 							</button>
 							<button
 								onClick={onClose}
 								aria-label="Cancelar"
 								ref={cancelRef}
-								className="dialog__button"
+								className="flex items-center justify-center cursor-pointer border-2 border-lightPurple hover:border-hoverPurple bg-lightPurple hover:bg-hoverPurple transition ease-in-out rounded-md text-base sm:text-lg text-puurWhite px-4 py-2 gap-6 shadow-lg min-w-36 sm:min-w-40"
 							>
+								<i className="fa-solid fa-x"></i>
 								Cancel
 							</button>
 						</div>

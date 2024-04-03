@@ -1,9 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import { auth } from '../api/config.js';
 import { SignIn, useAuth } from '../api/useAuth.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
-import { useState } from 'react';
-import Loading from '../components/Loading';
 import Groceries from '../assets/groceries.png';
 
 export function Layout({ lists, listPath }) {
@@ -16,7 +13,7 @@ export function Layout({ lists, listPath }) {
 	return (
 		<div className="w-screen flex flex-col text-poppins min-w-96 bg-puurWhite">
 			<NavBar user={user} lists={lists} listPath={listPath} />
-			<main className="h-screen w-full lg:pt-16 xl:w-9/12  xl:mx-auto">
+			<main className="min-h-screen w-full lg:pt-16 xl:w-9/12  xl:mx-auto">
 				{!!user ? (
 					<Outlet />
 				) : (
