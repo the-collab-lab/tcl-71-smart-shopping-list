@@ -3,9 +3,10 @@ const ListButtons = (props) => {
 	const navigate = useNavigate();
 
 	const buttonVariants = {
-		purple: 'flex items-center justify-center rounded-md bg-lightPurple',
+		purple:
+			'text-base sm:text-lg text-offWhite flex items-center justify-center rounded-md bg-lightPurple transition ease-in-out hover:bg-hoverPurple',
 		white:
-			'flex items-center justify-center  rounded-md bg-lightGrey border text-darkPurple',
+			'text-base sm:text-lg text-darkPurple flex items-center justify-center  rounded-md bg-lightGrey border text-darkPurple transition ease-in-out hover:bg-hoverPurple hover:text-offWhite',
 	};
 
 	const iconVariants = {
@@ -14,8 +15,8 @@ const ListButtons = (props) => {
 	};
 
 	const textVariants = {
-		purple: 'text-base sm:text-lg text-offWhite font-poppins',
-		white: 'text-base sm:text-lg text-darkPurple font-poppins',
+		purple: 'font-poppins',
+		white: ' font-poppins',
 	};
 
 	return (
@@ -24,19 +25,17 @@ const ListButtons = (props) => {
 				className={`sm:col-span-2  px-4 py-2 gap-6 shadow-lg ${buttonVariants[props.colorAdd]}`}
 				onClick={() => navigate('/manage-list')}
 			>
-				<i className={`${iconVariants[props.colorAdd]} fa-solid fa-plus `}></i>
+				<i className="fa-solid fa-plus"></i>
 
-				<span className={`${textVariants[props.colorAdd]}`}>Add item</span>
+				<span>Add item</span>
 			</button>
 			<button
 				className={`sm:col-span-1  gap-6 shadow-lg ${buttonVariants[props.colorShare]}`}
 				onClick={() => navigate('/manage-list')}
 			>
-				<i
-					className={`${iconVariants[props.colorShare]} fa-solid fa-share-nodes`}
-				></i>
+				<i className="fa-solid fa-share-nodes"></i>
 
-				<span className={`${textVariants[props.colorShare]}`}>Share list</span>
+				<span>Share list</span>
 			</button>
 		</div>
 	);

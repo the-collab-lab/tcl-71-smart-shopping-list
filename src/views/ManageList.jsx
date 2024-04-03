@@ -179,7 +179,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 						></input>
 						<button
 							type="submit"
-							className="bg-lightGrey text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-darkPurple px-4 py-2 gap-6 shrink-0"
+							className="bg-lightGrey text-darkPurple border border-darkPurple flex justify-center items-center shadow-lg rounded-md transition ease-in-out hover:bg-hoverPurple hover:text-puurWhite px-4 py-2 gap-6 shrink-0"
 						>
 							<span>
 								<i className="fa-solid fa-share-nodes"></i>
