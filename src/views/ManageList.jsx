@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 import ErrorMessage from '../components/ErrorMessage';
+import Message from '../components/Message';
 import {
 	inputHasValue,
 	inputHasOnlyNUmbers,
@@ -11,6 +12,8 @@ import {
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
+	const [addItemMessage, setAddItemMessage] = useState('');
+	const [shareListMessage, setShareListMessage] = useState('');
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
 		if (listPath[i] === '/') {
@@ -52,9 +55,9 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
 		if (response) {
-			alert(`${itemName} added to the list!`);
+			setAddItemMessage(`${itemName} added to the list!`);
 		} else {
-			alert(`${itemName} couldn't be added to the list...`);
+			setAddItemMessage(`${itemName} couldn't be added to the list...`);
 		}
 
 		form.reset();
@@ -93,7 +96,11 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		const response = await shareList(listPath, userId, email);
 
 		if (response) {
-			alert(shareListMessages[response.code]);
+			if (response.code === 'ok') {
+				setShareListMessage(shareListMessages[response.code]);
+			} else {
+				setShareListErrMessage(shareListMessages[response.code]);
+			}
 		}
 		mailForm.reset();
 	}
@@ -125,7 +132,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							placeholder="Type a new item name"
 							name="item"
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
-							onChange={() => setAddItemErrMessage('')}
+							onChange={() => {
+								setAddItemErrMessage('');
+								setAddItemMessage('');
+							}}
 						></input>
 						<div className="flex flex-col sm:flex-row gap-4 text-base sm:text-2xl">
 							<select
@@ -156,6 +166,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					{addItemErrMessage !== '' && (
 						<ErrorMessage errorMessage={addItemErrMessage} />
 					)}
+					{addItemMessage !== '' && <Message message={addItemMessage} />}
 				</div>
 			</section>
 			<section className="flex flex-col w-full my-20">
@@ -175,7 +186,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							id="email"
 							placeholder="Share this list with another user"
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
-							onChange={() => setShareListErrMessage('')}
+							onChange={() => {
+								setShareListErrMessage('');
+								setShareListMessage('');
+							}}
 						></input>
 						<button
 							type="submit"
@@ -191,6 +205,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 				{shareListErrMessage !== '' && (
 					<ErrorMessage errorMessage={shareListErrMessage} />
 				)}
+				{shareListMessage !== '' && <Message message={shareListMessage} />}
 			</section>
 		</div>
 	);
