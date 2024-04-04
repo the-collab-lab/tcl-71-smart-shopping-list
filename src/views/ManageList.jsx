@@ -14,6 +14,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
 	const [addItemMessage, setAddItemMessage] = useState('');
 	const [shareListMessage, setShareListMessage] = useState('');
+
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
 		if (listPath[i] === '/') {
@@ -74,6 +75,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		};
 	};
 
+	const Responses = {
+		Ok: 'ok',
+	};
+
 	async function sendInvite(e) {
 		e.preventDefault();
 
@@ -96,7 +101,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		const response = await shareList(listPath, userId, email);
 
 		if (response) {
-			if (response.code === 'ok') {
+			if (response.code === Responses.Ok) {
 				setShareListMessage(shareListMessages[response.code]);
 			} else {
 				setShareListErrMessage(shareListMessages[response.code]);
