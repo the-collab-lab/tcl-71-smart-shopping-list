@@ -3,7 +3,7 @@ import { deleteItem } from '../api/firebase';
 import Confirm from './Confirm';
 
 const DeleteItem = ({ itemName, listPath, itemId }) => {
-	const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const handleDelete = (listPath, itemId) => {
@@ -13,10 +13,10 @@ const DeleteItem = ({ itemName, listPath, itemId }) => {
 	};
 
 	const openConfirm = () => {
-		setIsConfirmOpen(true);
+		setOpen(true);
 	};
 	const closeConfirm = () => {
-		setIsConfirmOpen(false);
+		setOpen(false);
 	};
 
 	return (
@@ -33,7 +33,7 @@ const DeleteItem = ({ itemName, listPath, itemId }) => {
 				title={`Delete ${itemName.toUpperCase()}`}
 				onClose={closeConfirm}
 				onConfirm={() => handleDelete(listPath, itemId)}
-				open={isConfirmOpen}
+				open={open}
 				loading={isSubmitted}
 			>
 				{`Do you really want to delete ${itemName.toUpperCase()} from this list?`}

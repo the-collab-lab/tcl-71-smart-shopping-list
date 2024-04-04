@@ -3,7 +3,7 @@ import { deleteList } from '../api/firebase';
 import Confirm from './Confirm';
 
 const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
-	const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+	const [open, setOpen] = useState(false);
 	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const handleDelete = (user, email, listPath, listName) => {
@@ -14,10 +14,10 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 	};
 
 	const openConfirm = () => {
-		setIsConfirmOpen(true);
+		setOpen(true);
 	};
 	const closeConfirm = () => {
-		setIsConfirmOpen(false);
+		setOpen(false);
 	};
 
 	return (
@@ -34,7 +34,7 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 				title={`Delete ${listName.toUpperCase()} List`}
 				onClose={closeConfirm}
 				onConfirm={() => handleDelete(user, email, listPath, listName)}
-				open={isConfirmOpen}
+				open={open}
 				loading={isSubmitted}
 			>
 				{listPath.includes(user)
