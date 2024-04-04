@@ -34,9 +34,12 @@ export const SignOut = () => {
  */
 export const useAuth = () => {
 	const [user, setUser] = useState(null);
+	const [isLoadingUser, setIsLoadingUser] = useState(false);
 
 	useEffect(() => {
+		setIsLoadingUser(true);
 		auth.onAuthStateChanged((user) => {
+			setIsLoadingUser(false);
 			setUser(user);
 			if (user) {
 				addUserToDatabase(user);
@@ -44,5 +47,5 @@ export const useAuth = () => {
 		});
 	}, []);
 
-	return { user };
+	return { user, isLoadingUser };
 };
