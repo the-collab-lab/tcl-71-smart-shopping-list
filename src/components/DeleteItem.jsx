@@ -4,10 +4,10 @@ import Confirm from './Confirm';
 
 const DeleteItem = ({ itemName, listPath, itemId }) => {
 	const [open, setOpen] = useState(false);
-	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [submitted, setSubmitted] = useState(false);
 
 	const handleDelete = (listPath, itemId) => {
-		setIsSubmitted(true);
+		setSubmitted(true);
 		deleteItem(listPath, itemId);
 		return;
 	};
@@ -34,7 +34,7 @@ const DeleteItem = ({ itemName, listPath, itemId }) => {
 				onClose={closeConfirm}
 				onConfirm={() => handleDelete(listPath, itemId)}
 				open={open}
-				loading={isSubmitted}
+				loading={submitted}
 			>
 				{`Do you really want to delete ${itemName.toUpperCase()} from this list?`}
 			</Confirm>

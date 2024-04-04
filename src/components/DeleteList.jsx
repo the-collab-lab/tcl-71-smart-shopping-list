@@ -4,10 +4,10 @@ import Confirm from './Confirm';
 
 const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 	const [open, setOpen] = useState(false);
-	const [isSubmitted, setIsSubmitted] = useState(false);
+	const [submitted, setSubmitted] = useState(false);
 
 	const handleDelete = (user, email, listPath, listName) => {
-		setIsSubmitted(true);
+		setSubmitted(true);
 		deleteList(user, email, listPath, listName);
 		setListPath('');
 		return;
@@ -35,7 +35,7 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 				onClose={closeConfirm}
 				onConfirm={() => handleDelete(user, email, listPath, listName)}
 				open={open}
-				loading={isSubmitted}
+				loading={submitted}
 			>
 				{listPath.includes(user)
 					? `Do you really want to delete ${listName.toUpperCase()} list?`
