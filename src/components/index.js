@@ -6,3 +6,6 @@ export * from './Loading';
 export * from './ButtonWithIcon';
 export * from './ErrorMessage';
 export * from './Message';
+export * from './DeleteList';
+export * from './Confirm';
+export * from './DeleteItem';
