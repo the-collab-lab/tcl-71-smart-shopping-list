@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 import ErrorMessage from '../components/ErrorMessage';
+import Message from '../components/Message';
 import {
 	inputHasValue,
 	inputHasOnlyNUmbers,
@@ -11,6 +12,9 @@ import {
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
+	const [addItemMessage, setAddItemMessage] = useState('');
+	const [shareListMessage, setShareListMessage] = useState('');
+
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
 		if (listPath[i] === '/') {
@@ -52,9 +56,9 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
 		if (response) {
-			alert(`${itemName} added to the list!`);
+			setAddItemMessage(`${itemName} added to the list!`);
 		} else {
-			alert(`${itemName} couldn't be added to the list...`);
+			setAddItemMessage(`${itemName} couldn't be added to the list...`);
 		}
 
 		form.reset();
@@ -69,6 +73,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 			repeatedEmail:
 				'To share the list, enter the email of a user that is not you',
 		};
+	};
+
+	const Responses = {
+		Ok: 'ok',
 	};
 
 	async function sendInvite(e) {
@@ -93,7 +101,11 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		const response = await shareList(listPath, userId, email);
 
 		if (response) {
-			alert(shareListMessages[response.code]);
+			if (response.code === Responses.Ok) {
+				setShareListMessage(shareListMessages[response.code]);
+			} else {
+				setShareListErrMessage(shareListMessages[response.code]);
+			}
 		}
 		mailForm.reset();
 	}
@@ -108,7 +120,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					Add new items and share your list with other users
 				</p>
 			</div>
-			<section className="flex flex-col w-full mb-8">
+			<section className="flex flex-col w-full min-h-80 sm:min-h-72">
 				<div className="flex flex-col">
 					<form
 						method="post"
@@ -125,7 +137,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							placeholder="Type a new item name"
 							name="item"
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
-							onChange={() => setAddItemErrMessage('')}
+							onChange={() => {
+								setAddItemErrMessage('');
+								setAddItemMessage('');
+							}}
 						></input>
 						<div className="grid sm:grid-cols-3 grid-cols-1 grid-rows-2 sm:grid-rows-1  gap-y-4 sm:gap-x-2  text-base sm:text-lg">
 							<select
@@ -156,9 +171,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					{addItemErrMessage !== '' && (
 						<ErrorMessage errorMessage={addItemErrMessage} />
 					)}
+					{addItemMessage !== '' && <Message message={addItemMessage} />}
 				</div>
 			</section>
-			<section className="flex flex-col w-full my-8">
+			<section className="flex flex-col w-full min-h-72 sm:min-h-52">
 				<form
 					method="post"
 					onSubmit={sendInvite}
@@ -175,7 +191,10 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							id="email"
 							placeholder="Share this list with another user"
 							className="col-span-3 sm:col-span-2 bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
-							onChange={() => setShareListErrMessage('')}
+							onChange={() => {
+								setShareListErrMessage('');
+								setShareListMessage('');
+							}}
 						></input>
 						<button
 							type="submit"
@@ -191,6 +210,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 				{shareListErrMessage !== '' && (
 					<ErrorMessage errorMessage={shareListErrMessage} />
 				)}
+				{shareListMessage !== '' && <Message message={shareListMessage} />}
 			</section>
 		</div>
 	);
