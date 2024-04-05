@@ -22,11 +22,11 @@ export function Layout({ lists, listPath, user, isLoadingUser }) {
 						<div className="lg:w-fit flex flex-col items-center">
 							<h1 className="max-w-sm font-amiri text-3xl sm:text-4xl text-darkPurple leading-[3rem] sm:leading-[3rem]">
 								Simplify your shopping with{' '}
-								<span className="font-semibold">SmartShoppingList</span>, the
-								intuitive list organizer.
+								<span className="font-semibold">Despiensa</span>, the intuitive
+								list organizer.
 							</h1>
 							<button
-								className="w-80 mt-8 p-2 rounded-md font-poppins text-base sm:text-lg  text-puurWhite bg-lightPurple"
+								className="w-80 mt-8 p-2 rounded-md font-poppins text-base sm:text-lg  text-puurWhite bg-lightPurple hover:bg-hoverPurple transition ease-in-out"
 								type="button"
 								onClick={handleClickSignIn}
 							>
