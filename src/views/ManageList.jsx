@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 import ErrorMessage from '../components/ErrorMessage';
@@ -8,12 +8,30 @@ import {
 	inputHasOnlyNUmbers,
 	stringsHaveSameValue,
 } from '../utils/inputValidation';
+import { useParams } from 'react-router-dom';
+
+const Params = {
+	Add: 'add',
+	Share: 'share',
+};
 
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
 	const [addItemMessage, setAddItemMessage] = useState('');
 	const [shareListMessage, setShareListMessage] = useState('');
+
+	const addItemInput = useRef(null);
+	const shareListInput = useRef(null);
+	const { param } = useParams();
+
+	useEffect(() => {
+		if (param === Params.Add) {
+			addItemInput.current.focus();
+		} else if (param === Params.Share) {
+			shareListInput.current.focus();
+		}
+	}, []);
 
 	let displayName;
 	for (let i = 0; i < listPath.length; i++) {
@@ -136,6 +154,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							type="text"
 							placeholder="Type a new item name"
 							name="item"
+							ref={addItemInput}
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
 							onChange={() => {
 								setAddItemErrMessage('');
@@ -149,7 +168,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 								aria-label="When do you need this item?"
 								className="col-span-3 sm:col-span-2 bg-lightGrey text-base sm:text-lg border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							>
-								<option value="none" selected disabled hidden>
+								<option value="none" disabled hidden>
 									Choose item's likely need date
 								</option>
 
@@ -189,6 +208,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							type="email"
 							name="email"
 							id="email"
+							ref={shareListInput}
 							placeholder="Share this list with another user"
 							className="col-span-3 sm:col-span-2 bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							onChange={() => {
