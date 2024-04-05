@@ -1,34 +1,11 @@
 import { useNavigate } from 'react-router-dom';
-import { deleteList } from '../api/firebase';
+import DeleteList from './DeleteList';
 
 export function SingleList({ userEmail, name, path, setListPath, userId }) {
 	const navigate = useNavigate();
 	function handleClick() {
 		setListPath(path);
 		navigate(`/list/${path}`);
-	}
-
-	function handleDelete(user, email, listPath, listName) {
-		if (listPath.includes(user)) {
-			if (
-				window.confirm(
-					`Do you really want to delete ${listName.toUpperCase()} list?`,
-				)
-			) {
-				deleteList(user, email, listPath, listName);
-				setListPath('');
-			}
-			return;
-		}
-		if (
-			window.confirm(
-				`Do you really want to stop using ${listName.toUpperCase()} list?`,
-			)
-		) {
-			deleteList(user, email, listPath, listName);
-			setListPath('');
-		}
-		return;
 	}
 
 	return (
@@ -39,14 +16,13 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 			>
 				{name}
 			</button>
-			<button
-				className="rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed px-4 py-2"
-				onClick={() => handleDelete(userId, userEmail, path, name)}
-				aria-label={`Delete ${name} List`}
-				title={`Delete ${name} List`}
-			>
-				<i className="fa-solid fa-trash"></i>
-			</button>
+			<DeleteList
+				user={userId}
+				email={userEmail}
+				listPath={path}
+				listName={name}
+				setListPath={setListPath}
+			/>
 		</li>
 	);
 }

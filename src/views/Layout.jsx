@@ -12,7 +12,7 @@ export function Layout({ lists, listPath, user, isLoadingUser }) {
 	return (
 		<div className="w-screen flex flex-col text-poppins min-w-96 bg-puurWhite">
 			<NavBar user={user} lists={lists} listPath={listPath} />
-			<main className="h-screen w-full lg:pt-16 xl:w-9/12  xl:mx-auto">
+			<main className="min-h-screen w-full lg:pt-16 xl:w-9/12  xl:mx-auto">
 				{isLoadingUser ? (
 					<Loading />
 				) : !!user ? (
