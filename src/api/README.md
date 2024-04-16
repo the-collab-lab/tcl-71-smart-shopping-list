@@ -50,11 +50,33 @@ This function takes user-provided data and uses it to create a new item in the F
 
 ### `updateItem`
 
-🚧 To be completed! 🚧
+This function takes a listPath and a itemId as parameters to update the item's dateLastPurchased, dateNextPurchased and totalPurchases timestamps.
+
+| Parameter  | Type     | Description                             |
+| ---------- | -------- | --------------------------------------- |
+| `listPath` | `string` | The Firestore path of the current list. |
+| `itemId`   | `string` | The id of the item to update.           |
 
 ### `deleteItem`
 
-🚧 To be completed! 🚧
+This function takes the path of the current list and the ID of an item as parameters to delete the item from the list.
+
+| Parameter  | Type     | Description                             |
+| ---------- | -------- | --------------------------------------- |
+| `listPath` | `string` | The Firestore path of the current list. |
+| `itemId`   | `string` | The id of the item to delete.           |
+
+### `deleteList`
+
+This function takes the Id and the Email from a user and the Path and ID of a list as parameters.
+If the user is the list owner, the list is deleted. Otherwise, the list is removed from the user's sharedList array.
+
+| Parameter   | Type     | Description                               |
+| ----------- | -------- | ----------------------------------------- |
+| `userId`    | `string` | The ID of the current user                |
+| `userEmail` | `string` | The Email of the current user             |
+| `listPath`  | `string` | The Firestore path of the list to delete. |
+| `listId`    | `string` | The id of the list to delete.             |
 
 ## The shape of the the data
 
