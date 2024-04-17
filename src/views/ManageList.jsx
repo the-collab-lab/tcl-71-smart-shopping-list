@@ -16,6 +16,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 	const [shareListMessage, setShareListMessage] = useState('');
 
 	let displayName;
+	
 	for (let i = 0; i < listPath.length; i++) {
 		if (listPath[i] === '/') {
 			displayName = listPath.slice(i + 1);
