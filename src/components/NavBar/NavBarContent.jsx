@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { SignOut } from '../../api/useAuth.jsx';
 import { NavigationLink } from './NavigationLink.jsx';
 import { useNavigate } from 'react-router-dom';
@@ -5,6 +6,8 @@ import { ButtonWithIcon } from '../ButtonWithIcon.jsx';
 
 export default function NavLinks({ listPath, lists, setIsNavOpen }) {
 	const navigate = useNavigate();
+	const { t } = useTranslation();
+
 	const onClickNavLink = () => {
 		setIsNavOpen(false);
 	};
@@ -30,7 +33,7 @@ export default function NavLinks({ listPath, lists, setIsNavOpen }) {
 	return (
 		<>
 			<NavigationLink
-				text={'All my lists'}
+				text={t('AllMyLists')}
 				destination={'/'}
 				handleClick={onClickNavLink}
 			/>
@@ -38,20 +41,20 @@ export default function NavLinks({ listPath, lists, setIsNavOpen }) {
 			{!!listPath && !!lists[0] && (
 				<>
 					<NavigationLink
-						text={'List'}
+						text={t('NavbarList')}
 						destination={`/list/${listPath}`}
 						handleClick={onClickNavLink}
 					/>
 
 					<NavigationLink
-						text={'Manage List'}
+						text={t('NavbarManageList')}
 						destination={'/manage-list'}
 						handleClick={onClickNavLink}
 					/>
 				</>
 			)}
 			<ButtonWithIcon
-				text={'Sign out'}
+				text={t('NavbarSignOut')}
 				icon={<LogOutIcon />}
 				handleClick={onClickSignOut}
 			/>
