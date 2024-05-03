@@ -10,6 +10,8 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 		setSubmitted(true);
 		deleteList(user, email, listPath, listName);
 		setListPath('');
+		setSubmitted((prevSubmitted) => !prevSubmitted);
+		setOpen((prevOpen) => !prevOpen);
 		return;
 	};
 
