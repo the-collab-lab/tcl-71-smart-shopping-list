@@ -14,13 +14,13 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	const { path } = useParams();
 	const navigate = useNavigate();
 	const { t } = useTranslation();
-	// will need to add t to categoryArray
+
 	const categoryArray = [
-		'Overdue',
-		'Buy Soon',
-		'Buy Soonish',
-		'Buy Not Soon',
-		'Inactive',
+		['Overdue', t('Overdue')],
+		['Buy Soon', t('BuySoon')],
+		['Buy Soonish', t('BuySoonish')],
+		['Buy Not Soon', t('BuyNotSoon')],
+		['Inactive', t('Inactive')],
 	];
 
 	useEffect(() => {

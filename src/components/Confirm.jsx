@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+
 import Loading from './Loading';
 
 const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
+	const { t } = useTranslation();
+
 	const confirmRef = useRef(null);
 	const cancelRef = useRef(null);
 
@@ -35,7 +39,7 @@ const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 								className="flex items-center justify-center cursor-pointer bg-lightPurple hover:bg-hoverPurple transition ease-in-out rounded-md text-base sm:text-lg text-puurWhite px-4 py-2 gap-6 shadow-lg min-w-36 sm:min-w-40"
 							>
 								<i className="fa-solid fa-check"></i>
-								Confirm
+								{t('Confirm')}
 							</button>
 							<button
 								onClick={onClose}
@@ -44,7 +48,7 @@ const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 								className="flex items-center justify-center cursor-pointer border-2 border-darkPurple hover:border-hoverPurple hover:bg-hoverPurple transition ease-in-out rounded-md text-base sm:text-lg text-darkPurple hover:text-puurWhite px-4 py-2 gap-6 shadow-lg min-w-36 sm:min-w-40"
 							>
 								<i className="fa-solid fa-x"></i>
-								Cancel
+								{t('Cancel')}
 							</button>
 						</div>
 					</>

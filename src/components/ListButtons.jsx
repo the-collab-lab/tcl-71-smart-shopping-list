@@ -1,6 +1,9 @@
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
 const ListButtons = (props) => {
 	const navigate = useNavigate();
+	const { t } = useTranslation();
 
 	const buttonVariants = {
 		purple:
@@ -17,7 +20,7 @@ const ListButtons = (props) => {
 			>
 				<i className="fa-solid fa-plus"></i>
 
-				<span>Add item</span>
+				<span>{t('AddItem')}</span>
 			</button>
 			<button
 				className={`sm:col-span-1  gap-6 shadow-lg ${buttonVariants[props.colorShare]}`}
@@ -25,7 +28,7 @@ const ListButtons = (props) => {
 			>
 				<i className="fa-solid fa-share-nodes"></i>
 
-				<span>Share list</span>
+				<span>{t('ShareList')}</span>
 			</button>
 		</div>
 	);

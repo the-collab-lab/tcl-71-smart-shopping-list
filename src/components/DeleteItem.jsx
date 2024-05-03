@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { deleteItem } from '../api/firebase';
 import Confirm from './Confirm';
 
 const DeleteItem = ({ itemName, listPath, itemId }) => {
+	const { t } = useTranslation();
+
 	const [open, setOpen] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 
@@ -18,6 +21,18 @@ const DeleteItem = ({ itemName, listPath, itemId }) => {
 	const closeConfirm = () => {
 		setOpen(false);
 	};
+	const itemNameUppercase = itemName.toUpperCase();
+	const titleTranslated = (
+		<Trans i18nKey="ModalDeleteItemTitle" itemNameUppercase={itemNameUppercase}>
+			Delete {{ itemNameUppercase }}
+		</Trans>
+	);
+
+	const textTranslated = (
+		<Trans i18nKey="ModalDeleteItemText" itemNameUppercase={itemNameUppercase}>
+			Do you really want to delete {{ itemNameUppercase }} from this list?{' '}
+		</Trans>
+	);
 
 	return (
 		<>
@@ -30,13 +45,13 @@ const DeleteItem = ({ itemName, listPath, itemId }) => {
 				<i className="fa-solid fa-trash"></i>
 			</button>
 			<Confirm
-				title={`Delete ${itemName.toUpperCase()}`}
+				title={titleTranslated}
 				onClose={closeConfirm}
 				onConfirm={() => handleDelete(listPath, itemId)}
 				open={open}
 				loading={submitted}
 			>
-				{`Do you really want to delete ${itemName.toUpperCase()} from this list?`}
+				{textTranslated}
 			</Confirm>
 		</>
 	);

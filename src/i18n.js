@@ -42,6 +42,54 @@ const resources = {
 			BuySoonish: 'Buy Soonish',
 			BuyNotSoon: 'BuyNotSoon',
 			Inactive: 'Inactive',
+
+			// list buttons component
+			AddItem: 'Add item',
+			ShareList: 'Share list',
+
+			// searchList component
+			SearchItem: 'Search an item',
+
+			// manage list page
+			MessageAddItems: 'Add new items and share your list with other users',
+			AddItem: 'ADD A NEW ITEM',
+			InputTypeNewItem: 'Type a new item name',
+			ChooseDate: 'Choose item s likely need date',
+			Soon: 'Soon (within 7 days)',
+			Soonish: 'Soon-ish (in 14 days)',
+			NotSoSoon: 'Not soon (in 30 days)',
+			Add: 'Add',
+			ShareListUppercase: 'SHARE THE LIST',
+			InputShareList: 'Share this list with another user',
+			Share: 'Share',
+			MessagePleaseEnterItem: 'Please enter an item',
+			MessageItemAlreadyInList: 'This item is already in your list',
+			ItemAddedToList: '{{itemName}} added to the list!',
+			ItemNotAddedToList: '{{itemName}} couldn t be added to the list...',
+			MessageOk: 'The list has been shared with {{recipientEmail}}!',
+			MessageMissing:
+				'It seems like {{recipientEmail}} isn t a valid user email',
+			MessageExisting: 'The list is already shared with {{recipientEmail}}.',
+			MessageInvalidEmail: 'Share the list by entering a valid user email',
+			MessageRepeatedEmail:
+				'To share the list, enter the email of a user that is not you',
+
+			// deleteItem component
+			ModalDeleteItemTitle: 'Delete {{itemNameUppercase}}',
+			ModalDeleteItemText:
+				'Do you really want to delete {{itemNameUppercase}} from this list?',
+
+			// confirm component
+			Confirm: 'Confirm',
+			Cancel: 'Cancel',
+
+			// deleteList component
+			ButtonDeleteList: 'Delete {{listNameUppercase}}',
+			ModalDeleteListTitle: 'Delete {{listNameUppercase}} List',
+			ModalDeleteListConfirmSuppression:
+				'Do you really want to delete {{listNameUppercase}} list?',
+			ModalDeleteListStopUsing:
+				'Do you really want to stop using {{listNameUppercase}} list?',
 		},
 	},
 	fr: {
@@ -52,8 +100,9 @@ const resources = {
 			SignIn: 'Inscrivez vous pour demarrer',
 			BuiltBy: 'Creer par',
 			And: 'et',
+
 			// home page
-			AllMyLists: 'Toutes Mes Listes',
+			AllMyLists: 'Mes listes',
 			SelectAList: 'CHOISISSEZ UNE LISTE',
 			CreateNewList: 'CREEZ UNE NOUVELLE LISTE',
 			MessageSelectOrCreateList:
@@ -77,10 +126,58 @@ const resources = {
 			MessageNoItem2:
 				'Ajoutez y des elements, indiquez quand vous souhaites l acheter, et/ou partager la avec d autres',
 			Overdue: 'En retard',
-			BuySoon: 'À acheter sous peu',
-			BuySoonish: 'À acheter bientôt',
-			BuyNotSoon: 'À acheter plus tard',
+			BuySoon: 'Sous peu',
+			BuySoonish: 'Bientôt',
+			BuyNotSoon: 'Plus tard',
 			Inactive: 'Inactif',
+
+			//list buttons component
+			AddItem: 'Ajouter element',
+			ShareList: 'Partager liste',
+
+			// searchList component
+			SearchItem: 'Cherchez un element',
+
+			// manage list page
+			MessageAddItems: 'Ajoutez un nouvel element, ou partagez votre liste',
+			AddItem: 'AJOUTER NOUVEL ELEMENT',
+			InputTypeNewItem: 'Ecrivez le nom d un element',
+			ChooseDate: 'Quand en avez-vous besoin ?',
+			Soon: 'Sous peu (sous 7 jours)',
+			Soonish: 'Bientôt (sous 14 jours)',
+			NotSoSoon: 'Plus tard (sous 30 jours)',
+			Add: 'Ajouter',
+			ShareListUppercase: 'PARTAGER LA LISTE',
+			InputShareList: 'Partager la liste avec un autre utilisateur',
+			Share: 'Partager',
+			MessagePleaseEnterItem: 'Merci d ajouter un nouvel element.',
+			MessageItemAlreadyInList: 'Cet element est deja dans votre liste.',
+			ItemAddedToList: '{{itemName}} a ete ajoute a la liste !',
+			ItemNotAddedToList: '{{itemName}} n a pas pu etre ajoute a la liste...',
+			MessageOk: 'La liste a ete partage avec {{recipientEmail}}!',
+			MessageMissing:
+				'L email adresse {{recipientEmail}} n est pas un utilisateur valide.',
+			MessageExisting: 'La liste a deja ete partagee avec {{recipientEmail}}.',
+			MessageInvalidEmail: 'Utilisez une adresse email valide.',
+			MessageRepeatedEmail:
+				'Partagez avec une adresse email differente de la votre.',
+
+			// deleteItem component
+			ModalDeleteItemTitle: 'Supprimer {{itemNameUppercase}}',
+			ModalDeleteItemText:
+				'Souhaitez vous vraiment supprimer {{itemNameUppercase}} de votre liste ?',
+
+			// confirm component
+			Confirm: 'Confirmer',
+			Cancel: 'Annuler',
+
+			// deleteList component
+			ButtonDeleteList: 'Supprimer {{listNameUppercase}}',
+			ModalDeleteListTitle: 'Supprimer la liste {{listNameUppercase}}',
+			ModalDeleteListConfirmSuppression:
+				'Voulez-vous definitivement supprimer la liste {{listNameUppercase}} ?',
+			ModalDeleteListStopUsing:
+				'Voulez-vouz arreter d utiliser la liste {{listNameUppercase}} ?',
 		},
 	},
 };
