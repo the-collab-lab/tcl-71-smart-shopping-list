@@ -158,7 +158,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 						className="flex flex-col text-base sm:text-lg"
 					>
 						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
-							{t('AddItem')}
+							{t('AddItemTitle')}
 						</h2>
 
 						<input

@@ -52,7 +52,7 @@ const resources = {
 
 			// manage list page
 			MessageAddItems: 'Add new items and share your list with other users',
-			AddItem: 'ADD A NEW ITEM',
+			AddItemTitle: 'ADD A NEW ITEM',
 			InputTypeNewItem: 'Type a new item name',
 			ChooseDate: 'Choose item s likely need date',
 			Soon: 'Soon (within 7 days)',
@@ -140,7 +140,7 @@ const resources = {
 
 			// manage list page
 			MessageAddItems: 'Ajoutez un nouvel element, ou partagez votre liste',
-			AddItem: 'AJOUTER NOUVEL ELEMENT',
+			AddItemTitle: 'AJOUTER NOUVEL ELEMENT',
 			InputTypeNewItem: 'Ecrivez le nom d un element',
 			ChooseDate: 'Quand en avez-vous besoin ?',
 			Soon: 'Sous peu (sous 7 jours)',
@@ -197,5 +197,7 @@ i18n
 			escapeValue: false, // react already safes from xss
 		},
 	});
+
+document.documentElement.lang = i18n.language;
 
 export default i18n;
