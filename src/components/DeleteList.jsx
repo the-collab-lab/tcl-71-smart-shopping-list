@@ -25,11 +25,7 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 
 	const listNameUppercase = listName.toUpperCase();
 
-	const buttonTranslated = (
-		<Trans i18nKey="ButtonDeleteList" listNameUppercase={listNameUppercase}>
-			Delete {{ listNameUppercase }}
-		</Trans>
-	);
+	const buttonTranslated = t('ButtonDeleteList', { listNameUppercase });
 
 	const titleTranslated = (
 		<Trans i18nKey="ModalDeleteListTitle" listNameUppercase={listNameUppercase}>

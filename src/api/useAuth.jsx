@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { auth } from './config.js';
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
 import { addUserToDatabase } from './firebase.js';
 
 /**
@@ -10,7 +10,7 @@ import { addUserToDatabase } from './firebase.js';
  */
 export const SignIn = () => {
 	try {
-		signInWithPopup(auth, new GoogleAuthProvider());
+		signInWithRedirect(auth, new GoogleAuthProvider());
 	} catch (error) {
 		console.log('error', error);
 	}

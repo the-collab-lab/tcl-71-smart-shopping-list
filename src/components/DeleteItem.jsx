@@ -34,12 +34,14 @@ const DeleteItem = ({ itemName, listPath, itemId }) => {
 		</Trans>
 	);
 
+	const deleteItemName = t('DeleteItemName', { itemName });
+
 	return (
 		<>
 			<button
 				onClick={openConfirm}
-				aria-label={`Delete ${itemName}`}
-				title={`Delete ${itemName}`}
+				aria-label={deleteItemName}
+				title={deleteItemName}
 				className="px-2 text-darkPurple rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed"
 			>
 				<i className="fa-solid fa-trash"></i>

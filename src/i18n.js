@@ -78,6 +78,7 @@ const resources = {
 			ModalDeleteItemTitle: 'Delete {{itemNameUppercase}}',
 			ModalDeleteItemText:
 				'Do you really want to delete {{itemNameUppercase}} from this list?',
+			DeleteItemName: 'Delete {{itemName}}',
 
 			// confirm component
 			Confirm: 'Confirm',
@@ -166,6 +167,7 @@ const resources = {
 			ModalDeleteItemTitle: 'Supprimer {{itemNameUppercase}}',
 			ModalDeleteItemText:
 				'Souhaitez-vous définitivement supprimer {{itemNameUppercase}} de votre liste ?',
+			DeleteItemName: 'Supprimer {{itemName}}',
 
 			// confirm component
 			Confirm: 'Confirmer',
