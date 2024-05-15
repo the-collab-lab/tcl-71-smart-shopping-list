@@ -96,35 +96,35 @@ const resources = {
 		translation: {
 			//layout page
 			DescriptionDespiensa:
-				'Facilitez vous la vie avec <1>Despiensa</1>, votre liste de course intuitive.',
-			SignIn: 'Inscrivez vous pour demarrer',
-			BuiltBy: 'Creer par',
+				'Facilitez-vous la vie avec <1>Despiensa</1>, votre liste de course intuitive.',
+			SignIn: 'Se connecter',
+			BuiltBy: 'Créer par',
 			And: 'et',
 
 			// home page
 			AllMyLists: 'Mes listes',
 			SelectAList: 'CHOISISSEZ UNE LISTE',
-			CreateNewList: 'CREEZ UNE NOUVELLE LISTE',
+			CreateNewList: 'CRÉEZ UNE NOUVELLE LISTE',
 			MessageSelectOrCreateList:
-				'Selectionnez une liste, ou creer une nouvelle',
-			MessageCreateList: 'Commencez par creer une liste.',
-			ButtonCreateList: 'Creer une liste',
-			InputTypeNewListName: 'Entrer le nom de la future liste',
+				'Sélectionnez une liste, ou créez-en une nouvelle',
+			MessageCreateList: 'Commencez par créer une liste.',
+			ButtonCreateList: 'Créer une liste',
+			InputTypeNewListName: 'Entrez un nouveau nom',
 			errorCreatingListFailed:
-				'Une error s est produite lors de la creation de la liste.',
-			errorCreatingListEmpty: 'Merci d entrer le nom de la liste :)',
-			errorCreatingListExistingName: 'Une liste avec ce nom existe deja.',
+				"Une error s'est produite lors de la création de la liste.",
+			errorCreatingListEmpty: "Merci d'entrer un nom de liste :)",
+			errorCreatingListExistingName: 'Une liste avec ce nom existe déjà.',
 
 			// navbar
 			NavbarList: 'Liste',
-			NavbarManageList: 'Gerer Liste',
-			NavbarSignOut: 'Deconnection',
+			NavbarManageList: 'Gérer Liste',
+			NavbarSignOut: 'Déconnexion',
 
 			// list page
 			MessageNoItem1:
-				'Voici votre nouvelle liste. Elle ne contient pas encore d elements...',
+				'Voici votre nouvelle liste. Elle ne contient pas encore de produits.',
 			MessageNoItem2:
-				'Ajoutez y des elements, indiquez quand vous souhaites l acheter, et/ou partager la avec d autres',
+				"Ajoutez-y des produits, indiquez quand vous souhaitez l'acheter, et/ou partagez votre liste.",
 			Overdue: 'En retard',
 			BuySoon: 'Sous peu',
 			BuySoonish: 'Bientôt',
@@ -132,40 +132,40 @@ const resources = {
 			Inactive: 'Inactif',
 
 			//list buttons component
-			AddItem: 'Ajouter element',
-			ShareList: 'Partager liste',
+			AddItem: 'Ajouter produit',
+			ShareList: 'Partager',
 
 			// searchList component
-			SearchItem: 'Cherchez un element',
+			SearchItem: 'Cherchez un produit',
 
 			// manage list page
-			MessageAddItems: 'Ajoutez un nouvel element, ou partagez votre liste',
-			AddItemTitle: 'AJOUTER NOUVEL ELEMENT',
-			InputTypeNewItem: 'Ecrivez le nom d un element',
-			ChooseDate: 'Quand en avez-vous besoin ?',
+			MessageAddItems: 'Ajoutez un nouveau produit, ou partagez votre liste',
+			AddItemTitle: 'AJOUTER UN PRODUIT',
+			InputTypeNewItem: "Entrez le nom d'un produit",
+			ChooseDate: 'Quand en aurez-vous besoin ?',
 			Soon: 'Sous peu (sous 7 jours)',
 			Soonish: 'Bientôt (sous 14 jours)',
 			NotSoSoon: 'Plus tard (sous 30 jours)',
 			Add: 'Ajouter',
 			ShareListUppercase: 'PARTAGER LA LISTE',
-			InputShareList: 'Partager la liste avec un autre utilisateur',
+			InputShareList: "Entrez l'email d'un utilisateur",
 			Share: 'Partager',
-			MessagePleaseEnterItem: 'Merci d ajouter un nouvel element.',
-			MessageItemAlreadyInList: 'Cet element est deja dans votre liste.',
-			ItemAddedToList: '{{itemName}} a ete ajoute a la liste !',
-			ItemNotAddedToList: '{{itemName}} n a pas pu etre ajoute a la liste...',
-			MessageOk: 'La liste a ete partage avec {{recipientEmail}}!',
+			MessagePleaseEnterItem: "Entrez le nom d'un produit.",
+			MessageItemAlreadyInList: 'Ce produit est déjà dans votre liste.',
+			ItemAddedToList: '{{itemName}} a été ajouté a la liste !',
+			ItemNotAddedToList: '{{itemName}} n a pas pu être ajouté à la liste...',
+			MessageOk: 'La liste a été partagée avec {{recipientEmail}}!',
 			MessageMissing:
-				'L email adresse {{recipientEmail}} n est pas un utilisateur valide.',
-			MessageExisting: 'La liste a deja ete partagee avec {{recipientEmail}}.',
+				"L'adresse email {{recipientEmail}} n'est pas un utilisateur valide.",
+			MessageExisting: 'La liste a déjà été partagée avec {{recipientEmail}}.',
 			MessageInvalidEmail: 'Utilisez une adresse email valide.',
 			MessageRepeatedEmail:
-				'Partagez avec une adresse email differente de la votre.',
+				'Partagez avec une adresse email autre que de la vôtre.',
 
 			// deleteItem component
 			ModalDeleteItemTitle: 'Supprimer {{itemNameUppercase}}',
 			ModalDeleteItemText:
-				'Souhaitez vous vraiment supprimer {{itemNameUppercase}} de votre liste ?',
+				'Souhaitez-vous définitivement supprimer {{itemNameUppercase}} de votre liste ?',
 
 			// confirm component
 			Confirm: 'Confirmer',
@@ -177,7 +177,7 @@ const resources = {
 			ModalDeleteListConfirmSuppression:
 				'Voulez-vous definitivement supprimer la liste {{listNameUppercase}} ?',
 			ModalDeleteListStopUsing:
-				'Voulez-vouz arreter d utiliser la liste {{listNameUppercase}} ?',
+				"Voulez-vouz arrêter d'utiliser la liste {{listNameUppercase}} ?",
 		},
 	},
 };
