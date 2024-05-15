@@ -50,7 +50,7 @@ export function NavBar({ user, lists, listPath }) {
 						<div
 							className={
 								isNavOpen
-									? 'z-20 h-screen w-screen block absolute text-darkPurple bg-offWhite left-0 top-0'
+									? 'z-20 h-screen w-full block fixed z-10 text-darkPurple bg-offWhite left-0 top-0'
 									: 'hidden'
 							}
 						>
