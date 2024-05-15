@@ -6,12 +6,14 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 	const [open, setOpen] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 
-	const handleDelete = (user, email, listPath, listName) => {
+	const handleDelete = async (user, email, listPath, listName) => {
 		setSubmitted(true);
-		deleteList(user, email, listPath, listName);
-		setListPath('');
-		setSubmitted((prevSubmitted) => !prevSubmitted);
-		setOpen((prevOpen) => !prevOpen);
+		try {
+			await deleteList(user, email, listPath, listName);
+			setListPath('');
+		} catch (error) {
+			console.log(error);
+		}
 		return;
 	};
 
