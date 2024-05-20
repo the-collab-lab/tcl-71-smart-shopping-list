@@ -9,9 +9,10 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 	const handleDelete = async (user, email, listPath, listName) => {
 		setSubmitted(true);
 		try {
-			await deleteList(user, email, listPath, listName);
+			await deleteList(user, email, listPath, listName, setOpen, setSubmitted);
 			setListPath('');
 		} catch (error) {
+			setSubmitted(false);
 			console.log(error);
 		}
 		return;
