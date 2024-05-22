@@ -200,8 +200,8 @@ export async function deleteList(
 		await updateDoc(userDocumentRef, {
 			sharedLists: userSharedLists.filter((list) => list.path !== listPath),
 		});
-		setOpen(false);
-		setSubmitted(false);
+		// setOpen(false);
+		// setSubmitted(false);
 		return;
 	}
 
@@ -223,8 +223,8 @@ export async function deleteList(
 				.sharedLists.filter((list) => list.path !== listPath),
 		});
 	});
-	setOpen(false);
-	setSubmitted(false);
+	// setOpen(false);
+	// setSubmitted(false);
 }
 
 /**
