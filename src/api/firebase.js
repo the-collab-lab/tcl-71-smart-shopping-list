@@ -182,14 +182,7 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
  * @param {string} listPath The path of the list to delete.
  * @param {string} listId The id of the list to delete.
  */
-export async function deleteList(
-	userId,
-	userEmail,
-	listPath,
-	listId,
-	setOpen,
-	setSubmitted,
-) {
+export async function deleteList(userId, userEmail, listPath, listId) {
 	// Check if current user is owner.
 	if (!listPath.includes(userId)) {
 		const usersCollectionRef = collection(db, 'users');
@@ -200,8 +193,6 @@ export async function deleteList(
 		await updateDoc(userDocumentRef, {
 			sharedLists: userSharedLists.filter((list) => list.path !== listPath),
 		});
-		// setOpen(false);
-		// setSubmitted(false);
 		return;
 	}
 
@@ -223,8 +214,6 @@ export async function deleteList(
 				.sharedLists.filter((list) => list.path !== listPath),
 		});
 	});
-	// setOpen(false);
-	// setSubmitted(false);
 }
 
 /**
