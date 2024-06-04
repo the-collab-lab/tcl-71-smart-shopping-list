@@ -175,6 +175,10 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
 	return { code: 'ok' };
 }
 
+const userIsListOwner = (id, path) => {
+	return path.includes(id);
+};
+
 /**
  * Delete a user's list only if the current user is the list owner.
  * @param {string} userId The id of the user who owns the list.
@@ -184,7 +188,7 @@ export async function shareList(listPath, currentUserId, recipientEmail) {
  */
 export async function deleteList(userId, userEmail, listPath, listId) {
 	// Check if current user is owner.
-	if (!listPath.includes(userId)) {
+	if (!userIsListOwner(userId, listPath)) {
 		const usersCollectionRef = collection(db, 'users');
 		const userDocumentRef = doc(usersCollectionRef, userEmail);
 		const userSharedLists = (await getDoc(userDocumentRef)).data().sharedLists;
@@ -199,6 +203,8 @@ export async function deleteList(userId, userEmail, listPath, listId) {
 	// Delete list doc
 	const listCollectionRef = collection(db, userId);
 	const listDocumentRef = doc(listCollectionRef, listId);
+	const itemsCollectionRef = collection(listDocumentRef, 'items');
+	console.log(itemsCollectionRef);
 	await deleteDoc(listDocumentRef);
 
 	// Update users doc that include a list reference

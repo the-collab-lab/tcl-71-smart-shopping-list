@@ -79,7 +79,7 @@ export function App() {
 						}
 					/>
 					<Route
-						path="/manage-list"
+						path="/manage-list?/:param"
 						element={
 							<ManageList
 								data={data}
