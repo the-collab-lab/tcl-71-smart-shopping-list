@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { addItem } from '../api/firebase';
 import { shareList } from '../api/firebase';
 import ErrorMessage from '../components/ErrorMessage';
@@ -10,6 +11,8 @@ import {
 } from '../utils/inputValidation';
 
 export function ManageList({ data, listPath, userId, userEmail }) {
+	const { t } = useTranslation();
+
 	const [addItemErrMessage, setAddItemErrMessage] = useState('');
 	const [shareListErrMessage, setShareListErrMessage] = useState('');
 	const [addItemMessage, setAddItemMessage] = useState('');
@@ -32,14 +35,26 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		let itemName = formData.get('item');
 		let time = formData.get('time');
 
+		const itemAddedSuccess = (
+			<Trans i18nKey="ItemAddedToList" itemName={itemName}>
+				{{ itemName }} added to the list!
+			</Trans>
+		);
+
+		const itemAddedFailed = (
+			<Trans i18nKey="ItemNotAddedToList" itemName={itemName}>
+				{{ itemName }} couldn t be added to the list...
+			</Trans>
+		);
+
 		if (!inputHasValue(itemName) || inputHasOnlyNUmbers(itemName)) {
-			setAddItemErrMessage('Please enter an item');
+			setAddItemErrMessage(t('MessagePleaseEnterItem'));
 			form.reset();
 			return;
 		}
 
 		if (data.some((item) => stringsHaveSameValue(item.name, itemName))) {
-			setAddItemErrMessage('This item is already in your list');
+			setAddItemErrMessage(t('MessageItemAlreadyInList'));
 			form.reset();
 			return;
 		}
@@ -56,22 +71,37 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 		let response = await addItem(listPath, { itemName, daysUntilNextPurchase });
 
 		if (response) {
-			setAddItemMessage(`${itemName} added to the list!`);
+			setAddItemMessage(itemAddedSuccess);
 		} else {
-			setAddItemMessage(`${itemName} couldn't be added to the list...`);
+			setAddItemMessage(itemAddedFailed);
 		}
 
 		form.reset();
 	}
 
 	const createShareListMessages = (recipientEmail) => {
+		const messageOk = (
+			<Trans i18nKey="MessageOk" recipientEmail={recipientEmail}>
+				The list has been shared with {{ recipientEmail }}!
+			</Trans>
+		);
+		const messageMissing = (
+			<Trans i18nKey="MessageMissing" recipientEmail={recipientEmail}>
+				It seems like {{ recipientEmail }} isn't a valid user email.
+			</Trans>
+		);
+		const messageExisting = (
+			<Trans i18nKey="MessageExisting" recipientEmail={recipientEmail}>
+				The list is already shared with {{ recipientEmail }}.
+			</Trans>
+		);
+
 		return {
-			ok: `The list has been shared with ${recipientEmail}!`,
-			missing: `It seems like "${recipientEmail}" isn't a valid user email`,
-			existing: `The list is already shared with ${recipientEmail}`,
-			invalidEmail: 'Share the list by entering a valid user email',
-			repeatedEmail:
-				'To share the list, enter the email of a user that is not you',
+			ok: messageOk,
+			missing: messageMissing,
+			existing: messageExisting,
+			invalidEmail: t('MessageInvalidEmail'),
+			repeatedEmail: t('MessageRepeatedEmail'),
 		};
 	};
 
@@ -117,7 +147,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 			</h1>
 			<div className="mx-auto py-8">
 				<p className="pb-12 text-darkPurple font-poppins text-xl sm:text-2xl">
-					Add new items and share your list with other users
+					{t('MessageAddItems')}
 				</p>
 			</div>
 			<section className="flex flex-col w-full min-h-80 sm:min-h-72">
@@ -128,13 +158,13 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 						className="flex flex-col text-base sm:text-lg"
 					>
 						<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
-							ADD A NEW ITEM
+							{t('AddItemTitle')}
 						</h2>
 
 						<input
 							aria-label="Add a new item"
 							type="text"
-							placeholder="Type a new item name"
+							placeholder={t('InputTypeNewItem')}
 							name="item"
 							className="grow shrink bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple mb-5"
 							onChange={() => {
@@ -150,12 +180,12 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 								className="col-span-3 sm:col-span-2 bg-lightGrey text-base sm:text-lg border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							>
 								<option value="none" selected disabled hidden>
-									Choose item's likely need date
+									{t('ChooseDate')}
 								</option>
 
-								<option value="soon">Soon (within 7 days)</option>
-								<option value="soonIsh">Soon-ish (in 14 days)</option>
-								<option value="notSoon">Not soon (in 30 days)</option>
+								<option value="soon">{t('Soon')}</option>
+								<option value="soonIsh">{t('Soonish')}</option>
+								<option value="notSoon">{t('NotSoSoon')}</option>
 							</select>
 							<button
 								type="submit"
@@ -164,7 +194,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 								<span>
 									<i className="fa-solid fa-plus"></i>
 								</span>
-								Add
+								{t('Add')}
 							</button>
 						</div>
 					</form>
@@ -181,7 +211,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 					className="flex flex-col text-base sm:text-lg"
 				>
 					<h2 className="text-lg sm:text-xl text-left text-darkPurple border-solid border-darkPurple border-b pb-2 mb-8">
-						SHARE THE LIST
+						{t('ShareListUppercase')}
 					</h2>
 					<div className="grid sm:grid-cols-3 grid-cols-1 grid-rows-2 sm:grid-rows-1  gap-y-4 sm:gap-x-2 text-base sm:text-lg">
 						<input
@@ -189,7 +219,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							type="email"
 							name="email"
 							id="email"
-							placeholder="Share this list with another user"
+							placeholder={t('InputShareList')}
 							className="col-span-3 sm:col-span-2 bg-lightGrey border border-darkPurple rounded-md shadow-lg px-4 py-2 placeholder:text-darkPurple"
 							onChange={() => {
 								setShareListErrMessage('');
@@ -203,7 +233,7 @@ export function ManageList({ data, listPath, userId, userEmail }) {
 							<span>
 								<i className="fa-solid fa-share-nodes"></i>
 							</span>
-							Share
+							{t('Share')}
 						</button>
 					</div>
 				</form>

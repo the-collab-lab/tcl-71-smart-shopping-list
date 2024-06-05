@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export const SearchList = ({ data, setNewList }) => {
+	const { t } = useTranslation();
 	const [value, setValue] = useState('');
 
 	const handleFiltering = (e) => {
@@ -31,7 +33,7 @@ export const SearchList = ({ data, setNewList }) => {
 					onChange={(e) => handleFiltering(e)}
 					value={value}
 					aria-label="Search item"
-					placeholder="Search an item"
+					placeholder={t('SearchItem')}
 				/>
 				<button
 					onClick={(e) => resetInput(e)}

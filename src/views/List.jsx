@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ContainerItems } from '../components';
 import { SearchList } from '../components';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -12,12 +13,14 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 	const [sortedList, setSortedList] = useState([]);
 	const { path } = useParams();
 	const navigate = useNavigate();
+	const { t } = useTranslation();
+
 	const categoryArray = [
-		'Overdue',
-		'Buy Soon',
-		'Buy Soonish',
-		'Buy Not Soon',
-		'Inactive',
+		['Overdue', t('Overdue')],
+		['Buy Soon', t('BuySoon')],
+		['Buy Soonish', t('BuySoonish')],
+		['Buy Not Soon', t('BuyNotSoon')],
+		['Inactive', t('Inactive')],
 	];
 
 	useEffect(() => {
@@ -50,11 +53,10 @@ export function List({ data, lists, listPath, isLoadingListData }) {
 			{data.length === 0 ? (
 				<div className="text-xl sm:text-2xl py-8 w-full">
 					<p className="pb-12 text-darkPurple font-poppins">
-						This is your new list. There are no items added yet...
+						{t('MessageNoItem1')}
 					</p>
 					<p className="pb-12 text-darkPurple font-poppins">
-						You can now add items, specify when you need to purchase them,
-						and/or share the list with other users
+						{t('MessageNoItem2')}
 					</p>
 					<ListButtons colorAdd={'purple'} colorShare={'white'} />
 				</div>

@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useTranslation, Trans } from 'react-i18next';
 import { deleteList } from '../api/firebase';
 import Confirm from './Confirm';
 
 const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
+	const { t } = useTranslation();
+
 	const [open, setOpen] = useState(false);
 	const [submitted, setSubmitted] = useState(false);
 
@@ -27,26 +30,54 @@ const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 		setOpen(false);
 	};
 
+	const listNameUppercase = listName.toUpperCase();
+
+	const buttonTranslated = t('ButtonDeleteList', { listNameUppercase });
+
+	const titleTranslated = (
+		<Trans i18nKey="ModalDeleteListTitle" listNameUppercase={listNameUppercase}>
+			Delete {{ listNameUppercase }} List
+		</Trans>
+	);
+
+	const textSuppressionTranslated = (
+		<Trans
+			i18nKey="ModalDeleteListConfirmSuppression"
+			listNameUppercase={listNameUppercase}
+		>
+			Do you really want to delete {{ listNameUppercase }} list?
+		</Trans>
+	);
+
+	const textStopUsingTranslated = (
+		<Trans
+			in18Key="ModalDeleteListStopUsing"
+			listNameUppercase={listNameUppercase}
+		>
+			Do you really want to stop using {{ listNameUppercase }} list?{' '}
+		</Trans>
+	);
+
 	return (
 		<>
 			<button
 				onClick={openConfirm}
-				aria-label={`Delete ${listName.toUpperCase()}`}
-				title={`Delete ${listName.toUpperCase()}`}
+				aria-label={buttonTranslated}
+				title={buttonTranslated}
 				className="rounded-md transition ease-in-out hover:text-alertRed focus:text-alertRed px-4 py-2"
 			>
 				<i className="fa-solid fa-trash"></i>
 			</button>
 			<Confirm
-				title={`Delete ${listName.toUpperCase()} List`}
+				title={titleTranslated}
 				onClose={closeConfirm}
 				onConfirm={() => handleDelete(user, email, listPath, listName)}
 				open={open}
 				loading={submitted}
 			>
 				{listPath.includes(user)
-					? `Do you really want to delete ${listName.toUpperCase()} list?`
-					: `Do you really want to stop using ${listName.toUpperCase()} list?`}
+					? textSuppressionTranslated
+					: textStopUsingTranslated}
 			</Confirm>
 		</>
 	);

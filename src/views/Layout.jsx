@@ -1,10 +1,13 @@
 import { Outlet } from 'react-router-dom';
+import { useTranslation, Trans } from 'react-i18next';
 import { SignIn } from '../api/useAuth.jsx';
 import { NavBar } from '../components/NavBar/NavBar.jsx';
 import Groceries from '../assets/groceries.png';
 import Loading from '../components/Loading.jsx';
 
 export function Layout({ lists, listPath, user, isLoadingUser }) {
+	const { t } = useTranslation();
+
 	const handleClickSignIn = () => {
 		SignIn();
 	};
@@ -21,16 +24,17 @@ export function Layout({ lists, listPath, user, isLoadingUser }) {
 					<div className="flex flex-col justify-items-center	pt-12 lg:justify-between lg:m-20 lg:pt-0 lg:flex-row">
 						<div className="lg:w-fit flex flex-col items-center">
 							<h1 className="max-w-sm font-amiri text-3xl sm:text-4xl text-darkPurple leading-[3rem] sm:leading-[3rem]">
-								Simplify your shopping with{' '}
-								<span className="font-semibold">Despiensa</span>, the intuitive
-								list organizer.
+								<Trans i18nKey="DescriptionDespiensa">
+									Simplify your shopping with <strong>Despiensa</strong>, the
+									intuitive list organizer.
+								</Trans>
 							</h1>
 							<button
 								className="w-80 mt-8 p-2 rounded-md font-poppins text-base sm:text-lg  text-puurWhite bg-lightPurple hover:bg-hoverPurple transition ease-in-out"
 								type="button"
 								onClick={handleClickSignIn}
 							>
-								Sign in to start
+								{t('SignIn')}
 							</button>
 						</div>
 						<div className="hidden lg:flex w-5/12 pt-10 ">
@@ -53,7 +57,7 @@ export function Layout({ lists, listPath, user, isLoadingUser }) {
 					>
 						<i className="fa-brands fa-github pe-2"></i>
 					</a>
-					Built by&nbsp;
+					{t('BuiltBy')}&nbsp;
 					<span>
 						<a
 							href="https://www.linkedin.com/in/borjamarticalvo/"
@@ -78,7 +82,7 @@ export function Layout({ lists, listPath, user, isLoadingUser }) {
 						>
 							Judith
 						</a>
-						&nbsp; and &nbsp;
+						&nbsp; {t('And')}&nbsp;
 						<a
 							href="https://www.linkedin.com/in/viviana-yanez/"
 							target="blank"

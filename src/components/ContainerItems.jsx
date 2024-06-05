@@ -13,7 +13,7 @@ export const ContainerItems = ({
 
 	useEffect(() => {
 		const newItemList = newList.filter((item) => {
-			if (item.category === category) {
+			if (item.category === category[0]) {
 				return true;
 			} else return false;
 		});
@@ -23,11 +23,11 @@ export const ContainerItems = ({
 	return filteredItemsList[0] ? (
 		<section className="text-left">
 			<h2 className="font-poppins uppercase font-bold text-darkPurple pt-8 text-lg sm:text-xl">
-				{category}
+				{category[1]}
 			</h2>
 			<ul>
 				{filteredItemsList.map((item, i) => {
-					if (item.category === category) {
+					if (item.category === category[0]) {
 						return (
 							<ListItem
 								key={item.id}
