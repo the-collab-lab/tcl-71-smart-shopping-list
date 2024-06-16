@@ -1,18 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ContainerItems } from '../components';
-import { SearchList } from '../components';
-import { useParams, useNavigate } from 'react-router-dom';
-import { updateItem, comparePurchaseUrgency } from '../api/firebase';
-import { isMoreThanADayAgo } from '../utils';
-import Loading from '../components/Loading';
-import ListButtons from '../components/ListButtons';
+import { ContainerItems, SearchList, Loading, ListButtons } from '@components';
+import { useParams } from 'react-router-dom';
+import { updateItem, comparePurchaseUrgency } from '@api';
+import { isMoreThanADayAgo } from '@utils';
 
 export function List({ data, lists, listPath, isLoadingListData }) {
 	const [newList, setNewList] = useState([]);
 	const [sortedList, setSortedList] = useState([]);
 	const { path } = useParams();
-	const navigate = useNavigate();
 	const { t } = useTranslation();
 
 	const categoryArray = [

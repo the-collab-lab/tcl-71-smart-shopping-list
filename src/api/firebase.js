@@ -14,7 +14,7 @@ import {
 } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import { db } from './config';
-import { getDaysBetweenDates, getFutureDate } from '../utils';
+import { getDaysBetweenDates, getFutureDate } from '@utils';
 import { calculateEstimate } from '@the-collab-lab/shopping-list-utils';
 
 /**

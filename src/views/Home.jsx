@@ -1,8 +1,6 @@
-import { SingleList } from '../components';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import ListForm from '../components/ListForm';
-import ErrorMessage from '../components/ErrorMessage';
+import { ErrorMessage, ListForm, SingleList } from '@components';
 
 export function Home({ data, setListPath, userId, userEmail }) {
 	const { t } = useTranslation();

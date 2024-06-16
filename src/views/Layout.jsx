@@ -1,9 +1,8 @@
 import { Outlet } from 'react-router-dom';
 import { useTranslation, Trans } from 'react-i18next';
-import { SignIn } from '../api/useAuth.jsx';
-import { NavBar } from '../components/NavBar/NavBar.jsx';
+import { SignIn } from '@api';
+import { NavBar, Loading } from '@components';
 import Groceries from '../assets/groceries.png';
-import Loading from '../components/Loading.jsx';
 
 export function Layout({ lists, listPath, user, isLoadingUser }) {
 	const { t } = useTranslation();

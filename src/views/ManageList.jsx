@@ -1,14 +1,12 @@
 import { useState } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
-import { addItem } from '../api/firebase';
-import { shareList } from '../api/firebase';
-import ErrorMessage from '../components/ErrorMessage';
-import Message from '../components/Message';
+import { addItem, shareList } from '@api';
+import { ErrorMessage, Message } from '@components';
 import {
 	inputHasValue,
 	inputHasOnlyNUmbers,
 	stringsHaveSameValue,
-} from '../utils/inputValidation';
+} from '@utils';
 
 export function ManageList({ data, listPath, userId, userEmail }) {
 	const { t } = useTranslation();

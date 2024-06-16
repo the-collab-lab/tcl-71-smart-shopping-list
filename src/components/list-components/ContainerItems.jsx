@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
-import { ListItem } from './ListItem';
-import { Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
+import { ListItem } from '@components';
 
-export const ContainerItems = ({
+const ContainerItems = ({
 	category,
 	newList,
 	wasRecentlyPurchased,
@@ -48,3 +47,5 @@ export const ContainerItems = ({
 		<> </>
 	);
 };
+
+export default ContainerItems;

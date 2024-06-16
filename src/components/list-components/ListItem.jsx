@@ -1,12 +1,12 @@
-import DeleteItem from './DeleteItem';
+import { DeleteItem } from '@components';
 
-export function ListItem({
+const ListItem = ({
 	isRecentlyPurchased,
 	itemId,
 	listPath,
 	name,
 	updatePurchaseDate,
-}) {
+}) => {
 	return (
 		<div
 			href="/"
@@ -51,4 +51,6 @@ export function ListItem({
 			</li>
 		</div>
 	);
-}
+};
+
+export default ListItem;
