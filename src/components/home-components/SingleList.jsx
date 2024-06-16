@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import DeleteList from './DeleteList';
+import { DeleteList } from '@components';
 
-export function SingleList({ userEmail, name, path, setListPath, userId }) {
+const SingleList = ({ userEmail, name, path, setListPath, userId }) => {
 	const navigate = useNavigate();
 	function handleClick() {
 		setListPath(path);
@@ -25,4 +25,6 @@ export function SingleList({ userEmail, name, path, setListPath, userId }) {
 			/>
 		</li>
 	);
-}
+};
+
+export default SingleList;

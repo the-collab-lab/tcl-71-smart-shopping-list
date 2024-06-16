@@ -177,7 +177,7 @@ const resources = {
 			ButtonDeleteList: 'Supprimer {{listNameUppercase}}',
 			ModalDeleteListTitle: 'Supprimer la liste {{listNameUppercase}}',
 			ModalDeleteListConfirmSuppression:
-				'Voulez-vous definitivement supprimer la liste {{listNameUppercase}} ?',
+				'Voulez-vous définitivement supprimer la liste {{listNameUppercase}} ?',
 			ModalDeleteListStopUsing:
 				"Voulez-vouz arrêter d'utiliser la liste {{listNameUppercase}} ?",
 		},

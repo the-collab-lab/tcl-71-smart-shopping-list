@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import NavBarContent from './NavBarContent';
+import { NavBarContent } from '@components';
 
-export function NavBar({ user, lists, listPath }) {
+const NavBar = ({ user, lists, listPath }) => {
 	const [isNavOpen, setIsNavOpen] = useState(false);
 
 	return (
@@ -78,4 +78,6 @@ export function NavBar({ user, lists, listPath }) {
 			</nav>
 		</>
 	);
-}
+};
+
+export default NavBar;

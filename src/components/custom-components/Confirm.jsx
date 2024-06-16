@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
-
-import Loading from './Loading';
+import { Loading } from '@components';
 
 const Confirm = ({ open, onClose, onConfirm, children, title, loading }) => {
 	const { t } = useTranslation();

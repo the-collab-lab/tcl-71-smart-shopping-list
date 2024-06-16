@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
-import { SignOut } from '../../api/useAuth.jsx';
-import { NavigationLink } from './NavigationLink.jsx';
+import { SignOut } from '@api';
 import { useNavigate } from 'react-router-dom';
-import { ButtonWithIcon } from '../ButtonWithIcon.jsx';
+import { ButtonWithIcon, NavigationLink } from '@components';
 
-export default function NavLinks({ listPath, lists, setIsNavOpen }) {
+const NavBarContent = ({ listPath, lists, setIsNavOpen }) => {
 	const navigate = useNavigate();
 	const { t } = useTranslation();
 
@@ -60,4 +59,6 @@ export default function NavLinks({ listPath, lists, setIsNavOpen }) {
 			/>
 		</>
 	);
-}
+};
+
+export default NavBarContent;

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-export function NavigationLink({ text, destination, handleClick, icon }) {
+const NavigationLink = ({ text, destination, handleClick, icon }) => {
 	return (
 		<NavLink
 			onClick={handleClick}
@@ -16,4 +16,6 @@ export function NavigationLink({ text, destination, handleClick, icon }) {
 			{text}
 		</NavLink>
 	);
-}
+};
+
+export default NavigationLink;

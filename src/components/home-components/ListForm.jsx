@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { createList } from '../api';
+import { createList } from '@api';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { inputHasValue } from '../utils/inputValidation';
-import { stringsHaveSameValue } from '../utils/inputValidation';
+import { stringsHaveSameValue, inputHasValue } from '@utils';
 
 const ListForm = (props) => {
 	const { setMessage, setListPath, userId, userEmail, data } = props;

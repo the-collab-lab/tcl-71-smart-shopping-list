@@ -1,4 +1,4 @@
-export function ButtonWithIcon({ text, handleClick, icon }) {
+const ButtonWithIcon = ({ text, handleClick, icon }) => {
 	return (
 		<button
 			onClick={handleClick}
@@ -8,4 +8,6 @@ export function ButtonWithIcon({ text, handleClick, icon }) {
 			{text}
 		</button>
 	);
-}
+};
+
+export default ButtonWithIcon;

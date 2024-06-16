@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useTranslation, Trans } from 'react-i18next';
-import { deleteList } from '../api/firebase';
-import Confirm from './Confirm';
+import { deleteList } from '@api';
+import { Confirm } from '@components';
 
 const DeleteList = ({ user, email, listPath, listName, setListPath }) => {
 	const { t } = useTranslation();

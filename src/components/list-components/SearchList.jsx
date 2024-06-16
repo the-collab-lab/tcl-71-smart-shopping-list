@@ -47,4 +47,4 @@ export const SearchList = ({ data, setNewList }) => {
 	);
 };
 
-// export default SearchList;
+export default SearchList;
