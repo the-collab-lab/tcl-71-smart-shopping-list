@@ -11,9 +11,9 @@ export { default as ContainerItems } from './list-components/ContainerItems';
 export { default as SearchList } from './list-components/SearchList';
 export { default as ListItem } from './list-components/ListItem';
 
-export { default as NavBar } from './navBar/NavBar';
-export { default as NavigationLink } from './navBar/NavigationLink';
-export { default as NavBarContent } from './navBar/NavBarContent';
+export { default as NavBar } from './nav-bar/NavBar';
+export { default as NavigationLink } from './nav-bar/NavigationLink';
+export { default as NavBarContent } from './nav-bar/NavBarContent';
 
 export { default as DeleteList } from './home-components/DeleteList';
 export { default as SingleList } from './home-components/SingleList';
